@@ -2,6 +2,10 @@
     <head>
         <title>Gisleburt - Portfolio</title>
         <style type="text/css">
+            html {
+                color: #3b3a36;
+                background-color: #e9ece5;
+            }
             body {
                 font-family: sans-serif;
                 max-width: 960px;
@@ -19,12 +23,27 @@
             header p #real-name span {
                 color: darkgreen;
             }
+            article {
+                padding: 5px;
+                border: 3px solid #b3c2bf;
+                background-color: #c0dfd9;
+                margin-bottom: 5px;
+            }
+            article p {
+                margin-bottom: 0;
+            }
             a {
                 text-decoration: none;
+            }
+            h2 {
+                margin: 0;
             }
             .project .title {
                 display: inline-block;
                 width: 155px;
+            }
+            .project {
+                margin: 0;
             }
         </style>
     </head>
@@ -35,7 +54,12 @@
         </header>
 
         <article id="intro">
-            <p>Gisleburt is a web developer, specialising in PHP back end development.</p>
+            <h2>About</h2>
+            <p>
+                Gisleburt is a web developer, specialising in PHP back end development. You can see examples of his
+                work, new and old, on <a href="https://github.com/Gisleburt">GitHub</a>, though the best projects are
+                described below.
+            </p>
         </article>
 
         <article id="aye-aye-api">
