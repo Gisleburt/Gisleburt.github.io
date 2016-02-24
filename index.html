@@ -1,181 +1,152 @@
 <html>
-    <head>
-        <title>Gisleburt - Portfolio</title>
-        <style type="text/css">
-            html {
-                background-color: #7585A9;
-            }
-            body {
-                font-family: sans-serif;
-                max-width: 960px;
-                margin: auto;
-            }
-            header {
-                width: 200px;
-                margin: auto;
-                text-align: center;
-            }
-            header #real-name {
-                font-family: "Source Code Pro", Monaco, "Courier New", monospace;
-                color: navy;
-            }
-            header #real-name span {
-                color: darkgreen;
-            }
-            article {
-                padding: 10px;
-                background-color: #A5B0CA;
-                margin-bottom: 20px;
-            }
-            article p {
-                margin-bottom: 0;
-            }
-            a,
-            a:hover,
-            a:visited {
-                text-decoration: dotted underline;
-                color: black;
-            }
-            a:hover {
-                text-decoration: underline;
-            }
-            h2 {
-                margin: 0 0 10px 0;
-            }
-            .project .title {
-                display: inline-block;
-                width: 155px;
-            }
-            .project {
-                margin: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <h1>Gisleburt</h1>
-            <p id="real-name">Daniel <span>// Mason</span></span></p>
-        </header>
+<head>
+    <title>Gisleburt - Portfolio</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="arrow.css" />
+</head>
+<body>
 
-        <article id="intro">
-            <h2>About</h2>
-            <p>
-                Gisleburt is a web developer, specialising in PHP back end development. You can see examples of his
-                work, new and old, on <a href="https://github.com/Gisleburt">GitHub</a>, though the best projects are
-                described below.
-            </p>
-        </article>
+<article id="header">
+    <div class="contents">
+        <h1>Gisleburt</h1>
+        <p id="real-name">Daniel <span>// Mason</span></p>
+        <div class="down-arrow"></div>
+    </div>
+</article>
 
-        <article id="aye-aye-api">
-            <h2>Aye Aye</h2>
+<article id="intro">
+    <div class="contents">
+        <h2>About</h2>
+        <p>
+            Gisleburt is a web developer, specialising in PHP back end development. You can see examples of his
+            work, new and old, on <a href="https://github.com/Gisleburt">GitHub</a>, though the best projects are
+            described below.
+        </p>
+    </div>
+</article>
 
-            <p class="project">
-                <a class="title" href="https://github.com/AyeAyeApi/Api">Aye Aye - Api</a>
-                <a href="https://php.net/">
-                    <img alt="PHP &gt;= 5.5" src="https://img.shields.io/badge/php-%3E%3D%205.5-8892BF.svg" />
-                </a>
-                <a href="https://raw.githubusercontent.com/AyeAyeApi/Api/master/LICENSE.txt">
-                    <img alt="License: MIT" src="https://img.shields.io/packagist/l/ayeaye/api.svg" />
-                </a>
-                <a href="https://packagist.org/packages/ayeaye/api">
-                    <img alt="Version" src="https://img.shields.io/packagist/v/ayeaye/api.svg" />
-                </a>
-                <a href="https://travis-ci.org/AyeAyeApi/Api/branches">
-                    <img alt="Build Status" src="https://img.shields.io/travis/AyeAyeApi/Api/master.svg" />
-                </a>
-            </p>
+<article id="aye-aye-api">
+    <div class="contents">
+        <h2>Aye Aye</h2>
 
-            <p class="project">
-                <a class="title" href="https://github.com/AyeAyeApi/Formatters">Aye Aye - Formatters</a>
-                <a href="https://php.net/">
-                    <img alt="PHP &gt;= 5.5" src="https://img.shields.io/badge/php-%3E%3D%205.5-8892BF.svg" />
-                </a>
-                <a href="https://raw.githubusercontent.com/AyeAyeApi/Formatters/master/LICENSE.txt">
-                    <img alt="License: MIT" src="https://img.shields.io/packagist/l/ayeaye/formatters.svg" />
-                </a>
-                <a href="https://packagist.org/packages/ayeaye/formatters">
-                    <img alt="Version" src="https://img.shields.io/packagist/v/ayeaye/formatters.svg" />
-                </a>
-                <a href="https://travis-ci.org/AyeAyeApi/Api/branches">
-                    <img alt="Build Status" src="https://img.shields.io/travis/AyeAyeApi/Formatters/master.svg" />
-                </a>
-            </p>
+        <p class="project">
+            <a class="title" href="https://github.com/AyeAyeApi/Api">Aye Aye - Api</a>
+            <a href="https://php.net/">
+                <img alt="PHP &gt;= 5.5" src="https://img.shields.io/badge/php-%3E%3D%205.5-8892BF.svg"/>
+            </a>
+            <a href="https://raw.githubusercontent.com/AyeAyeApi/Api/master/LICENSE.txt">
+                <img alt="License: MIT" src="https://img.shields.io/packagist/l/ayeaye/api.svg"/>
+            </a>
+            <a href="https://packagist.org/packages/ayeaye/api">
+                <img alt="Version" src="https://img.shields.io/packagist/v/ayeaye/api.svg"/>
+            </a>
+            <a href="https://travis-ci.org/AyeAyeApi/Api/branches">
+                <img alt="Build Status" src="https://img.shields.io/travis/AyeAyeApi/Api/master.svg"/>
+            </a>
+        </p>
 
-            <p>
-                Aye Aye Api is a PHP framework for building RESTful APIs. It was designed around the idea that modern
-                frameworks, while providing many useful features, do not actually help developers develop.
-            </p>
+        <p class="project">
+            <a class="title" href="https://github.com/AyeAyeApi/Formatters">Aye Aye - Formatters</a>
+            <a href="https://php.net/">
+                <img alt="PHP &gt;= 5.5" src="https://img.shields.io/badge/php-%3E%3D%205.5-8892BF.svg"/>
+            </a>
+            <a href="https://raw.githubusercontent.com/AyeAyeApi/Formatters/master/LICENSE.txt">
+                <img alt="License: MIT" src="https://img.shields.io/packagist/l/ayeaye/formatters.svg"/>
+            </a>
+            <a href="https://packagist.org/packages/ayeaye/formatters">
+                <img alt="Version" src="https://img.shields.io/packagist/v/ayeaye/formatters.svg"/>
+            </a>
+            <a href="https://travis-ci.org/AyeAyeApi/Api/branches">
+                <img alt="Build Status" src="https://img.shields.io/travis/AyeAyeApi/Formatters/master.svg"/>
+            </a>
+        </p>
 
-            <p>
-                Aye Aye Formatters provide a way to turn serialized data of various formats into php objects, and to
-                turn php objects into serialized formatted data. Serialization can be selected based on a value (such
-                as an 'Accept:' header) allowing clients to choose how data is server to them.
-            </p>
+        <p>
+            Aye Aye Api is a PHP framework for building RESTful APIs. It was designed around the idea that modern
+            frameworks, while providing many useful features, do not actually help developers develop.
+        </p>
 
-            <p>
-                Aye Aye is small, very easy to use, and handles all of the communication between the server and the
-                client, allowing the client to choose what format data should be returned to them in, and how they
-                would prefer to send data in the first place. Developers need only describe the data they expect
-                through method definition and appropriate PHP DocBlocks, returning data in any way they see fit (string,
-                object, array, Generator, etc).
-            </p>
+        <p>
+            Aye Aye Formatters provide a way to turn serialized data of various formats into php objects, and to
+            turn php objects into serialized formatted data. Serialization can be selected based on a value (such
+            as an 'Accept:' header) allowing clients to choose how data is server to them.
+        </p>
 
-        </article>
+        <p>
+            Aye Aye is small, very easy to use, and handles all of the communication between the server and the
+            client, allowing the client to choose what format data should be returned to them in, and how they
+            would prefer to send data in the first place. Developers need only describe the data they expect
+            through method definition and appropriate PHP DocBlocks, returning data in any way they see fit (string,
+            object, array, Generator, etc).
+        </p>
+    </div>
 
-        <article id="masonry">
-            <h2>Masonry</h2>
+</article>
 
-            <p class="project">
-                <a class="title" href="https://github.com/TheFoundryVisionmongers/Masonry">Masonry</a>
-                <a href="https://php.net/">
-                    <img alt="PHP &gt;= 5.5" src="https://img.shields.io/badge/php-%3E%3D%205.5-8892BF.svg" />
-                </a>
-                <a href="https://raw.githubusercontent.com/TheFoundryVisionmongers/Masonry/master/LICENSE">
-                    <img alt="License: MIT" src="https://img.shields.io/packagist/l/foundry/masonry.svg" />
-                </a>
-                <a href="https://packagist.org/packages/foundry/masonry">
-                    <img alt="Version" src="https://img.shields.io/packagist/v/foundry/masonry.svg" />
-                </a>
-                <a href="https://travis-ci.org/TheFoundryVisionmongers/Masonry/branches">
-                    <img alt="Build Status" src="https://img.shields.io/travis/TheFoundryVisionmongers/Masonry/master.svg" />
-                </a>
-            </p>
+<article id="masonry">
 
-            <p class="project">
-                <a class="title" href="https://github.com/TheFoundryVisionmongers/Masonry-Register">Masonry Register</a>
-                <a href="https://php.net/">
-                    <img alt="PHP &gt;= 5.5" src="https://img.shields.io/badge/php-%3E%3D%205.5-8892BF.svg" />
-                </a>
-                <a href="https://raw.githubusercontent.com/TheFoundryVisionmongers/Masonry-Register/master/LICENSE">
-                    <img alt="License: MIT" src="https://img.shields.io/packagist/l/foundry/masonry-register.svg" />
-                </a>
-                <a href="https://packagist.org/packages/foundry/masonry-register">
-                    <img alt="Version" src="https://img.shields.io/packagist/v/foundry/masonry-register.svg" />
-                </a>
-                <a href="https://travis-ci.org/TheFoundryVisionmongers/Masonry-Register/branches">
-                    <img alt="Build Status" src="https://img.shields.io/travis/TheFoundryVisionmongers/Masonry-Register/master.svg" />
-                </a>
-            </p>
+    <div class="contents">
 
-            <p>
-                Masonry is a tool for managing tasks, and was designed to fulfil two main roles.
-            </p>
+        <h2>Masonry</h2>
 
-            <ul>
-                <li>A single pass task runner, such as a build script</li>
-                <li>A long running event listener, running tasks as they appear in a queue</li>
-            </ul>
+        <p class="project">
+            <a class="title" href="https://github.com/TheFoundryVisionmongers/Masonry">Masonry</a>
+            <a href="https://php.net/">
+                <img alt="PHP &gt;= 5.5" src="https://img.shields.io/badge/php-%3E%3D%205.5-8892BF.svg"/>
+            </a>
+            <a href="https://raw.githubusercontent.com/TheFoundryVisionmongers/Masonry/master/LICENSE">
+                <img alt="License: MIT" src="https://img.shields.io/packagist/l/foundry/masonry.svg"/>
+            </a>
+            <a href="https://packagist.org/packages/foundry/masonry">
+                <img alt="Version" src="https://img.shields.io/packagist/v/foundry/masonry.svg"/>
+            </a>
+            <a href="https://travis-ci.org/TheFoundryVisionmongers/Masonry/branches">
+                <img alt="Build Status"
+                     src="https://img.shields.io/travis/TheFoundryVisionmongers/Masonry/master.svg"/>
+            </a>
+        </p>
 
-            <p>
-                As with Aye Aye, Masonry was born out a feeling that modern frameworks for these kinds of tasks (at
-                least in PHP), were not as helpful to developers as they could be.
-            </p>
+        <p class="project">
+            <a class="title" href="https://github.com/TheFoundryVisionmongers/Masonry-Register">Masonry
+                Register</a>
+            <a href="https://php.net/">
+                <img alt="PHP &gt;= 5.5" src="https://img.shields.io/badge/php-%3E%3D%205.5-8892BF.svg"/>
+            </a>
+            <a href="https://raw.githubusercontent.com/TheFoundryVisionmongers/Masonry-Register/master/LICENSE">
+                <img alt="License: MIT" src="https://img.shields.io/packagist/l/foundry/masonry-register.svg"/>
+            </a>
+            <a href="https://packagist.org/packages/foundry/masonry-register">
+                <img alt="Version" src="https://img.shields.io/packagist/v/foundry/masonry-register.svg"/>
+            </a>
+            <a href="https://travis-ci.org/TheFoundryVisionmongers/Masonry-Register/branches">
+                <img alt="Build Status"
+                     src="https://img.shields.io/travis/TheFoundryVisionmongers/Masonry-Register/master.svg"/>
+            </a>
+        </p>
 
-            <p>
-                Masonry provides a Composer plugin that allows easy registry of new modules, providing exceedingly easy
-                extensibility.
-            </p>
+        <p>
+            Masonry is a tool for managing tasks, and was designed to fulfil two main roles.
+        </p>
 
-        </article>
-    </body>
+        <ul>
+            <li>A single pass task runner, such as a build script</li>
+            <li>A long running event listener, running tasks as they appear in a queue</li>
+        </ul>
+
+        <p>
+            As with Aye Aye, Masonry was born out a feeling that modern frameworks for these kinds of tasks (at
+            least in PHP), were not as helpful to developers as they could be.
+        </p>
+
+        <p>
+            Masonry provides a Composer plugin that allows easy registry of new modules, providing exceedingly
+            easy
+            extensibility.
+        </p>
+
+    </div>
+
+</article>
+</body>
 </html>

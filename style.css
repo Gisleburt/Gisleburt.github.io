@@ -1,0 +1,94 @@
+body {
+    font-family: sans-serif;
+    color: white;
+    background-color: darkorange;
+    height: 100%;
+}
+
+
+#header {
+    margin: auto;
+    text-align: center;
+}
+
+#header #real-name {
+    font-family: "Source Code Pro", Monaco, "Courier New", monospace;
+    color: navy;
+}
+
+#header #real-name span {
+    color: darkgreen;
+}
+
+a,
+a:hover,
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    font-size: 7rem;
+}
+
+h2 {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.project .title {
+    display: inline-block;
+    width: 155px;
+}
+
+.project {
+    margin: 0;
+}
+
+article {
+    display: flex;
+    justify-content: center;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    position: relative;
+}
+
+article .contents {
+    padding: 30px;
+    margin: auto;
+    max-width: 960px;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+}
+
+#header {
+    background-color: inherit;
+}
+
+#intro {
+    background-color: royalblue;
+}
+
+#masonry {
+    background-color: mediumseagreen;
+}
+
+#aye-aye-api {
+    background-color: indianred;
+}
+
+p {
+    margin: 30px 0;
+}
+
+p.project {
+    margin: 0;
+}
+
