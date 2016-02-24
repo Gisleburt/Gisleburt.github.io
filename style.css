@@ -84,6 +84,10 @@ article .contents {
     background-color: royalblue;
 }
 
+#intro .contents {
+    text-align: center;
+}
+
 #masonry {
     background-color: mediumseagreen;
 }
