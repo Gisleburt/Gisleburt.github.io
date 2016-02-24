@@ -51,21 +51,26 @@ h2 {
 }
 
 article {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
     display: flex;
-    justify-content: center;
+
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    position: relative;
 }
 
 article .contents {
+    -webkit-align-self: center;
+    align-self: center;
+
     padding: 30px;
     margin: auto;
     max-width: 960px;
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
 }
 
 #header {
