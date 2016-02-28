@@ -1,0 +1,22 @@
+{
+  "name": "Portfolio",
+  "homepage": "https://github.com/Gisleburt/gisleburt.github.io",
+  "authors": [
+    "Daniel Mason <daniel@danielmason.com>"
+  ],
+  "description": "My Portfolio",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "fontawesome#^4.5.0"
+  }
+}
