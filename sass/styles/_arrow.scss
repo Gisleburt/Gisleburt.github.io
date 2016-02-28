@@ -1,9 +1,9 @@
 .down-arrow {
-    position: relative;
-    background: #fff;
-    margin-top: 75px;
-}
-.down-arrow:after {
+  position: relative;
+  background: #fff;
+  margin-top: 75px;
+
+  &:after {
     top: 100%;
     left: 50%;
     border: solid transparent;
@@ -16,4 +16,5 @@
     border-top-color: #fff;
     border-width: 30px;
     margin-left: -30px;
+  }
 }
