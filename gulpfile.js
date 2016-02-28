@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var typescript = require('gulp-typescript');
 var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('sass', function () {
@@ -13,9 +14,22 @@ gulp.task('sass', function () {
 });
 
 gulp.task('sass:watch', function () {
-    gulp.watch('./sass/**/*.scss', ['sass']);
+    gulp.watch('./sass/**.scss', ['sass']);
 });
 
-gulp.task('default', ['sass']);
-gulp.task('watch', ['sass:watch']);
+gulp.task('typescript', function () {
+    return gulp.src('ts/**/*.ts')
+        .pipe(typescript({
+            // noImplicitAny: true,
+            out: 'portfolio.js'
+        }))
+        .pipe(gulp.dest('./js'));
+});
+
+gulp.task('typescript:watch', function () {
+    gulp.watch('./ts/**/*.ts', ['typescript']);
+});
+
+gulp.task('default', ['sass', 'typescript']);
+gulp.task('watch', ['sass:watch', 'typescript:watch']);
 
