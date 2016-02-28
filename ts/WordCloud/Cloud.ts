@@ -33,14 +33,25 @@ module WordCloud {
             element.style.padding = '3px';
         }
 
-        protected static isRectInOtherRect(inner:ClientRect, outer:ClientRect):boolean {
+        protected static isRectFullyInsideRect(inner:ClientRect, outer:ClientRect):boolean {
             return inner.left >= outer.left
                 && inner.right <= outer.right
                 && inner.top >= outer.top
                 && inner.bottom <= outer.bottom;
         }
 
-        protected static areRectsColliding(rect1:ClientRect, rect2:ClientRect):boolean {
+        protected static doesRectCollideWithRects(rect1:ClientRect, rects:ClientRect[]):boolean {
+            for(let index in rects) {
+                if(rects.hasOwnProperty(index)) {
+                    if(Cloud.doesRectCollideWithRect(rect1, rects[index])) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        protected static doesRectCollideWithRect(rect1:ClientRect, rect2:ClientRect):boolean {
             return !(
                 rect1.right < rect2.left
                 || rect1.left > rect2.right
@@ -57,24 +68,33 @@ module WordCloud {
                     let fontSize = lerp(
                         cloudElement.children.length,
                         parseInt(index),
-                        this.maxFontSize,
-                        this.minFontSize
+                        this.minFontSize,
+                        this.maxFontSize
                     );
                     Cloud.styleCloudPuff(child, fontSize);
                 }
             }
         }
 
-        protected static positionCloudPuffs(cloudElement:HTMLElement):void {
-            let positionedElements = [];
-            let keepGoing = true;
+        protected positionCloudPuffs(cloudElement:HTMLElement):void {
+            let positionedRects = [];
+
             for(let index in cloudElement.children) {
                 if(cloudElement.children.hasOwnProperty(index)) {
                     let child = <HTMLElement>cloudElement.children[index];
 
-                    if(!Cloud.isRectInOtherRect(child.getBoundingClientRect(), cloudElement.getBoundingClientRect())) {
-                        break;
+                    child.style.display = 'inline-block';
+
+                    let nextPosition = this.ring.nextPosition();
+                    while(Cloud.doesRectCollideWithRects(child.getBoundingClientRect(), positionedRects)) {
+                        Cloud.positionElement(child, nextPosition);
+                        if (!Cloud.isRectFullyInsideRect(child.getBoundingClientRect(), cloudElement.getBoundingClientRect())) {
+                            child.style.display = 'none';
+                            break;
+                        }
+                        nextPosition = this.ring.nextPosition();
                     }
+                    positionedRects.push(child.getBoundingClientRect());
                 }
             }
         }
@@ -88,7 +108,7 @@ module WordCloud {
 
         public create():void {
             this.prepareCloudPuffs(this.cloudElement, Cloud.defaultLerp);
-            Cloud.positionCloudPuffs(this.cloudElement);
+            this.positionCloudPuffs(this.cloudElement);
         }
 
         constructor(elementId:string) {
@@ -107,8 +127,9 @@ module WordCloud {
 
             Cloud.prepareCloudElement(this.cloudElement, this.areaHeight, this.areaWidth);
 
-            let initialPosition = new Position(this.areaHeight / 2, this.areaHeight / 2);
-            //this.ring = new RingPosition(initialPosition);
+            this.ring = new RingPosition(
+                new Position(this.areaHeight / 2, this.areaHeight / 2)
+            );
         }
     }
 }
