@@ -2,7 +2,9 @@
 var WordCloud;
 (function (WordCloud) {
     var RingPosition = (function () {
-        function RingPosition() {
+        function RingPosition(position) {
+            this.initialPosition = position;
+            this.step = 0;
         }
         /**
          * How many pixels wide is the current ring
@@ -81,10 +83,6 @@ var WordCloud;
                 position.x += normaliseStep;
             }
             return position;
-        };
-        RingPosition.prototype.construct = function (position) {
-            this.initialPosition = position;
-            this.step = 0;
         };
         RingPosition.prototype.nextPosition = function () {
             return this.positionOnRing(this.step++);

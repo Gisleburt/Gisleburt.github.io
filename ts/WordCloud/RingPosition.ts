@@ -99,7 +99,7 @@ module WordCloud {
             return position;
         }
 
-        construct(position:Position) {
+        constructor(position:Position) {
             this.initialPosition = position;
             this.step = 0;
         }
