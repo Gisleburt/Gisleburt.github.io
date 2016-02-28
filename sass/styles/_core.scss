@@ -1,11 +1,12 @@
 @import "mixins";
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro);
 
 html {
   height: 100%;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: ‘Trebuchet MS’, Helvetica, Arial, sans-serif;
   color: white;
   background-color: darkorange;
   height: 100%;
@@ -34,10 +35,6 @@ a:visited {
 
 a:hover {
   text-decoration: underline;
-}
-
-h1 {
-  font-size: 7rem;
 }
 
 h2 {
