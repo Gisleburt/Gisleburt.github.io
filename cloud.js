@@ -176,6 +176,7 @@ var Cloud = function (config) {
         element.style.fontSize = size + 'rem';
         element.style.display = 'inline-block';
         element.style.position = 'absolute';
+        element.style.padding = '3px';
     };
 
     function isElementInCloud(element) {
