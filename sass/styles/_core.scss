@@ -15,9 +15,10 @@ body {
   background-color: inherit;
   margin: auto;
   text-align: center;
-  #real-name {
-    font-family: "Source Code Pro", Monaco, "Courier New", monospace;
+  h1 {
+    font-family: "Source Code Pro", monospace;
     color: navy;
+    font-size: 5rem;
     span {
       color: darkgreen;
     }
