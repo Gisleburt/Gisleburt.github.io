@@ -1,106 +1,98 @@
 html {
-    height: 100%;
-}
-body {
-    font-family: sans-serif;
-    color: white;
-    background-color: darkorange;
-    height: 100%;
+  height: 100%;
 }
 
+body {
+  font-family: sans-serif;
+  color: white;
+  background-color: darkorange;
+  height: 100%;
+}
 
 #header {
-    margin: auto;
-    text-align: center;
-}
-
-#header #real-name {
+  background-color: inherit;
+  margin: auto;
+  text-align: center;
+  #real-name {
     font-family: "Source Code Pro", Monaco, "Courier New", monospace;
     color: navy;
-}
-
-#header #real-name span {
-    color: darkgreen;
+    span {
+      color: darkgreen;
+    }
+  }
 }
 
 a,
 a:hover,
 a:visited {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 h1 {
-    font-size: 7rem;
+  font-size: 7rem;
 }
 
 h2 {
-    font-size: 4rem;
-    text-align: center;
-    margin-bottom: 20px;
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .project .title {
-    display: inline-block;
-    width: 155px;
+  display: inline-block;
+  width: 155px;
 }
 
 .project {
-    margin: 0;
+  margin: 0;
 }
 
 article {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
 
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-}
-
-article .contents {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  .contents {
     -webkit-align-self: center;
     align-self: center;
 
     padding: 30px;
     margin: auto;
     max-width: 960px;
-}
-
-#header {
-    background-color: inherit;
+  }
 }
 
 #intro {
-    background-color: royalblue;
-}
-
-#intro .contents {
+  background-color: royalblue;
+  .contents {
     text-align: center;
+  }
 }
 
 #masonry {
-    background-color: mediumseagreen;
+  background-color: mediumseagreen;
 }
 
 #aye-aye-api {
-    background-color: indianred;
+  background-color: indianred;
 }
 
 p {
-    margin: 30px 0;
-}
-
-p.project {
+  margin: 30px 0;
+  &.project {
     margin: 0;
+  }
 }
 
