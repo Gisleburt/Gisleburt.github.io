@@ -1,0 +1,14 @@
+@mixin flex-box() {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin align-self($where) {
+  -webkit-align-self: $where;
+  align-self: $where;
+}

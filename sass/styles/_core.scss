@@ -1,3 +1,5 @@
+@import "mixins";
+
 html {
   height: 100%;
 }
@@ -53,21 +55,12 @@ h2 {
 }
 
 article {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-
+  @include flex-box();
   min-height: 100%;
   height: auto !important;
   height: 100%;
   .contents {
-    -webkit-align-self: center;
-    align-self: center;
-
+    @include align-self(center);
     padding: 30px;
     margin: auto;
     max-width: 960px;
