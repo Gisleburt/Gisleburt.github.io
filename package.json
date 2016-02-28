@@ -1,0 +1,24 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "My portfolio",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gisleburt/gisleburt.github.io.git"
+  },
+  "author": "Daniel Mason <daniel@danielmason.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gisleburt/gisleburt.github.io/issues"
+  },
+  "homepage": "https://github.com/Gisleburt/gisleburt.github.io#readme"
+}
