@@ -15,7 +15,7 @@ var WordCloud;
             this.areaHeight = this.cloudElement.offsetHeight;
             this.areaWidth = this.cloudElement.offsetWidth;
             Cloud.prepareCloudElement(this.cloudElement, this.areaHeight, this.areaWidth);
-            this.ring = new WordCloud.RingPosition(new WordCloud.Position(this.areaHeight / 2, this.areaHeight / 2));
+            this.ring = new WordCloud.RingPosition(new WordCloud.Position(this.areaWidth / 2, this.areaHeight / 2));
         }
         Cloud.prepareCloudElement = function (cloudElement, height, width) {
             cloudElement.style.position = 'relative';
@@ -71,13 +71,14 @@ var WordCloud;
                     var child = cloudElement.children[index];
                     child.style.display = 'inline-block';
                     var nextPosition = this.ring.nextPosition();
+                    Cloud.positionElement(child, nextPosition);
                     while (Cloud.doesRectCollideWithRects(child.getBoundingClientRect(), positionedRects)) {
-                        Cloud.positionElement(child, nextPosition);
                         if (!Cloud.isRectFullyInsideRect(child.getBoundingClientRect(), cloudElement.getBoundingClientRect())) {
                             child.style.display = 'none';
                             break;
                         }
                         nextPosition = this.ring.nextPosition();
+                        Cloud.positionElement(child, nextPosition);
                     }
                     positionedRects.push(child.getBoundingClientRect());
                 }
@@ -90,9 +91,48 @@ var WordCloud;
             return (stepSize * remaining) + start;
         };
         ;
+        Cloud.getHighestPoint = function (cloudElement) {
+            var highestPoint = cloudElement.offsetHeight;
+            for (var index in cloudElement.children) {
+                if (cloudElement.children.hasOwnProperty(index)) {
+                    var child = cloudElement.children[index];
+                    var top_1 = parseInt(child.style.top);
+                    if (top_1 < highestPoint) {
+                        highestPoint = top_1;
+                    }
+                }
+            }
+            return highestPoint;
+        };
+        Cloud.getLowestPoint = function (cloudElement) {
+            var lowestPoint = 0;
+            for (var index in cloudElement.children) {
+                if (cloudElement.children.hasOwnProperty(index)) {
+                    var child = cloudElement.children[index];
+                    var bottom = parseInt(child.style.top) + child.offsetHeight;
+                    if (bottom > lowestPoint) {
+                        lowestPoint = bottom;
+                    }
+                }
+            }
+            return lowestPoint;
+        };
+        Cloud.shufflePuffsUp = function (cloudElement) {
+            var delta = Cloud.getHighestPoint(cloudElement);
+            for (var index in cloudElement.children) {
+                if (cloudElement.children.hasOwnProperty(index)) {
+                    var child = cloudElement.children[index];
+                    var currentTop = parseInt(child.style.top);
+                    child.style.top = (currentTop - delta) + 'px';
+                }
+            }
+        };
         Cloud.prototype.create = function () {
             this.prepareCloudPuffs(this.cloudElement, Cloud.defaultLerp);
             this.positionCloudPuffs(this.cloudElement);
+            Cloud.shufflePuffsUp(this.cloudElement);
+            this.cloudElement.style.width = null;
+            this.cloudElement.style.height = Cloud.getLowestPoint(this.cloudElement) + "px";
         };
         return Cloud;
     }());

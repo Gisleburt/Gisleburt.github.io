@@ -86,13 +86,14 @@ module WordCloud {
                     child.style.display = 'inline-block';
 
                     let nextPosition = this.ring.nextPosition();
+                    Cloud.positionElement(child, nextPosition);
                     while(Cloud.doesRectCollideWithRects(child.getBoundingClientRect(), positionedRects)) {
-                        Cloud.positionElement(child, nextPosition);
                         if (!Cloud.isRectFullyInsideRect(child.getBoundingClientRect(), cloudElement.getBoundingClientRect())) {
                             child.style.display = 'none';
                             break;
                         }
                         nextPosition = this.ring.nextPosition();
+                        Cloud.positionElement(child, nextPosition);
                     }
                     positionedRects.push(child.getBoundingClientRect());
                 }
@@ -106,9 +107,51 @@ module WordCloud {
             return (stepSize * remaining) + start
         };
 
+        protected static getHighestPoint(cloudElement:HTMLElement):number {
+            let highestPoint = cloudElement.offsetHeight;
+            for(let index in cloudElement.children) {
+                if (cloudElement.children.hasOwnProperty(index)) {
+                    let child = <HTMLElement>cloudElement.children[index];
+                    let top = parseInt(child.style.top);
+                    if(top < highestPoint) {
+                        highestPoint = top;
+                    }
+                }
+            }
+            return highestPoint;
+        }
+
+        protected static getLowestPoint(cloudElement:HTMLElement):number {
+            let lowestPoint = 0;
+            for(let index in cloudElement.children) {
+                if (cloudElement.children.hasOwnProperty(index)) {
+                    let child = <HTMLElement>cloudElement.children[index];
+                    let bottom = parseInt(child.style.top) + child.offsetHeight;
+                    if(bottom > lowestPoint) {
+                        lowestPoint = bottom;
+                    }
+                }
+            }
+            return lowestPoint;
+        }
+
+        protected static shufflePuffsUp(cloudElement:HTMLElement):void {
+            let delta = Cloud.getHighestPoint(cloudElement);
+            for (let index in cloudElement.children) {
+                if (cloudElement.children.hasOwnProperty(index)) {
+                    let child = <HTMLElement>cloudElement.children[index];
+                    let currentTop = parseInt(child.style.top);
+                    child.style.top = (currentTop - delta) + 'px';
+                }
+            }
+        }
+
         public create():void {
             this.prepareCloudPuffs(this.cloudElement, Cloud.defaultLerp);
             this.positionCloudPuffs(this.cloudElement);
+            Cloud.shufflePuffsUp(this.cloudElement);
+            this.cloudElement.style.width = null;
+            this.cloudElement.style.height = Cloud.getLowestPoint(this.cloudElement) + "px";
         }
 
         constructor(elementId:string) {
@@ -128,7 +171,7 @@ module WordCloud {
             Cloud.prepareCloudElement(this.cloudElement, this.areaHeight, this.areaWidth);
 
             this.ring = new RingPosition(
-                new Position(this.areaHeight / 2, this.areaHeight / 2)
+                new Position(this.areaWidth / 2, this.areaHeight / 2)
             );
         }
     }
