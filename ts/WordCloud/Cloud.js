@@ -55,33 +55,29 @@ var WordCloud;
                 || rect1.top > rect2.bottom);
         };
         Cloud.prototype.prepareCloudPuffs = function (cloudElement, lerp) {
-            for (var index in cloudElement.children) {
-                if (cloudElement.children.hasOwnProperty(index)) {
-                    // This needs casting
-                    var child = cloudElement.children[index];
-                    var fontSize = lerp(cloudElement.children.length, parseInt(index), this.minFontSize, this.maxFontSize);
-                    Cloud.styleCloudPuff(child, fontSize);
-                }
+            for (var index = 0; index < cloudElement.children.length; index++) {
+                // This needs casting
+                var child = cloudElement.children[index];
+                var fontSize = lerp(cloudElement.children.length, parseInt(index), this.minFontSize, this.maxFontSize);
+                Cloud.styleCloudPuff(child, fontSize);
             }
         };
         Cloud.prototype.positionCloudPuffs = function (cloudElement) {
             var positionedRects = [];
-            for (var index in cloudElement.children) {
-                if (cloudElement.children.hasOwnProperty(index)) {
-                    var child = cloudElement.children[index];
-                    child.style.display = 'inline-block';
-                    var nextPosition = this.ring.nextPosition();
-                    Cloud.positionElement(child, nextPosition);
-                    while (Cloud.doesRectCollideWithRects(child.getBoundingClientRect(), positionedRects)) {
-                        if (!Cloud.isRectFullyInsideRect(child.getBoundingClientRect(), cloudElement.getBoundingClientRect())) {
-                            child.style.display = 'none';
-                            break;
-                        }
-                        nextPosition = this.ring.nextPosition();
-                        Cloud.positionElement(child, nextPosition);
+            for (var index = 0; index < cloudElement.children.length; index++) {
+                var child = cloudElement.children[index];
+                child.style.display = 'inline-block';
+                var nextPosition = this.ring.nextPosition();
+                Cloud.positionElement(child, nextPosition);
+                while (Cloud.doesRectCollideWithRects(child.getBoundingClientRect(), positionedRects)) {
+                    if (!Cloud.isRectFullyInsideRect(child.getBoundingClientRect(), cloudElement.getBoundingClientRect())) {
+                        child.style.display = 'none';
+                        break;
                     }
-                    positionedRects.push(child.getBoundingClientRect());
+                    nextPosition = this.ring.nextPosition();
+                    Cloud.positionElement(child, nextPosition);
                 }
+                positionedRects.push(child.getBoundingClientRect());
             }
         };
         Cloud.defaultLerp = function (steps, step, start, finish) {
@@ -93,38 +89,32 @@ var WordCloud;
         ;
         Cloud.getHighestPoint = function (cloudElement) {
             var highestPoint = cloudElement.offsetHeight;
-            for (var index in cloudElement.children) {
-                if (cloudElement.children.hasOwnProperty(index)) {
-                    var child = cloudElement.children[index];
-                    var top_1 = parseInt(child.style.top);
-                    if (top_1 < highestPoint) {
-                        highestPoint = top_1;
-                    }
+            for (var index = 0; index < cloudElement.children.length; index++) {
+                var child = cloudElement.children[index];
+                var top_1 = parseInt(child.style.top);
+                if (top_1 < highestPoint) {
+                    highestPoint = top_1;
                 }
             }
             return highestPoint;
         };
         Cloud.getLowestPoint = function (cloudElement) {
             var lowestPoint = 0;
-            for (var index in cloudElement.children) {
-                if (cloudElement.children.hasOwnProperty(index)) {
-                    var child = cloudElement.children[index];
-                    var bottom = parseInt(child.style.top) + child.offsetHeight;
-                    if (bottom > lowestPoint) {
-                        lowestPoint = bottom;
-                    }
+            for (var index = 0; index < cloudElement.children.length; index++) {
+                var child = cloudElement.children[index];
+                var bottom = parseInt(child.style.top) + child.offsetHeight;
+                if (bottom > lowestPoint) {
+                    lowestPoint = bottom;
                 }
             }
             return lowestPoint;
         };
         Cloud.shufflePuffsUp = function (cloudElement) {
             var delta = Cloud.getHighestPoint(cloudElement);
-            for (var index in cloudElement.children) {
-                if (cloudElement.children.hasOwnProperty(index)) {
-                    var child = cloudElement.children[index];
-                    var currentTop = parseInt(child.style.top);
-                    child.style.top = (currentTop - delta) + 'px';
-                }
+            for (var index = 0; index < cloudElement.children.length; index++) {
+                var child = cloudElement.children[index];
+                var currentTop = parseInt(child.style.top);
+                child.style.top = (currentTop - delta) + 'px';
             }
         };
         Cloud.prototype.create = function () {

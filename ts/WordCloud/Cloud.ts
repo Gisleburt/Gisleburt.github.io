@@ -41,9 +41,9 @@ module WordCloud {
         }
 
         protected static doesRectCollideWithRects(rect1:ClientRect, rects:ClientRect[]):boolean {
-            for(let index in rects) {
-                if(rects.hasOwnProperty(index)) {
-                    if(Cloud.doesRectCollideWithRect(rect1, rects[index])) {
+            for (let index in rects) {
+                if (rects.hasOwnProperty(index)) {
+                    if (Cloud.doesRectCollideWithRect(rect1, rects[index])) {
                         return true;
                     }
                 }
@@ -61,42 +61,40 @@ module WordCloud {
         }
 
         protected prepareCloudPuffs(cloudElement:HTMLElement, lerp:Lerp) {
-            for (let index in cloudElement.children) {
-                if (cloudElement.children.hasOwnProperty(index)) {
-                    // This needs casting
-                    let child = <HTMLElement>cloudElement.children[index];
-                    let fontSize = lerp(
-                        cloudElement.children.length,
-                        parseInt(index),
-                        this.minFontSize,
-                        this.maxFontSize
-                    );
-                    Cloud.styleCloudPuff(child, fontSize);
-                }
+            for (let index = 0; index < cloudElement.children.length; index++) {
+                // This needs casting
+                let child = <HTMLElement>cloudElement.children[index];
+                let fontSize = lerp(
+                    cloudElement.children.length,
+                    parseInt(index),
+                    this.minFontSize,
+                    this.maxFontSize
+                );
+                Cloud.styleCloudPuff(child, fontSize);
             }
+            
         }
 
         protected positionCloudPuffs(cloudElement:HTMLElement):void {
             let positionedRects = [];
 
-            for(let index in cloudElement.children) {
-                if(cloudElement.children.hasOwnProperty(index)) {
-                    let child = <HTMLElement>cloudElement.children[index];
+            for (let index = 0; index < cloudElement.children.length; index++) {
+                let child = <HTMLElement>cloudElement.children[index];
 
-                    child.style.display = 'inline-block';
+                child.style.display = 'inline-block';
 
-                    let nextPosition = this.ring.nextPosition();
-                    Cloud.positionElement(child, nextPosition);
-                    while(Cloud.doesRectCollideWithRects(child.getBoundingClientRect(), positionedRects)) {
-                        if (!Cloud.isRectFullyInsideRect(child.getBoundingClientRect(), cloudElement.getBoundingClientRect())) {
-                            child.style.display = 'none';
-                            break;
-                        }
-                        nextPosition = this.ring.nextPosition();
-                        Cloud.positionElement(child, nextPosition);
+                let nextPosition = this.ring.nextPosition();
+                Cloud.positionElement(child, nextPosition);
+                while (Cloud.doesRectCollideWithRects(child.getBoundingClientRect(), positionedRects)) {
+                    if (!Cloud.isRectFullyInsideRect(child.getBoundingClientRect(), cloudElement.getBoundingClientRect())) {
+                        child.style.display = 'none';
+                        break;
                     }
-                    positionedRects.push(child.getBoundingClientRect());
+                    nextPosition = this.ring.nextPosition();
+                    Cloud.positionElement(child, nextPosition);
                 }
+                positionedRects.push(child.getBoundingClientRect());
+
             }
         }
 
@@ -109,13 +107,11 @@ module WordCloud {
 
         protected static getHighestPoint(cloudElement:HTMLElement):number {
             let highestPoint = cloudElement.offsetHeight;
-            for(let index in cloudElement.children) {
-                if (cloudElement.children.hasOwnProperty(index)) {
-                    let child = <HTMLElement>cloudElement.children[index];
-                    let top = parseInt(child.style.top);
-                    if(top < highestPoint) {
-                        highestPoint = top;
-                    }
+            for (let index = 0; index < cloudElement.children.length; index++) {
+                let child = <HTMLElement>cloudElement.children[index];
+                let top = parseInt(child.style.top);
+                if (top < highestPoint) {
+                    highestPoint = top;
                 }
             }
             return highestPoint;
@@ -123,13 +119,11 @@ module WordCloud {
 
         protected static getLowestPoint(cloudElement:HTMLElement):number {
             let lowestPoint = 0;
-            for(let index in cloudElement.children) {
-                if (cloudElement.children.hasOwnProperty(index)) {
-                    let child = <HTMLElement>cloudElement.children[index];
-                    let bottom = parseInt(child.style.top) + child.offsetHeight;
-                    if(bottom > lowestPoint) {
-                        lowestPoint = bottom;
-                    }
+            for (let index = 0; index < cloudElement.children.length; index++) {
+                let child = <HTMLElement>cloudElement.children[index];
+                let bottom = parseInt(child.style.top) + child.offsetHeight;
+                if (bottom > lowestPoint) {
+                    lowestPoint = bottom;
                 }
             }
             return lowestPoint;
@@ -137,12 +131,10 @@ module WordCloud {
 
         protected static shufflePuffsUp(cloudElement:HTMLElement):void {
             let delta = Cloud.getHighestPoint(cloudElement);
-            for (let index in cloudElement.children) {
-                if (cloudElement.children.hasOwnProperty(index)) {
-                    let child = <HTMLElement>cloudElement.children[index];
-                    let currentTop = parseInt(child.style.top);
-                    child.style.top = (currentTop - delta) + 'px';
-                }
+            for (let index = 0; index < cloudElement.children.length; index++) {
+                let child = <HTMLElement>cloudElement.children[index];
+                let currentTop = parseInt(child.style.top);
+                child.style.top = (currentTop - delta) + 'px';
             }
         }
 
