@@ -66,13 +66,13 @@ module WordCloud {
                 let child = <HTMLElement>cloudElement.children[index];
                 let fontSize = lerp(
                     cloudElement.children.length,
-                    parseInt(index),
+                    index,
                     this.minFontSize,
                     this.maxFontSize
                 );
                 Cloud.styleCloudPuff(child, fontSize);
             }
-            
+
         }
 
         protected positionCloudPuffs(cloudElement:HTMLElement):void {

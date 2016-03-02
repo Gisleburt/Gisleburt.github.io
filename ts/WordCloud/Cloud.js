@@ -58,7 +58,7 @@ var WordCloud;
             for (var index = 0; index < cloudElement.children.length; index++) {
                 // This needs casting
                 var child = cloudElement.children[index];
-                var fontSize = lerp(cloudElement.children.length, parseInt(index), this.minFontSize, this.maxFontSize);
+                var fontSize = lerp(cloudElement.children.length, index, this.minFontSize, this.maxFontSize);
                 Cloud.styleCloudPuff(child, fontSize);
             }
         };
