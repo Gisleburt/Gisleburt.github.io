@@ -60,7 +60,7 @@ module WordCloud {
             );
         }
 
-        protected prepareCloudPuffs(cloudElement:HTMLElement, lerp:Lerp) {
+        protected prepareCloudPuffs(cloudElement:HTMLElement, lerp:Interpolate) {
             for (let index = 0; index < cloudElement.children.length; index++) {
                 // This needs casting
                 let child = <HTMLElement>cloudElement.children[index];

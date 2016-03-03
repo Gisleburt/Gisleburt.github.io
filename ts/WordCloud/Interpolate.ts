@@ -1,5 +1,5 @@
 module WordCloud {
-    export interface Lerp {
+    export interface Interpolate {
         (steps:number, step:number, start:number, finish:number): number
     }
 }
