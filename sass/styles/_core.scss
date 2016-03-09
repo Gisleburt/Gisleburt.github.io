@@ -95,4 +95,12 @@ a.button {
   height: 45px;
   margin: 5px;
   line-height: 46px;
+  transition-duration: 0.5s;
+}
+
+a.button:hover {
+  text-decoration: none;
+  color: darkorange;
+  background-color: white;
+  transition-duration: 0.5s;
 }
