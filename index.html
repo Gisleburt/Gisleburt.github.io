@@ -8,6 +8,8 @@
 <body>
 
 <article id="header">
+    <a class="arrow"><!-- Fake arrow for spacing --></a>
+
     <div class="contents">
         <h1>Daniel <span>// Mason</span></h1>
         <p>(aka Gisleburt)</p>
@@ -17,13 +19,15 @@
             <a class="button" href="https://www.twitter.com/Gisleburt">Twitter</a>
         </p>
 
-        <a data-scroll-to="intro" class="down arrow"></a>
     </div>
+
+    <a data-scroll-to="intro" class="down arrow"></a>
 </article>
 
 <article id="intro">
+    <a data-scroll-to="header" class="up arrow"></a>
+
     <div class="contents">
-        <a data-scroll-to="header" class="up arrow"></a>
 
         <h2>About</h2>
         <p>
@@ -68,13 +72,15 @@
             You can see examples of his work, new and old, on <a href="https://github.com/Gisleburt">GitHub</a>, though
             his best projects are described below.
         </p>
-        <a data-scroll-to="aye-aye-api" class="down arrow"></a>
     </div>
+
+    <a data-scroll-to="aye-aye-api" class="down arrow"></a>
 </article>
 
 <article id="aye-aye-api">
+    <a data-scroll-to="intro" class="up arrow"></a>
+
     <div class="contents">
-        <a data-scroll-to="intro" class="up arrow"></a>
 
         <h2>Aye Aye</h2>
 
@@ -128,15 +134,16 @@
             through method definition and appropriate PHP DocBlocks, returning data in any way they see fit (string,
             object, array, Generator, etc).
         </p>
-        <a data-scroll-to="masonry" class="down arrow"></a>
     </div>
+
+    <a data-scroll-to="masonry" class="down arrow"></a>
 
 </article>
 
 <article id="masonry">
 
+    <a data-scroll-to="aye-aye-api" class="up arrow"></a>
     <div class="contents">
-        <a data-scroll-to="aye-aye-api" class="up arrow"></a>
 
         <h2>Masonry</h2>
 
@@ -196,6 +203,8 @@
         </p>
 
     </div>
+
+    <a class="arrow"><!-- Fake arrow for spacing --></a>
 
 </article>
 
