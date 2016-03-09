@@ -6,7 +6,7 @@ var typescript = require('gulp-typescript');
 var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('sass', function () {
-    return gulp.src('./sass/**.scss')
+    return gulp.src('./sass/**/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(sourcemaps.write())
@@ -14,7 +14,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('sass:watch', function () {
-    gulp.watch('./sass/**.scss', ['sass']);
+    gulp.watch('./sass/**/*.scss', ['sass']);
 });
 
 gulp.task('typescript', function () {
