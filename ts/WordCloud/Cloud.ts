@@ -1,6 +1,6 @@
 /// <reference path="RingPosition.ts" />
 /// <reference path="Position.ts" />
-/// <reference path="Lerp.ts" />
+/// <reference path="Interpolate.ts" />
 
 module WordCloud {
     export class Cloud {
@@ -13,7 +13,7 @@ module WordCloud {
         protected areaHeight:number;
         protected areaWidth:number;
 
-        protected ring:RingPosition;
+        // protected ring:RingPosition;
 
         protected static prepareCloudElement(cloudElement:HTMLElement, height:number, width:number):void {
             cloudElement.style.position = 'relative';
@@ -78,24 +78,54 @@ module WordCloud {
         protected positionCloudPuffs(cloudElement:HTMLElement):void {
             let positionedRects = [];
 
+            everything:
             for (let index = 0; index < cloudElement.children.length; index++) {
+
+                let ring = new RingPosition(
+                    new Position(this.areaWidth / 2, this.areaHeight / 2)
+                );
+
+
                 let child = <HTMLElement>cloudElement.children[index];
 
                 child.style.display = 'inline-block';
 
-                let nextPosition = this.ring.nextPosition();
-                Cloud.positionElement(child, nextPosition);
-                while (Cloud.doesRectCollideWithRects(child.getBoundingClientRect(), positionedRects)) {
-                    if (!Cloud.isRectFullyInsideRect(child.getBoundingClientRect(), cloudElement.getBoundingClientRect())) {
-                        child.style.display = 'none';
-                        break;
-                    }
-                    nextPosition = this.ring.nextPosition();
-                    Cloud.positionElement(child, nextPosition);
-                }
-                positionedRects.push(child.getBoundingClientRect());
+                let childRect = child.getBoundingClientRect();
+                let nextPosition = ring.nextPosition();
+                let testRect = Cloud.translateRect(childRect, nextPosition);
 
+                while (Cloud.doesRectCollideWithRects(testRect, positionedRects)) {
+                    if (!Cloud.isRectFullyInsideRect(testRect, cloudElement.getBoundingClientRect())) {
+                        child.style.display = 'none';
+                        break everything;
+                    }
+                    nextPosition = ring.nextPosition();
+                    testRect = Cloud.translateRect(childRect, nextPosition);
+                }
+                Cloud.positionElement(child, nextPosition);
+                positionedRects.push(testRect);
             }
+        }
+
+        protected static translateRect(rect:ClientRect, position:Position):ClientRect {
+            let currentPosition = new Position(rect.left + (rect.width / 2), rect.top + (rect.height / 2));
+            // console.log(position);
+            // console.log(currentPosition);
+            let translation = new Position(
+                position.x - currentPosition.x,
+                position.y - currentPosition.y
+            );
+            // console.log(translation);
+            let translatedRect = {
+                bottom: rect.bottom + translation.y,
+                top:    rect.top    + translation.y,
+                left:   rect.left   + translation.x,
+                right:  rect.right  + translation.x,
+                height: null,
+                width: null
+            };
+            // console.log(translatedRect);
+            return translatedRect;
         }
 
         protected static defaultLerp(steps:number, step:number, start:number, finish:number):number {
@@ -162,9 +192,9 @@ module WordCloud {
 
             Cloud.prepareCloudElement(this.cloudElement, this.areaHeight, this.areaWidth);
 
-            this.ring = new RingPosition(
-                new Position(this.areaWidth / 2, this.areaHeight / 2)
-            );
+            // this.ring = new RingPosition(
+            //     new Position(this.areaWidth / 2, this.areaHeight / 2)
+            // );
         }
     }
 }

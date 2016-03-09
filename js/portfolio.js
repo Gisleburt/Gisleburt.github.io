@@ -127,8 +127,11 @@ var WordCloud;
             this.areaHeight = this.cloudElement.offsetHeight;
             this.areaWidth = this.cloudElement.offsetWidth;
             Cloud.prepareCloudElement(this.cloudElement, this.areaHeight, this.areaWidth);
-            this.ring = new WordCloud.RingPosition(new WordCloud.Position(this.areaWidth / 2, this.areaHeight / 2));
+            // this.ring = new RingPosition(
+            //     new Position(this.areaWidth / 2, this.areaHeight / 2)
+            // );
         }
+        // protected ring:RingPosition;
         Cloud.prepareCloudElement = function (cloudElement, height, width) {
             cloudElement.style.position = 'relative';
             cloudElement.style.height = height + 'px';
@@ -176,21 +179,41 @@ var WordCloud;
         };
         Cloud.prototype.positionCloudPuffs = function (cloudElement) {
             var positionedRects = [];
-            for (var index = 0; index < cloudElement.children.length; index++) {
+            everything: for (var index = 0; index < cloudElement.children.length; index++) {
+                var ring = new WordCloud.RingPosition(new WordCloud.Position(this.areaWidth / 2, this.areaHeight / 2));
                 var child = cloudElement.children[index];
                 child.style.display = 'inline-block';
-                var nextPosition = this.ring.nextPosition();
-                Cloud.positionElement(child, nextPosition);
-                while (Cloud.doesRectCollideWithRects(child.getBoundingClientRect(), positionedRects)) {
-                    if (!Cloud.isRectFullyInsideRect(child.getBoundingClientRect(), cloudElement.getBoundingClientRect())) {
+                var childRect = child.getBoundingClientRect();
+                var nextPosition = ring.nextPosition();
+                var testRect = Cloud.translateRect(childRect, nextPosition);
+                while (Cloud.doesRectCollideWithRects(testRect, positionedRects)) {
+                    if (!Cloud.isRectFullyInsideRect(testRect, cloudElement.getBoundingClientRect())) {
                         child.style.display = 'none';
-                        break;
+                        break everything;
                     }
-                    nextPosition = this.ring.nextPosition();
-                    Cloud.positionElement(child, nextPosition);
+                    nextPosition = ring.nextPosition();
+                    testRect = Cloud.translateRect(childRect, nextPosition);
                 }
-                positionedRects.push(child.getBoundingClientRect());
+                Cloud.positionElement(child, nextPosition);
+                positionedRects.push(testRect);
             }
+        };
+        Cloud.translateRect = function (rect, position) {
+            var currentPosition = new WordCloud.Position(rect.left + (rect.width / 2), rect.top + (rect.height / 2));
+            // console.log(position);
+            // console.log(currentPosition);
+            var translation = new WordCloud.Position(position.x - currentPosition.x, position.y - currentPosition.y);
+            // console.log(translation);
+            var translatedRect = {
+                bottom: rect.bottom + translation.y,
+                top: rect.top + translation.y,
+                left: rect.left + translation.x,
+                right: rect.right + translation.x,
+                height: null,
+                width: null
+            };
+            // console.log(translatedRect);
+            return translatedRect;
         };
         Cloud.defaultLerp = function (steps, step, start, finish) {
             var range = finish - start;
