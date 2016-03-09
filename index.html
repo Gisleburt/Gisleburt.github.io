@@ -16,12 +16,15 @@
             <a class="button" href="downloads/DanielMason.pdf">Curriculum Vitae</a>
             <a class="button" href="https://www.twitter.com/Gisleburt">Twitter</a>
         </p>
-        <div class="down-arrow"></div>
+
+        <a data-scroll-to="intro" class="down arrow"></a>
     </div>
 </article>
 
 <article id="intro">
     <div class="contents">
+        <a data-scroll-to="header" class="up arrow"></a>
+
         <h2>About</h2>
         <p>
             Daniel is a web developer, specialising in PHP back end development.
@@ -65,12 +68,14 @@
             You can see examples of his work, new and old, on <a href="https://github.com/Gisleburt">GitHub</a>, though
             his best projects are described below.
         </p>
-
+        <a data-scroll-to="aye-aye-api" class="down arrow"></a>
     </div>
 </article>
 
 <article id="aye-aye-api">
     <div class="contents">
+        <a data-scroll-to="intro" class="up arrow"></a>
+
         <h2>Aye Aye</h2>
 
         <p class="project">
@@ -123,6 +128,7 @@
             through method definition and appropriate PHP DocBlocks, returning data in any way they see fit (string,
             object, array, Generator, etc).
         </p>
+        <a data-scroll-to="masonry" class="down arrow"></a>
     </div>
 
 </article>
@@ -130,6 +136,7 @@
 <article id="masonry">
 
     <div class="contents">
+        <a data-scroll-to="aye-aye-api" class="up arrow"></a>
 
         <h2>Masonry</h2>
 
@@ -196,7 +203,13 @@
 <script>
     var cloud = new WordCloud.Cloud('skill-cloud');
     cloud.create();
-//    var cloud = new Cloud({id: 'skill-cloud'});
+
+    var scrollTo = document.querySelectorAll('[data-scroll-to]');
+    for(var i = 0; i < scrollTo.length; i++) {
+        scrollTo[i].onclick = function() {
+            EaseScroll.Scroll.to(this.dataset.scrollTo, 500);
+        };
+    }
 </script>
 
 </body>
