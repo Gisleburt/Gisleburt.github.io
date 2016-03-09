@@ -1,6 +1,6 @@
 /// <reference path="RingPosition.ts" />
 /// <reference path="Position.ts" />
-/// <reference path="Lerp.ts" />
+/// <reference path="Interpolate.ts" />
 var WordCloud;
 (function (WordCloud) {
     var Cloud = (function () {
