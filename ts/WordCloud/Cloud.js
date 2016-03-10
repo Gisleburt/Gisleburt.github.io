@@ -86,13 +86,20 @@ var WordCloud;
                 positionedRects.push(testRect);
             }
         };
+        /**
+         * |
+         * |      *
+         * |  *
+         * |________
+         *
+         * @param rect
+         * @param position
+         * @returns {{bottom: number, top: number, left: number, right: number, height: null, width: null}}
+         */
         Cloud.translateRect = function (rect, position) {
             var currentPosition = new WordCloud.Position(rect.left + (rect.width / 2), rect.top + (rect.height / 2));
-            // console.log(position);
-            // console.log(currentPosition);
-            var translation = new WordCloud.Position(position.x - currentPosition.x, position.y - currentPosition.y);
-            // console.log(translation);
-            var translatedRect = {
+            var translation = new WordCloud.Position(currentPosition.x - position.x, currentPosition.y - position.y);
+            return {
                 bottom: rect.bottom + translation.y,
                 top: rect.top + translation.y,
                 left: rect.left + translation.x,
@@ -100,8 +107,6 @@ var WordCloud;
                 height: null,
                 width: null
             };
-            // console.log(translatedRect);
-            return translatedRect;
         };
         Cloud.defaultLerp = function (steps, step, start, finish) {
             var range = finish - start;

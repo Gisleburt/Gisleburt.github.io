@@ -72,7 +72,6 @@ module WordCloud {
                 );
                 Cloud.styleCloudPuff(child, fontSize);
             }
-
         }
 
         protected positionCloudPuffs(cloudElement:HTMLElement):void {
@@ -84,7 +83,6 @@ module WordCloud {
                 let ring = new RingPosition(
                     new Position(this.areaWidth / 2, this.areaHeight / 2)
                 );
-
 
                 let child = <HTMLElement>cloudElement.children[index];
 
@@ -107,16 +105,25 @@ module WordCloud {
             }
         }
 
+        /**
+         * |
+         * |      *
+         * |  *
+         * |________
+         *
+         * @param rect
+         * @param position
+         * @returns {{bottom: number, top: number, left: number, right: number, height: null, width: null}}
+         */
         protected static translateRect(rect:ClientRect, position:Position):ClientRect {
             let currentPosition = new Position(rect.left + (rect.width / 2), rect.top + (rect.height / 2));
-            // console.log(position);
-            // console.log(currentPosition);
+
             let translation = new Position(
-                position.x - currentPosition.x,
-                position.y - currentPosition.y
+                currentPosition.x - position.x,
+                currentPosition.y - position.y
             );
-            // console.log(translation);
-            let translatedRect = {
+
+            return {
                 bottom: rect.bottom + translation.y,
                 top:    rect.top    + translation.y,
                 left:   rect.left   + translation.x,
@@ -124,8 +131,6 @@ module WordCloud {
                 height: null,
                 width: null
             };
-            // console.log(translatedRect);
-            return translatedRect;
         }
 
         protected static defaultLerp(steps:number, step:number, start:number, finish:number):number {

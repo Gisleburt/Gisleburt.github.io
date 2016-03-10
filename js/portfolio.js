@@ -145,7 +145,20 @@ var WordCloud;
 var WordCloud;
 (function (WordCloud) {
     var Cloud = (function () {
-        function Cloud() {
+        function Cloud(elementId) {
+            this.cloudElement = document.getElementById(elementId);
+            if (!this.cloudElement) {
+                throw new RangeError('elementId is not the id of a valid element');
+            }
+            // Defaults
+            this.maxFontSize = 2;
+            this.minFontSize = 0.5;
+            this.areaHeight = this.cloudElement.offsetHeight;
+            this.areaWidth = this.cloudElement.offsetWidth;
+            Cloud.prepareCloudElement(this.cloudElement, this.areaHeight, this.areaWidth);
+            // this.ring = new RingPosition(
+            //     new Position(this.areaWidth / 2, this.areaHeight / 2)
+            // );
         }
         // protected ring:RingPosition;
         Cloud.prepareCloudElement = function (cloudElement, height, width) {
@@ -214,13 +227,20 @@ var WordCloud;
                 positionedRects.push(testRect);
             }
         };
+        /**
+         * |
+         * |      *
+         * |  *
+         * |________
+         *
+         * @param rect
+         * @param position
+         * @returns {{bottom: number, top: number, left: number, right: number, height: null, width: null}}
+         */
         Cloud.translateRect = function (rect, position) {
             var currentPosition = new WordCloud.Position(rect.left + (rect.width / 2), rect.top + (rect.height / 2));
-            // console.log(position);
-            // console.log(currentPosition);
-            var translation = new WordCloud.Position(position.x - currentPosition.x, position.y - currentPosition.y);
-            // console.log(translation);
-            var translatedRect = {
+            var translation = new WordCloud.Position(currentPosition.x - position.x, currentPosition.y - position.y);
+            return {
                 bottom: rect.bottom + translation.y,
                 top: rect.top + translation.y,
                 left: rect.left + translation.x,
@@ -228,8 +248,6 @@ var WordCloud;
                 height: null,
                 width: null
             };
-            // console.log(translatedRect);
-            return translatedRect;
         };
         Cloud.defaultLerp = function (steps, step, start, finish) {
             var range = finish - start;
@@ -268,25 +286,14 @@ var WordCloud;
                 child.style.top = (currentTop - delta) + 'px';
             }
         };
+        Cloud.prototype.create = function () {
+            this.prepareCloudPuffs(this.cloudElement, Cloud.defaultLerp);
+            this.positionCloudPuffs(this.cloudElement);
+            Cloud.shufflePuffsUp(this.cloudElement);
+            this.cloudElement.style.width = null;
+            this.cloudElement.style.height = Cloud.getLowestPoint(this.cloudElement) + "px";
+        };
         return Cloud;
     }());
     WordCloud.Cloud = Cloud;
-    this.prepareCloudPuffs(this.cloudElement, Cloud.defaultLerp);
-    this.positionCloudPuffs(this.cloudElement);
-    Cloud.shufflePuffsUp(this.cloudElement);
-    this.cloudElement.style.width = null;
-    this.cloudElement.style.height = Cloud.getLowestPoint(this.cloudElement) + "px";
 })(WordCloud || (WordCloud = {}));
-constructor(elementId, string);
-{
-    this.cloudElement = document.getElementById(elementId);
-    if (!this.cloudElement) {
-        throw new RangeError('elementId is not the id of a valid element');
-    }
-    // Defaults
-    this.maxFontSize = 2;
-    this.minFontSize = 0.5;
-    this.areaHeight = this.cloudElement.offsetHeight;
-    this.areaWidth = this.cloudElement.offsetWidth;
-    Cloud.prepareCloudElement(this.cloudElement, this.areaHeight, this.areaWidth);
-}
