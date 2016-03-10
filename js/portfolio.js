@@ -1,3 +1,32 @@
+var EaseScroll;
+(function (EaseScroll) {
+    var Scroll = (function () {
+        function Scroll() {
+        }
+        Scroll.move = function (goal, timeToArrive) {
+            var now = Date.now();
+            var timeLeft = timeToArrive - now;
+            // Out of time
+            if (timeLeft <= Scroll.stepTime) {
+                window.scroll(0, goal);
+                return;
+            }
+            var distanceToMove = goal - window.pageYOffset;
+            var stepsRemaining = (timeToArrive - now) / Scroll.stepTime;
+            var distanceToMoveThisStep = distanceToMove / stepsRemaining;
+            window.scroll(0, window.pageYOffset + distanceToMoveThisStep);
+            window.setTimeout(Scroll.move, Scroll.stepTime, goal, timeToArrive);
+        };
+        Scroll.to = function (elementId, milliseconds) {
+            var goal = document.getElementById(elementId).offsetTop;
+            var timeToArrive = Date.now() + milliseconds;
+            window.setTimeout(Scroll.move, Scroll.stepTime, goal, timeToArrive);
+        };
+        Scroll.stepTime = 10;
+        return Scroll;
+    }());
+    EaseScroll.Scroll = Scroll;
+})(EaseScroll || (EaseScroll = {}));
 var WordCloud;
 (function (WordCloud) {
     var Position = (function () {
@@ -116,20 +145,7 @@ var WordCloud;
 var WordCloud;
 (function (WordCloud) {
     var Cloud = (function () {
-        function Cloud(elementId) {
-            this.cloudElement = document.getElementById(elementId);
-            if (!this.cloudElement) {
-                throw new RangeError('elementId is not the id of a valid element');
-            }
-            // Defaults
-            this.maxFontSize = 2;
-            this.minFontSize = 0.5;
-            this.areaHeight = this.cloudElement.offsetHeight;
-            this.areaWidth = this.cloudElement.offsetWidth;
-            Cloud.prepareCloudElement(this.cloudElement, this.areaHeight, this.areaWidth);
-            // this.ring = new RingPosition(
-            //     new Position(this.areaWidth / 2, this.areaHeight / 2)
-            // );
+        function Cloud() {
         }
         // protected ring:RingPosition;
         Cloud.prepareCloudElement = function (cloudElement, height, width) {
@@ -252,14 +268,25 @@ var WordCloud;
                 child.style.top = (currentTop - delta) + 'px';
             }
         };
-        Cloud.prototype.create = function () {
-            this.prepareCloudPuffs(this.cloudElement, Cloud.defaultLerp);
-            this.positionCloudPuffs(this.cloudElement);
-            Cloud.shufflePuffsUp(this.cloudElement);
-            this.cloudElement.style.width = null;
-            this.cloudElement.style.height = Cloud.getLowestPoint(this.cloudElement) + "px";
-        };
         return Cloud;
     }());
     WordCloud.Cloud = Cloud;
+    this.prepareCloudPuffs(this.cloudElement, Cloud.defaultLerp);
+    this.positionCloudPuffs(this.cloudElement);
+    Cloud.shufflePuffsUp(this.cloudElement);
+    this.cloudElement.style.width = null;
+    this.cloudElement.style.height = Cloud.getLowestPoint(this.cloudElement) + "px";
 })(WordCloud || (WordCloud = {}));
+constructor(elementId, string);
+{
+    this.cloudElement = document.getElementById(elementId);
+    if (!this.cloudElement) {
+        throw new RangeError('elementId is not the id of a valid element');
+    }
+    // Defaults
+    this.maxFontSize = 2;
+    this.minFontSize = 0.5;
+    this.areaHeight = this.cloudElement.offsetHeight;
+    this.areaWidth = this.cloudElement.offsetWidth;
+    Cloud.prepareCloudElement(this.cloudElement, this.areaHeight, this.areaWidth);
+}

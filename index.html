@@ -8,6 +8,8 @@
 <body>
 
 <article id="header">
+    <a class="arrow"><!-- Fake arrow for spacing --></a>
+
     <div class="contents">
         <h1>Daniel <span>// Mason</span></h1>
         <p>(aka Gisleburt)</p>
@@ -16,12 +18,17 @@
             <a class="button" href="downloads/DanielMason.pdf">Curriculum Vitae</a>
             <a class="button" href="https://www.twitter.com/Gisleburt">Twitter</a>
         </p>
-        <div class="down-arrow"></div>
+
     </div>
+
+    <a data-scroll-to="intro" class="down arrow"></a>
 </article>
 
 <article id="intro">
+    <a data-scroll-to="header" class="up arrow"></a>
+
     <div class="contents">
+
         <h2>About</h2>
         <p>
             Daniel is a web developer, specialising in PHP back end development.
@@ -65,12 +72,16 @@
             You can see examples of his work, new and old, on <a href="https://github.com/Gisleburt">GitHub</a>, though
             his best projects are described below.
         </p>
-
     </div>
+
+    <a data-scroll-to="aye-aye-api" class="down arrow"></a>
 </article>
 
 <article id="aye-aye-api">
+    <a data-scroll-to="intro" class="up arrow"></a>
+
     <div class="contents">
+
         <h2>Aye Aye</h2>
 
         <p class="project">
@@ -125,10 +136,13 @@
         </p>
     </div>
 
+    <a data-scroll-to="masonry" class="down arrow"></a>
+
 </article>
 
 <article id="masonry">
 
+    <a data-scroll-to="aye-aye-api" class="up arrow"></a>
     <div class="contents">
 
         <h2>Masonry</h2>
@@ -190,13 +204,21 @@
 
     </div>
 
+    <a class="arrow"><!-- Fake arrow for spacing --></a>
+
 </article>
 
 <script src="js/portfolio.js"></script>
 <script>
     var cloud = new WordCloud.Cloud('skill-cloud');
     cloud.create();
-//    var cloud = new Cloud({id: 'skill-cloud'});
+
+    var scrollTo = document.querySelectorAll('[data-scroll-to]');
+    for(var i = 0; i < scrollTo.length; i++) {
+        scrollTo[i].onclick = function() {
+            EaseScroll.Scroll.to(this.dataset.scrollTo, 500);
+        };
+    }
 </script>
 
 </body>
