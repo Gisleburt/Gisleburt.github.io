@@ -1,32 +1,3 @@
-var EaseScroll;
-(function (EaseScroll) {
-    var Scroll = (function () {
-        function Scroll() {
-        }
-        Scroll.move = function (goal, timeToArrive) {
-            var now = Date.now();
-            var timeLeft = timeToArrive - now;
-            // Out of time
-            if (timeLeft <= Scroll.stepTime) {
-                window.scroll(0, goal);
-                return;
-            }
-            var distanceToMove = goal - window.pageYOffset;
-            var stepsRemaining = (timeToArrive - now) / Scroll.stepTime;
-            var distanceToMoveThisStep = distanceToMove / stepsRemaining;
-            window.scroll(0, window.pageYOffset + distanceToMoveThisStep);
-            window.setTimeout(Scroll.move, Scroll.stepTime, goal, timeToArrive);
-        };
-        Scroll.to = function (elementId, milliseconds) {
-            var goal = document.getElementById(elementId).offsetTop;
-            var timeToArrive = Date.now() + milliseconds;
-            window.setTimeout(Scroll.move, Scroll.stepTime, goal, timeToArrive);
-        };
-        Scroll.stepTime = 10;
-        return Scroll;
-    }());
-    EaseScroll.Scroll = Scroll;
-})(EaseScroll || (EaseScroll = {}));
 var WordCloud;
 (function (WordCloud) {
     var Position = (function () {
@@ -238,7 +209,7 @@ var WordCloud;
          */
         Cloud.positionCloudPuffs = function (cloudElement, width, height) {
             var positionedRects = [];
-            everything: for (var index = 0; index < cloudElement.children.length; index++) {
+            for (var index = 0; index < cloudElement.children.length; index++) {
                 var ring = new WordCloud.RingPosition(new WordCloud.Position(width / 2, height / 2));
                 var child = cloudElement.children[index];
                 child.style.display = 'inline-block';
@@ -246,12 +217,12 @@ var WordCloud;
                 var nextPosition = ring.nextPosition();
                 var testRect = Cloud.translateRect(childRect, nextPosition);
                 while (Cloud.doesRectCollideWithRects(testRect, positionedRects)) {
-                    if (!Cloud.isRectFullyInsideRect(testRect, cloudElement.getBoundingClientRect())) {
-                        child.style.display = 'none';
-                        break everything;
-                    }
                     nextPosition = ring.nextPosition();
                     testRect = Cloud.translateRect(childRect, nextPosition);
+                }
+                if (!Cloud.isRectFullyInsideRect(testRect, cloudElement.getBoundingClientRect())) {
+                    child.style.display = 'none';
+                    break;
                 }
                 Cloud.positionElement(child, nextPosition);
                 positionedRects.push(testRect);
@@ -382,3 +353,32 @@ var WordCloud;
     }());
     WordCloud.Cloud = Cloud;
 })(WordCloud || (WordCloud = {}));
+var EaseScroll;
+(function (EaseScroll) {
+    var Scroll = (function () {
+        function Scroll() {
+        }
+        Scroll.move = function (goal, timeToArrive) {
+            var now = Date.now();
+            var timeLeft = timeToArrive - now;
+            // Out of time
+            if (timeLeft <= Scroll.stepTime) {
+                window.scroll(0, goal);
+                return;
+            }
+            var distanceToMove = goal - window.pageYOffset;
+            var stepsRemaining = (timeToArrive - now) / Scroll.stepTime;
+            var distanceToMoveThisStep = distanceToMove / stepsRemaining;
+            window.scroll(0, window.pageYOffset + distanceToMoveThisStep);
+            window.setTimeout(Scroll.move, Scroll.stepTime, goal, timeToArrive);
+        };
+        Scroll.to = function (elementId, milliseconds) {
+            var goal = document.getElementById(elementId).offsetTop;
+            var timeToArrive = Date.now() + milliseconds;
+            window.setTimeout(Scroll.move, Scroll.stepTime, goal, timeToArrive);
+        };
+        Scroll.stepTime = 10;
+        return Scroll;
+    }());
+    EaseScroll.Scroll = Scroll;
+})(EaseScroll || (EaseScroll = {}));

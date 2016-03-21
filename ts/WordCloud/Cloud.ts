@@ -112,7 +112,6 @@ module WordCloud {
         protected static positionCloudPuffs(cloudElement:HTMLElement, width:number, height:number):void {
             let positionedRects = [];
 
-            everything:
             for (let index = 0; index < cloudElement.children.length; index++) {
 
                 let ring = new RingPosition(
@@ -128,12 +127,12 @@ module WordCloud {
                 let testRect = Cloud.translateRect(childRect, nextPosition);
 
                 while (Cloud.doesRectCollideWithRects(testRect, positionedRects)) {
-                    if (!Cloud.isRectFullyInsideRect(testRect, cloudElement.getBoundingClientRect())) {
-                        child.style.display = 'none';
-                        break everything;
-                    }
                     nextPosition = ring.nextPosition();
                     testRect = Cloud.translateRect(childRect, nextPosition);
+                }
+                if (!Cloud.isRectFullyInsideRect(testRect, cloudElement.getBoundingClientRect())) {
+                    child.style.display = 'none';
+                    break;
                 }
                 Cloud.positionElement(child, nextPosition);
                 positionedRects.push(testRect);

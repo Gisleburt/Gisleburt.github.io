@@ -97,7 +97,7 @@ var WordCloud;
          */
         Cloud.positionCloudPuffs = function (cloudElement, width, height) {
             var positionedRects = [];
-            everything: for (var index = 0; index < cloudElement.children.length; index++) {
+            for (var index = 0; index < cloudElement.children.length; index++) {
                 var ring = new WordCloud.RingPosition(new WordCloud.Position(width / 2, height / 2));
                 var child = cloudElement.children[index];
                 child.style.display = 'inline-block';
@@ -105,12 +105,12 @@ var WordCloud;
                 var nextPosition = ring.nextPosition();
                 var testRect = Cloud.translateRect(childRect, nextPosition);
                 while (Cloud.doesRectCollideWithRects(testRect, positionedRects)) {
-                    if (!Cloud.isRectFullyInsideRect(testRect, cloudElement.getBoundingClientRect())) {
-                        child.style.display = 'none';
-                        break everything;
-                    }
                     nextPosition = ring.nextPosition();
                     testRect = Cloud.translateRect(childRect, nextPosition);
+                }
+                if (!Cloud.isRectFullyInsideRect(testRect, cloudElement.getBoundingClientRect())) {
+                    child.style.display = 'none';
+                    break;
                 }
                 Cloud.positionElement(child, nextPosition);
                 positionedRects.push(testRect);
