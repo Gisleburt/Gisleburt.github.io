@@ -15,6 +15,8 @@ module WordCloud {
 
         protected ring:RingPosition;
 
+        protected positionedRects = [];
+
         protected static prepareCloudElement(cloudElement:HTMLElement, height:number, width:number):void {
             cloudElement.style.position = 'relative';
             cloudElement.style.height = height + 'px';
@@ -76,26 +78,34 @@ module WordCloud {
         }
 
         protected positionCloudPuffs(cloudElement:HTMLElement):void {
-            let positionedRects = [];
 
             for (let index = 0; index < cloudElement.children.length; index++) {
-                let child = <HTMLElement>cloudElement.children[index];
-
-                child.style.display = 'inline-block';
-
-                let nextPosition = this.ring.nextPosition();
-                Cloud.positionElement(child, nextPosition);
-                while (Cloud.doesRectCollideWithRects(child.getBoundingClientRect(), positionedRects)) {
-                    if (!Cloud.isRectFullyInsideRect(child.getBoundingClientRect(), cloudElement.getBoundingClientRect())) {
-                        child.style.display = 'none';
-                        break;
-                    }
-                    nextPosition = this.ring.nextPosition();
-                    Cloud.positionElement(child, nextPosition);
-                }
-                positionedRects.push(child.getBoundingClientRect());
-
+                this.positionCloudPuff(cloudElement, index);
             }
+        }
+
+        protected positionCloudPuff(cloudElement:HTMLElement, elementNumber:number):boolean {
+
+            if(elementNumber >= cloudElement.children.length) {
+                return false;
+            }
+
+            let child = <HTMLElement>cloudElement.children[elementNumber];
+
+            child.style.display = 'inline-block';
+
+            let nextPosition = this.ring.nextPosition();
+            Cloud.positionElement(child, nextPosition);
+            while (Cloud.doesRectCollideWithRects(child.getBoundingClientRect(), this.positionedRects)) {
+                if (!Cloud.isRectFullyInsideRect(child.getBoundingClientRect(), cloudElement.getBoundingClientRect())) {
+                    child.style.display = 'none';
+                    break;
+                }
+                nextPosition = this.ring.nextPosition();
+                Cloud.positionElement(child, nextPosition);
+            }
+            this.positionedRects.push(child.getBoundingClientRect());
+            return true;
         }
 
         protected static defaultLerp(steps:number, step:number, start:number, finish:number):number {
@@ -138,12 +148,23 @@ module WordCloud {
             }
         }
 
+        protected createAsync(cloudElement:HTMLElement, index:number, scope:any):void {
+            if(scope.positionCloudPuff(cloudElement, index)) {
+                window.setTimeout(scope.createAsync, 0, cloudElement, ++index, scope);
+                return;
+            }
+            Cloud.shufflePuffsUp(cloudElement);
+            cloudElement.style.width = null;
+            cloudElement.style.height = Cloud.getLowestPoint(cloudElement) + "px";
+        };
+
         public create():void {
             this.prepareCloudPuffs(this.cloudElement, Cloud.defaultLerp);
-            this.positionCloudPuffs(this.cloudElement);
-            Cloud.shufflePuffsUp(this.cloudElement);
-            this.cloudElement.style.width = null;
-            this.cloudElement.style.height = Cloud.getLowestPoint(this.cloudElement) + "px";
+            this.createAsync(this.cloudElement, 0, this);
+            // this.positionCloudPuffs(this.cloudElement);
+            // Cloud.shufflePuffsUp(this.cloudElement);
+            // this.cloudElement.style.width = null;
+            // this.cloudElement.style.height = Cloud.getLowestPoint(this.cloudElement) + "px";
         }
 
         constructor(elementId:string) {

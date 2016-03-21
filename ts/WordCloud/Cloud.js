@@ -5,6 +5,7 @@ var WordCloud;
 (function (WordCloud) {
     var Cloud = (function () {
         function Cloud(elementId) {
+            this.positionedRects = [];
             this.cloudElement = document.getElementById(elementId);
             if (!this.cloudElement) {
                 throw new RangeError('elementId is not the id of a valid element');
@@ -63,22 +64,28 @@ var WordCloud;
             }
         };
         Cloud.prototype.positionCloudPuffs = function (cloudElement) {
-            var positionedRects = [];
             for (var index = 0; index < cloudElement.children.length; index++) {
-                var child = cloudElement.children[index];
-                child.style.display = 'inline-block';
-                var nextPosition = this.ring.nextPosition();
-                Cloud.positionElement(child, nextPosition);
-                while (Cloud.doesRectCollideWithRects(child.getBoundingClientRect(), positionedRects)) {
-                    if (!Cloud.isRectFullyInsideRect(child.getBoundingClientRect(), cloudElement.getBoundingClientRect())) {
-                        child.style.display = 'none';
-                        break;
-                    }
-                    nextPosition = this.ring.nextPosition();
-                    Cloud.positionElement(child, nextPosition);
-                }
-                positionedRects.push(child.getBoundingClientRect());
+                this.positionCloudPuff(cloudElement, index);
             }
+        };
+        Cloud.prototype.positionCloudPuff = function (cloudElement, elementNumber) {
+            if (elementNumber >= cloudElement.children.length) {
+                return false;
+            }
+            var child = cloudElement.children[elementNumber];
+            child.style.display = 'inline-block';
+            var nextPosition = this.ring.nextPosition();
+            Cloud.positionElement(child, nextPosition);
+            while (Cloud.doesRectCollideWithRects(child.getBoundingClientRect(), this.positionedRects)) {
+                if (!Cloud.isRectFullyInsideRect(child.getBoundingClientRect(), cloudElement.getBoundingClientRect())) {
+                    child.style.display = 'none';
+                    break;
+                }
+                nextPosition = this.ring.nextPosition();
+                Cloud.positionElement(child, nextPosition);
+            }
+            this.positionedRects.push(child.getBoundingClientRect());
+            return true;
         };
         Cloud.defaultLerp = function (steps, step, start, finish) {
             var range = finish - start;
@@ -117,12 +124,23 @@ var WordCloud;
                 child.style.top = (currentTop - delta) + 'px';
             }
         };
+        Cloud.prototype.createAsync = function (cloudElement, index, scope) {
+            if (scope.positionCloudPuff(cloudElement, index)) {
+                window.setTimeout(scope.createAsync, 0, cloudElement, ++index, scope);
+                return;
+            }
+            Cloud.shufflePuffsUp(cloudElement);
+            cloudElement.style.width = null;
+            cloudElement.style.height = Cloud.getLowestPoint(cloudElement) + "px";
+        };
+        ;
         Cloud.prototype.create = function () {
             this.prepareCloudPuffs(this.cloudElement, Cloud.defaultLerp);
-            this.positionCloudPuffs(this.cloudElement);
-            Cloud.shufflePuffsUp(this.cloudElement);
-            this.cloudElement.style.width = null;
-            this.cloudElement.style.height = Cloud.getLowestPoint(this.cloudElement) + "px";
+            this.createAsync(this.cloudElement, 0, this);
+            // this.positionCloudPuffs(this.cloudElement);
+            // Cloud.shufflePuffsUp(this.cloudElement);
+            // this.cloudElement.style.width = null;
+            // this.cloudElement.style.height = Cloud.getLowestPoint(this.cloudElement) + "px";
         };
         return Cloud;
     }());
