@@ -233,13 +233,11 @@ var WordCloud;
         /**
          * Position each cloud puff
          * @param cloudElement {HTMLElement}
-         * @param width {number}
-         * @param height {number}
          */
-        Cloud.positionCloudPuffs = function (cloudElement, width, height) {
+        Cloud.positionCloudPuffs = function (cloudElement) {
             var positionedRects = [];
+            var ring = new WordCloud.RingPosition(new WordCloud.Position(cloudElement.offsetWidth / 2, cloudElement.offsetHeight / 2));
             for (var index = 0; index < cloudElement.children.length; index++) {
-                var ring = new WordCloud.RingPosition(new WordCloud.Position(width / 2, height / 2));
                 var child = cloudElement.children[index];
                 child.style.display = 'inline-block';
                 var childRect = child.getBoundingClientRect();
@@ -367,7 +365,7 @@ var WordCloud;
         };
         Cloud.prototype.create = function () {
             Cloud.prepareCloudPuffs(this.cloudElement, Cloud.defaultInterpolate, this.minFontSize, this.maxFontSize);
-            Cloud.positionCloudPuffs(this.cloudElement, this.cloudElement.offsetWidth, this.cloudElement.offsetHeight);
+            Cloud.positionCloudPuffs(this.cloudElement);
             Cloud.shufflePuffsUp(this.cloudElement);
             this.cloudElement.style.width = null;
             this.cloudElement.style.height = Cloud.getLowestPoint(this.cloudElement) + "px";

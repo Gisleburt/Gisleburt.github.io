@@ -106,17 +106,15 @@ module WordCloud {
         /**
          * Position each cloud puff
          * @param cloudElement {HTMLElement}
-         * @param width {number}
-         * @param height {number}
          */
-        protected static positionCloudPuffs(cloudElement:HTMLElement, width:number, height:number):void {
+        protected static positionCloudPuffs(cloudElement:HTMLElement):void {
             let positionedRects = [];
 
-            for (let index = 0; index < cloudElement.children.length; index++) {
+            let ring = new RingPosition(
+                new Position(cloudElement.offsetWidth / 2, cloudElement.offsetHeight / 2)
+            );
 
-                let ring = new RingPosition(
-                    new Position(width / 2, height / 2)
-                );
+            for (let index = 0; index < cloudElement.children.length; index++) {
 
                 let child = <HTMLElement>cloudElement.children[index];
 
@@ -256,7 +254,7 @@ module WordCloud {
 
         public create():void {
             Cloud.prepareCloudPuffs(this.cloudElement, Cloud.defaultInterpolate, this.minFontSize, this.maxFontSize);
-            Cloud.positionCloudPuffs(this.cloudElement, this.cloudElement.offsetWidth, this.cloudElement.offsetHeight);
+            Cloud.positionCloudPuffs(this.cloudElement);
             Cloud.shufflePuffsUp(this.cloudElement);
             this.cloudElement.style.width = null;
             this.cloudElement.style.height = Cloud.getLowestPoint(this.cloudElement) + "px";
