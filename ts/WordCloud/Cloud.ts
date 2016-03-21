@@ -62,6 +62,13 @@ module WordCloud {
             );
         }
 
+        protected static getRectCentre(rect:ClientRect) : Position {
+            return new Position(
+                rect.left + (rect.width / 2),
+                rect.top + (rect.height / 2)
+            );
+        };
+
         /**
          * Prepare the style for the cloud element as a whole
          * @param cloudElement
@@ -121,18 +128,16 @@ module WordCloud {
                 child.style.display = 'inline-block';
 
                 let childRect = child.getBoundingClientRect();
-                let nextPosition = ring.nextPosition();
-                let testRect = Cloud.translateRect(childRect, nextPosition);
+                let testRect = Cloud.translateRect(childRect, ring.nextPosition());
 
                 while (Cloud.doesRectCollideWithRects(testRect, positionedRects)) {
-                    nextPosition = ring.nextPosition();
-                    testRect = Cloud.translateRect(childRect, nextPosition);
+                    testRect = Cloud.translateRect(childRect, ring.nextPosition());
                 }
                 if (!Cloud.isRectFullyInsideRect(testRect, cloudElement.getBoundingClientRect())) {
                     child.style.display = 'none';
                     break;
                 }
-                Cloud.positionElement(child, nextPosition);
+                Cloud.positionElement(child, Cloud.getRectCentre(testRect));
                 positionedRects.push(testRect);
             }
         }

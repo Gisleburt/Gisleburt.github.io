@@ -60,6 +60,10 @@ var WordCloud;
                 || rect1.bottom < rect2.top
                 || rect1.top > rect2.bottom);
         };
+        Cloud.getRectCentre = function (rect) {
+            return new WordCloud.Position(rect.left + (rect.width / 2), rect.top + (rect.height / 2));
+        };
+        ;
         /**
          * Prepare the style for the cloud element as a whole
          * @param cloudElement
@@ -100,17 +104,15 @@ var WordCloud;
                 var child = cloudElement.children[index];
                 child.style.display = 'inline-block';
                 var childRect = child.getBoundingClientRect();
-                var nextPosition = ring.nextPosition();
-                var testRect = Cloud.translateRect(childRect, nextPosition);
+                var testRect = Cloud.translateRect(childRect, ring.nextPosition());
                 while (Cloud.doesRectCollideWithRects(testRect, positionedRects)) {
-                    nextPosition = ring.nextPosition();
-                    testRect = Cloud.translateRect(childRect, nextPosition);
+                    testRect = Cloud.translateRect(childRect, ring.nextPosition());
                 }
                 if (!Cloud.isRectFullyInsideRect(testRect, cloudElement.getBoundingClientRect())) {
                     child.style.display = 'none';
                     break;
                 }
-                Cloud.positionElement(child, nextPosition);
+                Cloud.positionElement(child, Cloud.getRectCentre(testRect));
                 positionedRects.push(testRect);
             }
         };
