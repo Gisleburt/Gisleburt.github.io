@@ -140,33 +140,19 @@ module WordCloud {
         }
 
         /**
-         * |
-         * |      *
-         * |  *
-         * |________
-         *
+         * Return a translation of the client rect
          * @param rect {ClientRect}
          * @param position {Position}
          * @returns {ClientRect}
          */
         protected static translateRect(rect:ClientRect, position:Position):ClientRect {
-            let currentPosition = new Position(
-                rect.left + (rect.width / 2),
-                rect.top + (rect.height / 2)
-            );
-
-            let translation = new Position(
-                position.x - position.x,
-                position.y - currentPosition.y
-            );
-
             return {
-                bottom: rect.bottom + translation.y,
-                top:    rect.top    + translation.y,
-                left:   rect.left   + translation.x,
-                right:  rect.right  + translation.x,
-                height: null,
-                width: null
+                bottom: position.y + (rect.height / 2),
+                top:    position.y - (rect.height / 2),
+                left:   position.x - (rect.width / 2),
+                right:  position.x + (rect.width / 2),
+                height: rect.height,
+                width: rect.width
             };
         }
 

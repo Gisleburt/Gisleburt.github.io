@@ -1,3 +1,32 @@
+var EaseScroll;
+(function (EaseScroll) {
+    var Scroll = (function () {
+        function Scroll() {
+        }
+        Scroll.move = function (goal, timeToArrive) {
+            var now = Date.now();
+            var timeLeft = timeToArrive - now;
+            // Out of time
+            if (timeLeft <= Scroll.stepTime) {
+                window.scroll(0, goal);
+                return;
+            }
+            var distanceToMove = goal - window.pageYOffset;
+            var stepsRemaining = (timeToArrive - now) / Scroll.stepTime;
+            var distanceToMoveThisStep = distanceToMove / stepsRemaining;
+            window.scroll(0, window.pageYOffset + distanceToMoveThisStep);
+            window.setTimeout(Scroll.move, Scroll.stepTime, goal, timeToArrive);
+        };
+        Scroll.to = function (elementId, milliseconds) {
+            var goal = document.getElementById(elementId).offsetTop;
+            var timeToArrive = Date.now() + milliseconds;
+            window.setTimeout(Scroll.move, Scroll.stepTime, goal, timeToArrive);
+        };
+        Scroll.stepTime = 10;
+        return Scroll;
+    }());
+    EaseScroll.Scroll = Scroll;
+})(EaseScroll || (EaseScroll = {}));
 var WordCloud;
 (function (WordCloud) {
     var Position = (function () {
@@ -229,25 +258,19 @@ var WordCloud;
             }
         };
         /**
-         * |
-         * |      *
-         * |  *
-         * |________
-         *
+         * Return a translation of the client rect
          * @param rect {ClientRect}
          * @param position {Position}
          * @returns {ClientRect}
          */
         Cloud.translateRect = function (rect, position) {
-            var currentPosition = new WordCloud.Position(rect.left + (rect.width / 2), rect.top + (rect.height / 2));
-            var translation = new WordCloud.Position(position.x - position.x, position.y - currentPosition.y);
             return {
-                bottom: rect.bottom + translation.y,
-                top: rect.top + translation.y,
-                left: rect.left + translation.x,
-                right: rect.right + translation.x,
-                height: null,
-                width: null
+                bottom: position.y + (rect.height / 2),
+                top: position.y - (rect.height / 2),
+                left: position.x - (rect.width / 2),
+                right: position.x + (rect.width / 2),
+                height: rect.height,
+                width: rect.width
             };
         };
         /**
@@ -353,32 +376,3 @@ var WordCloud;
     }());
     WordCloud.Cloud = Cloud;
 })(WordCloud || (WordCloud = {}));
-var EaseScroll;
-(function (EaseScroll) {
-    var Scroll = (function () {
-        function Scroll() {
-        }
-        Scroll.move = function (goal, timeToArrive) {
-            var now = Date.now();
-            var timeLeft = timeToArrive - now;
-            // Out of time
-            if (timeLeft <= Scroll.stepTime) {
-                window.scroll(0, goal);
-                return;
-            }
-            var distanceToMove = goal - window.pageYOffset;
-            var stepsRemaining = (timeToArrive - now) / Scroll.stepTime;
-            var distanceToMoveThisStep = distanceToMove / stepsRemaining;
-            window.scroll(0, window.pageYOffset + distanceToMoveThisStep);
-            window.setTimeout(Scroll.move, Scroll.stepTime, goal, timeToArrive);
-        };
-        Scroll.to = function (elementId, milliseconds) {
-            var goal = document.getElementById(elementId).offsetTop;
-            var timeToArrive = Date.now() + milliseconds;
-            window.setTimeout(Scroll.move, Scroll.stepTime, goal, timeToArrive);
-        };
-        Scroll.stepTime = 10;
-        return Scroll;
-    }());
-    EaseScroll.Scroll = Scroll;
-})(EaseScroll || (EaseScroll = {}));
