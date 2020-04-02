@@ -26,6 +26,7 @@ module.exports = {
   ],
   rules: {
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "react/jsx-one-expression-per-line": "off",
     "max-len": ["error", { "code": 120 }],
     "import/extensions":  [1, {
       ".js": "never",
