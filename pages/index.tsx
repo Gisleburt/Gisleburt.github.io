@@ -1,7 +1,7 @@
 import React from 'react';
 import SiteHead from '../components/SiteHead';
 
-const Home = () => (
+const Home = (): JSX.Element => (
   <div className="container">
     <SiteHead />
 
@@ -10,4 +10,4 @@ const Home = () => (
   </div>
 );
 
-export default Home
+export default Home;
