@@ -1,17 +1,25 @@
 import React from 'react';
 
-const ContactDetails = (): JSX.Element => (
+export interface ContactDetail {
+  label: string;
+  value: string;
+  href?: string;
+}
+
+interface ContactDetailsProps {
+  contactDetails: ContactDetail[];
+}
+
+const ContactDetails = ({ contactDetails }: ContactDetailsProps): JSX.Element => (
   <div>
     <h2>Contact Details</h2>
     <dl>
-      <dt>Mobile:</dt>
-      <dd>07838 200176</dd>
-      <dt>Twitter:</dt>
-      <dd>@Gisleburt</dd>
-      <dt>Email:</dt>
-      <dd>daniel@danielmason.com</dd>
-      <dt>GitHub:</dt>
-      <dd>https://gisleburt.github.io/</dd>
+      {contactDetails.map(({ label, value, href }) => (
+        <React.Fragment key={label}>
+          <dt>{label}</dt>
+          <dd>{href ? <a href={href}>{value}</a> : value}</dd>
+        </React.Fragment>
+      ))}
     </dl>
   </div>
 );
