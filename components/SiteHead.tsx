@@ -1,9 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
 
-const SiteHead = (): JSX.Element => (
+interface SiteHeadProps {
+    title: string;
+}
+
+const SiteHead = ({ title }: SiteHeadProps): JSX.Element => (
   <Head>
-    <title>Daniel // Mason</title>
+    <title>{title}</title>
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />

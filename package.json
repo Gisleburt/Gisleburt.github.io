@@ -9,7 +9,7 @@
     "lint": "eslint pages/** components/** content/**",
     "serve": "yarn export && serve out",
     "start": "next start",
-    "test": "mocha **/*.test.*"
+    "test": "mocha"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",

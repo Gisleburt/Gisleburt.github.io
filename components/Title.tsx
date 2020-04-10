@@ -1,7 +1,11 @@
 import React from 'react';
 
-const Title = (): JSX.Element => (
-  <h1>Daniel // Mason</h1>
+interface TitleProps {
+  children: string;
+}
+
+const Title = ({ children }: TitleProps): JSX.Element => (
+  <h1>{children}</h1>
 );
 
 export default Title;

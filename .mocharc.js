@@ -6,5 +6,6 @@ module.exports = {
   ignore: [
     'node_modules',
   ],
-  require: 'ts-node/register'
+  require: 'ts-node/register',
+  spec: "**/*.test.ts*",
 };
