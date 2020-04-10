@@ -9,7 +9,7 @@
     "lint": "eslint pages/** components/** content/**",
     "serve": "yarn export && serve out",
     "start": "next start",
-    "test": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\", \"jsx\":\"react\"}' mocha --require ts-node/register --file mocha.setup.js  **/*.test.*"
+    "test": "mocha **/*.test.*"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",
