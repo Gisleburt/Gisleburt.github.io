@@ -1,4 +1,5 @@
 import React from 'react';
+import Section from '../html/Section';
 
 export interface ContactDetail {
   label: string;
@@ -11,7 +12,7 @@ interface ContactDetailsProps {
 }
 
 const ContactDetails = ({ contactDetails }: ContactDetailsProps): JSX.Element => (
-  <div>
+  <Section>
     <h2>Contact Details</h2>
     <dl>
       {contactDetails.map(({ label, value, href }) => (
@@ -21,7 +22,7 @@ const ContactDetails = ({ contactDetails }: ContactDetailsProps): JSX.Element =>
         </React.Fragment>
       ))}
     </dl>
-  </div>
+  </Section>
 );
 
 export default ContactDetails;
