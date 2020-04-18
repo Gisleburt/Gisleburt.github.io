@@ -1,6 +1,6 @@
-import { SkillsListCategoryProps } from '../components/cv/SkillsListCategory';
 import { WorkHistoryItemProps } from '../components/cv/WorkHistoryItem';
 import { ContactDetail } from '../components/cv/ContactDetails';
+import { SkillsListCategory } from '../components/cv/SkillsList';
 
 export const title = 'Daniel // Mason';
 
@@ -11,7 +11,7 @@ export const personalStatement = [
   `Daniel constantly looks at how new technologies and techniques can be used to improve the quality of his work,
   however he always weighs potential gains against required investment. At Triptease, he encouraged and helped people
   learning Rust, but cautioned about making the jump to it too early; the potential for resource optimisation did not
-  outweigh the cost of people learning a new technology. At Apolitical however, Daniel evangalised kubernetes, docker,
+  outweigh the cost of people learning a new technology. At Apolitical however, Daniel evangelised kubernetes, docker,
   Node and Rust and coached colleagues in their use. At MOO, he evangelised Docker and CD Pipelines to increase
   developer confidence and code quality, as well as pushing for more testing and quality control.`,
 
@@ -22,7 +22,7 @@ export const personalStatement = [
 export const skillsDescription = `Daniel is a skilled engineer, with experience in a wide range of languages, tools and
   frameworks. This is an incomplete list of technologies Daniel has been practicing in the last year:`;
 
-export const skillsListCategories: SkillsListCategoryProps[] = [
+export const skillsListCategories: SkillsListCategory[] = [
   {
     category: 'Leadership:',
     skills: ['Architect', 'tech evangelist', 'agile', 'mentor', 'coach', 'triage'],

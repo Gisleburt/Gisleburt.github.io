@@ -1,16 +1,41 @@
 import React from 'react';
-import SkillsListCategory, { SkillsListCategoryProps } from './SkillsListCategory';
+import styled from 'styled-components';
 
-export interface SkillsListProps {
-  skillsCategories: SkillsListCategoryProps[];
+export interface SkillsListCategory {
+  category: string;
+  skills: string[];
 }
 
+
+export interface SkillsListProps {
+  skillsCategories: SkillsListCategory[];
+}
+
+const DL = styled.dl`
+  display: grid;
+  grid-template-columns: auto auto;
+`;
+
+const DT = styled.dt`
+  clear: left;
+  float: left;
+  font-weight: 700;
+  padding: 0 3px 0 0;
+`;
+
+const DD = styled.dd`
+  float: left;
+`;
+
 const SkillsList = ({ skillsCategories }: SkillsListProps): JSX.Element => (
-  <dl>
-    {skillsCategories.map((skills) => (
-      <SkillsListCategory key={skills.category} category={skills.category} skills={skills.skills} />
+  <DL>
+    {skillsCategories.map(({ category, skills }) => (
+      <React.Fragment key={category}>
+        <DT>{category}</DT>
+        <DD>{skills.join(', ')}</DD>
+      </React.Fragment>
     ))}
-  </dl>
+  </DL>
 );
 
 export default SkillsList;

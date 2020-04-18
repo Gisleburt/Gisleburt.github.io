@@ -1,30 +1,29 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import SkillsList from './SkillsList';
-import { SkillsListCategoryProps } from './SkillsListCategory';
+import SkillsList, { SkillsListCategory } from './SkillsList';
 
 describe('SkillsList', () => {
-  const skillsCategories: SkillsListCategoryProps[] = [
+  const skillsCategories: SkillsListCategory[] = [
     {
       category: 'Cat1',
-      skills: ['skill1'],
+      skills: ['skill1', 'skill2'],
     },
     {
       category: 'Cat2',
-      skills: ['skill2'],
+      skills: ['skill3', 'skill4'],
     },
   ];
 
-  it('should render each category', () => {
+  it('should show the category', () => {
     const wrapper = shallow(<SkillsList skillsCategories={skillsCategories} />);
-    const SkillsListCategory = wrapper.find('SkillsListCategory');
-    expect(SkillsListCategory).to.have.length(2);
+    expect(wrapper.text()).to.include('Cat1');
+    expect(wrapper.text()).to.include('Cat2');
+  });
 
-    expect(SkillsListCategory.at(0).prop('category')).to.equal(skillsCategories[0].category);
-    expect(SkillsListCategory.at(0).prop('skills')).to.equal(skillsCategories[0].skills);
-
-    expect(SkillsListCategory.at(1).prop('category')).to.equal(skillsCategories[1].category);
-    expect(SkillsListCategory.at(1).prop('skills')).to.equal(skillsCategories[1].skills);
+  it('should separate skills with a comma', () => {
+    const wrapper = shallow(<SkillsList skillsCategories={skillsCategories} />);
+    expect(wrapper.text()).to.include('skill1, skill2');
+    expect(wrapper.text()).to.include('skill3, skill4');
   });
 });
