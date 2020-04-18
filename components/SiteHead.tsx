@@ -15,6 +15,7 @@ const SiteHead = ({ title }: SiteHeadProps): JSX.Element => (
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
     <meta name="msapplication-TileColor" content="#2b2b2b" />
     <meta name="theme-color" content="#ffffff" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   </Head>
 );
 

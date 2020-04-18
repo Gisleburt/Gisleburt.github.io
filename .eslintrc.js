@@ -26,7 +26,7 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-props-no-spreading": "off",
     "max-len": ["error", { "code": 120 }],

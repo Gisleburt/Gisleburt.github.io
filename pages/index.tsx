@@ -5,15 +5,26 @@ import ContactDetails from '../components/cv/ContactDetails';
 import WorkHistory from '../components/cv/WorkHistory';
 import Skills from '../components/cv/Skills';
 import PersonalStatement from '../components/cv/PersonalStatement';
-import Title from '../components/Title';
-import StyleReset from '../components/StyleReset';
+import Reset from '../components/css/Reset';
 import {
-  contactDetails, personalStatement, skillsDescription, skillsListCategories, title, workHistory,
+  contactDetails,
+  personalStatement,
+  skillsDescription,
+  skillsListCategories,
+  title,
+  workHistory,
 } from '../content/content';
+import H1 from '../components/html/H1';
+import Global from '../components/css/Global';
 
 const Page = styled.div`
   color: #a7b8c9;
   background-color: #2b2b2b;
+  font-family: Lato, sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: .1rem;
+  line-height: 1.4rem;
 `;
 
 const Body = styled.div`
@@ -23,10 +34,11 @@ const Body = styled.div`
 
 const Home = (): JSX.Element => (
   <Page>
+    <Reset />
+    <Global />
     <Body>
-      <StyleReset />
       <SiteHead title={title} />
-      <Title>{title}</Title>
+      <H1>{title}</H1>
       <PersonalStatement statement={personalStatement} />
       <Skills skillsCategories={skillsListCategories} skillsDescription={skillsDescription} />
       <WorkHistory history={workHistory} />

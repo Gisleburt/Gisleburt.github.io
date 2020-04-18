@@ -1,5 +1,6 @@
 import React from 'react';
 import Section from '../html/Section';
+import H2 from '../html/H2';
 
 export interface ContactDetail {
   label: string;
@@ -13,7 +14,7 @@ interface ContactDetailsProps {
 
 const ContactDetails = ({ contactDetails }: ContactDetailsProps): JSX.Element => (
   <Section>
-    <h2>Contact Details</h2>
+    <H2>Contact Details</H2>
     <dl>
       {contactDetails.map(({ label, value, href }) => (
         <React.Fragment key={label}>

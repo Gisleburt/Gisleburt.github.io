@@ -1,6 +1,7 @@
 import React from 'react';
 import SkillsList, { SkillsListProps } from './SkillsList';
 import Section from '../html/Section';
+import H2 from '../html/H2';
 
 export interface SkillsProps extends SkillsListProps {
   skillsDescription: string;
@@ -8,7 +9,7 @@ export interface SkillsProps extends SkillsListProps {
 
 const Skills = ({ skillsCategories, skillsDescription }: SkillsProps): JSX.Element => (
   <Section>
-    <h2>Skills</h2>
+    <H2>Skills</H2>
     <p>{skillsDescription}</p>
     <SkillsList skillsCategories={skillsCategories} />
   </Section>
