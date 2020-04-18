@@ -1,4 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
+import H3 from '../html/H3';
+
+const WorkHistoryTitle = styled(H3)`
+  display: flex;
+  justify-content: space-between;
+`;
+WorkHistoryTitle.displayName = 'WorkHistoryTitle';
 
 export interface WorkHistoryItemProps {
   company: string;
@@ -16,9 +24,10 @@ const WorkHistoryItem = ({
   company, title, startDate, endDate, description,
 }: WorkHistoryItemProps): JSX.Element => (
   <div>
-    <h3>
-      {company} - {title} - {formatDate(startDate)} - {formatDate(endDate)}
-    </h3>
+    <WorkHistoryTitle>
+      <span>{company} - {title}</span>
+      <span>{formatDate(startDate)} - {formatDate(endDate)}</span>
+    </WorkHistoryTitle>
     {description.map((block) => <p key={block.length}>{block}</p>)}
   </div>
 );

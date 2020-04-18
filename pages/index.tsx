@@ -22,15 +22,18 @@ const Page = styled.div`
   background-color: #2b2b2b;
   font-family: Lato, sans-serif;
   font-weight: 300;
-  font-size: 1rem;
+  font-size: 1.4rem;
   letter-spacing: .1rem;
-  line-height: 1.4rem;
+  line-height: 2rem;
+  padding: 20px 0 30px;
 `;
+Page.displayName = 'Page';
 
 const Body = styled.div`
   max-width: 800px;
   margin: auto;
 `;
+Body.displayName = 'Body';
 
 const Home = (): JSX.Element => (
   <Page>

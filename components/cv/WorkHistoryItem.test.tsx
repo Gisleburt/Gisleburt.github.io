@@ -18,26 +18,26 @@ const workHistoryItemWithEnd: WorkHistoryItemProps = {
 describe('WorkHistoryItem', () => {
   it('should render the company name', () => {
     const wrapper = shallow(<WorkHistoryItem {...workHistoryItemWithEnd} />);
-    expect(wrapper.find('h3').text()).to.include(workHistoryItemWithoutEnd.company);
+    expect(wrapper.find('WorkHistoryTitle').text()).to.include(workHistoryItemWithoutEnd.company);
   });
 
   it('should render the role', () => {
     const wrapper = shallow(<WorkHistoryItem {...workHistoryItemWithEnd} />);
-    expect(wrapper.find('h3').text()).to.include(workHistoryItemWithoutEnd.title);
+    expect(wrapper.find('WorkHistoryTitle').text()).to.include(workHistoryItemWithoutEnd.title);
   });
 
   it('should render the start date', () => {
     const wrapper = shallow(<WorkHistoryItem {...workHistoryItemWithEnd} />);
-    expect(wrapper.find('h3').text()).to.include('2019');
+    expect(wrapper.find('WorkHistoryTitle').text()).to.include('2019');
   });
 
   it('should render the end date', () => {
     const wrapper = shallow(<WorkHistoryItem {...workHistoryItemWithEnd} />);
-    expect(wrapper.find('h3').text()).to.include('2020');
+    expect(wrapper.find('WorkHistoryTitle').text()).to.include('2020');
   });
 
   it('should render now if there is no end date', () => {
     const wrapper = shallow(<WorkHistoryItem {...workHistoryItemWithoutEnd} />);
-    expect(wrapper.find('h3').text()).to.include('Now');
+    expect(wrapper.find('WorkHistoryTitle').text()).to.include('Now');
   });
 });

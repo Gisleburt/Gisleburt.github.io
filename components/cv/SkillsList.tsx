@@ -6,36 +6,35 @@ export interface SkillsListCategory {
   skills: string[];
 }
 
-
 export interface SkillsListProps {
   skillsCategories: SkillsListCategory[];
 }
 
-const DL = styled.dl`
-  display: grid;
-  grid-template-columns: auto auto;
-`;
+const SkillsListList = styled.dl`
+  dl {
+  
+    display: grid;
+    grid-template-columns: max-content auto;
+    padding: 1rem 0 0;
+  }
 
-const DT = styled.dt`
-  clear: left;
-  float: left;
-  font-weight: 700;
-  padding: 0 3px 0 0;
+  dt {
+    font-weight: 700;
+    padding: 0 .5rem 0 0;  
+  }
 `;
+SkillsListList.displayName = 'SkillsListList';
 
-const DD = styled.dd`
-  float: left;
-`;
 
 const SkillsList = ({ skillsCategories }: SkillsListProps): JSX.Element => (
-  <DL>
+  <SkillsListList>
     {skillsCategories.map(({ category, skills }) => (
       <React.Fragment key={category}>
-        <DT>{category}</DT>
-        <DD>{skills.join(', ')}</DD>
+        <dt>{category}</dt>
+        <dd>{skills.join(', ')}</dd>
       </React.Fragment>
     ))}
-  </DL>
+  </SkillsListList>
 );
 
 export default SkillsList;

@@ -5,5 +5,6 @@ const Section = styled.section`
     padding: 20px 0 0;
   }
 `;
+Section.displayName = 'Section';
 
 export default Section;

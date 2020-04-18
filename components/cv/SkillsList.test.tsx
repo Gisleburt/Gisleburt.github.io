@@ -17,13 +17,13 @@ describe('SkillsList', () => {
 
   it('should show the category', () => {
     const wrapper = shallow(<SkillsList skillsCategories={skillsCategories} />);
-    expect(wrapper.text()).to.include('Cat1');
-    expect(wrapper.text()).to.include('Cat2');
+    expect(wrapper.find('dt').at(0).text()).to.equal('Cat1');
+    expect(wrapper.find('dt').at(1).text()).to.equal('Cat2');
   });
 
   it('should separate skills with a comma', () => {
     const wrapper = shallow(<SkillsList skillsCategories={skillsCategories} />);
-    expect(wrapper.text()).to.include('skill1, skill2');
-    expect(wrapper.text()).to.include('skill3, skill4');
+    expect(wrapper.find('dd').at(0).text()).to.equal('skill1, skill2');
+    expect(wrapper.find('dd').at(1).text()).to.equal('skill3, skill4');
   });
 });

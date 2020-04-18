@@ -16,7 +16,7 @@ export const personalStatement = [
   developer confidence and code quality, as well as pushing for more testing and quality control.`,
 
   `Daniel can pick up new languages, frameworks and techniques very quickly, and loves to do so. He constantly looks
-  for new ways to improve on what he&apos;s already doing.`,
+  for new ways to improve on what he's already doing.`,
 ];
 
 export const skillsDescription = `Daniel is a skilled engineer, with experience in a wide range of languages, tools and

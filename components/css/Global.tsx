@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const Global = createGlobalStyle`
   html {
-    font-size: 16px;
+    font-size: 62.5%;
   }
 `;
 
