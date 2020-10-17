@@ -5,7 +5,7 @@ module.exports = {
     mocha: true,
   },
   extends: [
-    "plugin:@typescript-eslint/recommended",
+    'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'airbnb',
   ],
@@ -26,22 +26,25 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
-    "react/jsx-one-expression-per-line": "off",
-    "react/jsx-props-no-spreading": "off",
-    "max-len": ["error", { "code": 120 }],
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.*", "./*.js"]}],
-    "import/extensions":  [1, {
-      ".js": "never",
-      ".jsx": "never",
-      ".ts": "never",
-      ".tsx": "never",
-    }]
+    'react/jsx-filename-extension': [1, { 'extensions': ['.tsx', '.ts'] }],
+    'react/jsx-one-expression-per-line': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'max-len': ['error', { 'code': 120 }],
+    'import/no-extraneous-dependencies': ['error', {'devDependencies': ['**/*.test.*', './*.js']}],
+    'import/extensions':  [1, {
+      '.js': 'never',
+      '.jsx': 'never',
+      '.ts': 'never',
+      '.tsx': 'never',
+    }],
+    'no-use-before-define': 0,
+    '@typescript-eslint/no-use-before-define': 1,
+    'no-undef': 0,
   },
   settings: {
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+    'import/resolver': {
+      'node': {
+        'extensions': ['.js', '.jsx', '.ts', '.tsx']
       }
     }
   },

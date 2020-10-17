@@ -31,7 +31,6 @@ const ContactDetailsSection = styled(Section)`
 `;
 ContactDetailsSection.displayName = 'ContactDetailsSection';
 
-
 const ContactDetails = ({ contactDetails }: ContactDetailsProps): JSX.Element => (
   <ContactDetailsSection>
     <H2>Contact Details</H2>

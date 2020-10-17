@@ -4,7 +4,6 @@ import { expect } from 'chai';
 import Skills from './Skills';
 import { SkillsListCategory } from './SkillsList';
 
-
 describe('Skills', () => {
   const testDescription = 'test description';
   const skillCategories: SkillsListCategory[] = [];

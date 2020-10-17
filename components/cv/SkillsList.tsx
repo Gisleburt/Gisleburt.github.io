@@ -25,7 +25,6 @@ const SkillsListList = styled.dl`
 `;
 SkillsListList.displayName = 'SkillsListList';
 
-
 const SkillsList = ({ skillsCategories }: SkillsListProps): JSX.Element => (
   <SkillsListList>
     {skillsCategories.map(({ category, skills }) => (
