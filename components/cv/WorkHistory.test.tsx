@@ -9,14 +9,14 @@ describe('WorkHistory', () => {
     {
       company: 'Some Company',
       title: 'Some Role',
-      startDate: new Date(),
+      startDate: '2020-01',
       description: ['Some thing'],
     },
     {
       company: 'Another Company',
       title: 'Another Role',
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: '2020-01',
+      endDate: '2020-01',
       description: ['Another thing'],
     },
   ];

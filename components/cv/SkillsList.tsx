@@ -1,13 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Cv } from '../../content/types';
 
-export interface SkillsListCategory {
-  category: string;
-  skills: string[];
-}
-
-export interface SkillsListProps {
-  skillsCategories: SkillsListCategory[];
+export type SkillsListProps = {
+  skillsCategories: Cv.SkillsListCategory[];
 }
 
 const SkillsListList = styled.dl`

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import H3 from '../html/H3';
+import { Cv } from '../../content/types';
 
 const WorkHistoryTitle = styled(H3)`
   display: flex;
@@ -8,16 +9,10 @@ const WorkHistoryTitle = styled(H3)`
 `;
 WorkHistoryTitle.displayName = 'WorkHistoryTitle';
 
-export interface WorkHistoryItemProps {
-  company: string;
-  title: string;
-  startDate: Date;
-  endDate?: Date;
-  description: string[];
-}
+export type WorkHistoryItemProps = Cv.WorkHistoryItem;
 
-const formatDate = (date?: Date): string => (
-  date ? Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' }).format(date) : 'Now'
+const formatDate = (date?: string|Date): string => (
+  date ? Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' }).format(new Date(date)) : 'Now'
 );
 
 const WorkHistoryItem = ({

@@ -1,10 +1,11 @@
 import React from 'react';
-import WorkHistoryItem, { WorkHistoryItemProps } from './WorkHistoryItem';
+import WorkHistoryItem from './WorkHistoryItem';
 import Section from '../html/Section';
 import H2 from '../html/H2';
+import { Cv } from '../../content/types';
 
 export interface WorkHistoryProps {
-  history: WorkHistoryItemProps[];
+  history: Cv.WorkHistoryItem[];
 }
 
 const WorkHistory = ({ history }: WorkHistoryProps): JSX.Element => (

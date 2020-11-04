@@ -1,10 +1,8 @@
-import { WorkHistoryItemProps } from '../components/cv/WorkHistoryItem';
-import { ContactDetail } from '../components/cv/ContactDetails';
-import { SkillsListCategory } from '../components/cv/SkillsList';
+import { ContentSource, Cv } from '../types';
 
-export const title = 'Daniel // Mason';
+const title = 'Daniel // Mason';
 
-export const personalStatement = [
+const personalStatement = [
   `Daniel has two software development related degrees and is staying in practice through personal projects and
   providing additional value to his employer.`,
 
@@ -19,10 +17,10 @@ export const personalStatement = [
   for new ways to improve on what he's already doing.`,
 ];
 
-export const skillsDescription = `Daniel is a skilled engineer, with experience in a wide range of languages, tools and
+const skillsDescription = `Daniel is a skilled engineer, with experience in a wide range of languages, tools and
   frameworks. This is an incomplete list of technologies Daniel has been practicing in the last year:`;
 
-export const skillsListCategories: SkillsListCategory[] = [
+const skillsListCategories: Cv.SkillsListCategory[] = [
   {
     category: 'Leadership:',
     skills: ['Architect', 'tech evangelist', 'agile', 'mentor', 'coach', 'triage'],
@@ -49,7 +47,7 @@ export const skillsListCategories: SkillsListCategory[] = [
   },
 ];
 
-export const contactDetails: ContactDetail[] = [
+export const contactDetails: Cv.ContactDetail[] = [
   {
     label: 'Mobile',
     value: '07838 200176',
@@ -72,11 +70,11 @@ export const contactDetails: ContactDetail[] = [
   },
 ];
 
-export const workHistory: WorkHistoryItemProps[] = [
+const workHistory: Cv.WorkHistoryItem[] = [
   {
     company: 'Triptease Ltd',
     title: 'Senior Software Engineer',
-    startDate: new Date('2019-10'),
+    startDate: '2019-10',
     description: [
       `Daniel joined the Retargeting team at Triptease, which was just coming out of its greenfield MVP phase, and
       moving to sustaining growth, optimisation and a steady release of features. Work was almost always performed in
@@ -98,8 +96,8 @@ export const workHistory: WorkHistoryItemProps[] = [
   {
     company: 'Apolitical Group Ltd',
     title: 'Senior Software Engineer',
-    startDate: new Date('2017-11'),
-    endDate: new Date('2019-10'),
+    startDate: '2017-11',
+    endDate: '2019-10',
     description: [
       `When he arrived at Apolitical, the platform was a custom Wordpress theme. Daniel planned, designed, and
       delivered the Kubernetes infrastructure that allowed Apolitical to grow from around a 1000 users when he started,
@@ -119,8 +117,8 @@ export const workHistory: WorkHistoryItemProps[] = [
   {
     company: 'MOO Print Ltd',
     title: 'Software Engineer',
-    startDate: new Date('2016-05'),
-    endDate: new Date('2017-11'),
+    startDate: '2016-05',
+    endDate: '2017-11',
     description: [
       `Daniel was hired for his PHP skills, but ended up working almost entirely on the frontend. He helped take a
       greenfield project from the drawing board and into production. This meant Daniel had to learn a lot about modern
@@ -142,8 +140,8 @@ export const workHistory: WorkHistoryItemProps[] = [
   {
     company: 'The Foundry Visionmongers',
     title: 'Web Developer',
-    startDate: new Date('2014-08'),
-    endDate: new Date('2016-05'),
+    startDate: '2014-08',
+    endDate: '2016-05',
     description: [
       `Daniel was the sole in-house developer on the Made With Mischief web services. He introduced high quality
       testing and added an API to provide facilities such as auto updates for the desktop app.`,
@@ -154,8 +152,8 @@ export const workHistory: WorkHistoryItemProps[] = [
   {
     company: 'Loft Digital',
     title: 'LAMP Developer',
-    startDate: new Date('2011-09'),
-    endDate: new Date('2014-08'),
+    startDate: '2011-09',
+    endDate: '2014-08',
 
     description: [
       `Daniel worked with clients to deliver web services. Daniel’s biggest achievement was working on-site at the
@@ -166,3 +164,16 @@ export const workHistory: WorkHistoryItemProps[] = [
     ],
   },
 ];
+
+const FileSource: ContentSource = {
+  getCv: async () => ({
+    contactDetails,
+    personalStatement,
+    skillsDescription,
+    skillsListCategories,
+    title,
+    workHistory,
+  }),
+};
+
+export default FileSource;

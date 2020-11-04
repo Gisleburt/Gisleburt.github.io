@@ -1,21 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { GetStaticProps } from 'next';
 import SiteHead from '../components/SiteHead';
 import ContactDetails from '../components/cv/ContactDetails';
 import WorkHistory from '../components/cv/WorkHistory';
 import Skills from '../components/cv/Skills';
 import PersonalStatement from '../components/cv/PersonalStatement';
 import Reset from '../components/css/Reset';
-import {
-  contactDetails,
-  personalStatement,
-  skillsDescription,
-  skillsListCategories,
-  title,
-  workHistory,
-} from '../content/content';
 import H1 from '../components/html/H1';
 import Global from '../components/css/Global';
+import FileSource from '../content/content-source/file-source';
+import { Cv } from '../content/types';
 
 const Page = styled.div`
   color: #a7b8c9;
@@ -35,19 +30,32 @@ const Body = styled.div`
 `;
 Body.displayName = 'Body';
 
-const Home = (): JSX.Element => (
+type Props = {
+  cv: Cv.Cv
+}
+
+const Home = ({ cv }: Props): JSX.Element => (
   <Page>
     <Reset />
     <Global />
     <Body>
-      <SiteHead title={title} />
-      <H1>{title}</H1>
-      <PersonalStatement statement={personalStatement} />
-      <Skills skillsCategories={skillsListCategories} skillsDescription={skillsDescription} />
-      <WorkHistory history={workHistory} />
-      <ContactDetails contactDetails={contactDetails} />
+      <SiteHead title={cv.title} />
+      <H1>{cv.title}</H1>
+      <PersonalStatement statement={cv.personalStatement} />
+      <Skills skillsCategories={cv.skillsListCategories} skillsDescription={cv.skillsDescription} />
+      <WorkHistory history={cv.workHistory} />
+      <ContactDetails contactDetails={cv.contactDetails} />
     </Body>
   </Page>
 );
 
 export default Home;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const cv = await FileSource.getCv();
+  return {
+    props: {
+      cv,
+    },
+  };
+};

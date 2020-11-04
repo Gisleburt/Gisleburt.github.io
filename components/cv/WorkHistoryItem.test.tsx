@@ -6,13 +6,13 @@ import WorkHistoryItem, { WorkHistoryItemProps } from './WorkHistoryItem';
 const workHistoryItemWithoutEnd: WorkHistoryItemProps = {
   company: 'some company',
   title: 'some company',
-  startDate: new Date('2019-01'),
+  startDate: '2019-01',
   description: ['desc1', 'desc2'],
 };
 
 const workHistoryItemWithEnd: WorkHistoryItemProps = {
   ...workHistoryItemWithoutEnd,
-  endDate: new Date('2020-02'),
+  endDate: '2020-02',
 };
 
 describe('WorkHistoryItem', () => {
