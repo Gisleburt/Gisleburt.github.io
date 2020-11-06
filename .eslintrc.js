@@ -26,12 +26,12 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
-    'react/jsx-filename-extension': [1, { 'extensions': ['.tsx', '.ts'] }],
+    'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
     'react/jsx-one-expression-per-line': 'off',
     'react/jsx-props-no-spreading': 'off',
-    'max-len': ['error', { 'code': 120 }],
-    'import/no-extraneous-dependencies': ['error', {'devDependencies': ['**/*.test.*', './*.js']}],
-    'import/extensions':  [1, {
+    'max-len': ['error', { code: 120 }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.*', './*.js'] }],
+    'import/extensions': [1, {
       '.js': 'never',
       '.jsx': 'never',
       '.ts': 'never',
@@ -43,9 +43,9 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
-      'node': {
-        'extensions': ['.js', '.jsx', '.ts', '.tsx']
-      }
-    }
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.d.ts'],
+      },
+    },
   },
 };

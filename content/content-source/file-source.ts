@@ -1,4 +1,4 @@
-import { ContentSource, Cv } from '../types';
+import { ContentSource, CurriculumVitae } from '../types';
 
 const title = 'Daniel // Mason';
 
@@ -20,7 +20,7 @@ const personalStatement = [
 const skillsDescription = `Daniel is a skilled engineer, with experience in a wide range of languages, tools and
   frameworks. This is an incomplete list of technologies Daniel has been practicing in the last year:`;
 
-const skillsListCategories: Cv.SkillsListCategory[] = [
+const skillsListCategories: CurriculumVitae.SkillsListCategory[] = [
   {
     category: 'Leadership:',
     skills: ['Architect', 'tech evangelist', 'agile', 'mentor', 'coach', 'triage'],
@@ -47,7 +47,7 @@ const skillsListCategories: Cv.SkillsListCategory[] = [
   },
 ];
 
-export const contactDetails: Cv.ContactDetail[] = [
+export const contactDetails: CurriculumVitae.ContactDetail[] = [
   {
     label: 'Mobile',
     value: '07838 200176',
@@ -70,7 +70,7 @@ export const contactDetails: Cv.ContactDetail[] = [
   },
 ];
 
-const workHistory: Cv.WorkHistoryItem[] = [
+const workHistory: CurriculumVitae.WorkHistoryItem[] = [
   {
     company: 'Triptease Ltd',
     title: 'Senior Software Engineer',

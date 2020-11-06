@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Cv } from '../../content/types';
+import { CurriculumVitae } from '../../content/types';
 
 export type SkillsListProps = {
-  skillsCategories: Cv.SkillsListCategory[];
+  skillsCategories: CurriculumVitae.SkillsListCategory[];
 }
 
 const SkillsListList = styled.dl`

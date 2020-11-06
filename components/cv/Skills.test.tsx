@@ -2,11 +2,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import Skills from './Skills';
-import { Cv } from '../../content/types';
+import { CurriculumVitae } from '../../content/types';
 
 describe('Skills', () => {
   const testDescription = 'test description';
-  const skillCategories: Cv.SkillsListCategory[] = [];
+  const skillCategories: CurriculumVitae.SkillsListCategory[] = [];
 
   it('should render a description', () => {
     const wrapper = shallow(<Skills skillsDescription={testDescription} skillsCategories={skillCategories} />);

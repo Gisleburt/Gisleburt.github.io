@@ -2,10 +2,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import SkillsList from './SkillsList';
-import { Cv } from '../../content/types';
+import { CurriculumVitae } from '../../content/types';
 
 describe('SkillsList', () => {
-  const skillsCategories: Cv.SkillsListCategory[] = [
+  const skillsCategories: CurriculumVitae.SkillsListCategory[] = [
     {
       category: 'Cat1',
       skills: ['skill1', 'skill2'],

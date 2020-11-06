@@ -9,8 +9,7 @@ import PersonalStatement from '../components/cv/PersonalStatement';
 import Reset from '../components/css/Reset';
 import H1 from '../components/html/H1';
 import Global from '../components/css/Global';
-import FileSource from '../content/content-source/file-source';
-import { Cv } from '../content/types';
+import { CurriculumVitae } from '../content/types';
 
 const Page = styled.div`
   color: #a7b8c9;
@@ -31,7 +30,7 @@ const Body = styled.div`
 Body.displayName = 'Body';
 
 type Props = {
-  cv: Cv.Cv
+  cv: CurriculumVitae.Cv
 }
 
 const Home = ({ cv }: Props): JSX.Element => (

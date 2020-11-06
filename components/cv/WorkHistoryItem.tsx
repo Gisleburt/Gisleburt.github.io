@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import H3 from '../html/H3';
-import { Cv } from '../../content/types';
+import { CurriculumVitae } from '../../content/types';
 
 const WorkHistoryTitle = styled(H3)`
   display: flex;
@@ -9,7 +9,7 @@ const WorkHistoryTitle = styled(H3)`
 `;
 WorkHistoryTitle.displayName = 'WorkHistoryTitle';
 
-export type WorkHistoryItemProps = Cv.WorkHistoryItem;
+export type WorkHistoryItemProps = CurriculumVitae.WorkHistoryItem;
 
 const formatDate = (date?: string|Date): string => (
   date ? Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' }).format(new Date(date)) : 'Now'
