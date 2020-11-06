@@ -51,7 +51,11 @@ const Home = ({ cv }: Props): JSX.Element => (
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const cv = await FileSource.getCv();
+  const contentful = new Contentful(
+    process.env.CONTENTFUL_SPACE_ID || '',
+    process.env.CONTENTFUL_ACCESS_TOKEN || '',
+  );
+  const cv = await contentful.getCv();
   return {
     props: {
       cv,
