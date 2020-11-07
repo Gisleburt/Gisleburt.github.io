@@ -9,7 +9,9 @@ interface PersonalStatementProps {
 const PersonalStatement = ({ statement }: PersonalStatementProps): JSX.Element => (
   <Section>
     <H2>Personal Statement</H2>
-    {statement.map((paragraph) => <p key={paragraph.length}>{paragraph}</p>)}
+    {statement.map((paragraph) => (
+      <p key={paragraph.length}>{paragraph}</p>
+    ))}
   </Section>
 );
 

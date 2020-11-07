@@ -4,11 +4,10 @@ import { CurriculumVitae } from '../../content/types';
 
 export type SkillsListProps = {
   skillsCategories: CurriculumVitae.SkillsListCategory[];
-}
+};
 
 const SkillsListList = styled.dl`
   dl {
-  
     display: grid;
     grid-template-columns: max-content auto;
     padding: 1rem 0 0;
@@ -16,7 +15,7 @@ const SkillsListList = styled.dl`
 
   dt {
     font-weight: 700;
-    padding: 0 .5rem 0 0;  
+    padding: 0 0.5rem 0 0;
   }
 `;
 SkillsListList.displayName = 'SkillsListList';

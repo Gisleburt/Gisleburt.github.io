@@ -17,7 +17,7 @@ const Page = styled.div`
   font-family: Lato, sans-serif;
   font-weight: 300;
   font-size: 1.4rem;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   line-height: 2rem;
   padding: 20px 0 30px;
 `;
@@ -30,8 +30,8 @@ const Body = styled.div`
 Body.displayName = 'Body';
 
 type Props = {
-  cv: CurriculumVitae.Cv
-}
+  cv: CurriculumVitae.Cv;
+};
 
 const Home = ({ cv }: Props): JSX.Element => (
   <Page>
@@ -51,10 +51,7 @@ const Home = ({ cv }: Props): JSX.Element => (
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const contentful = new Contentful(
-    process.env.CONTENTFUL_SPACE_ID || '',
-    process.env.CONTENTFUL_ACCESS_TOKEN || '',
-  );
+  const contentful = new Contentful(process.env.CONTENTFUL_SPACE_ID || '', process.env.CONTENTFUL_ACCESS_TOKEN || '');
   const cv = await contentful.getCv();
   return {
     props: {

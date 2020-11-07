@@ -16,7 +16,6 @@ class Contentful implements ContentSource {
   async getCv(): Promise<CurriculumVitae.Cv> {
     const entryId = '1cchxQM58kpjkTuQLwPvIO';
     const cv = await this.client.getEntry<ICvFields>(entryId, { include: 10 });
-    console.log(JSON.stringify(cv, null, 2));
     return mapCv(cv.fields);
   }
 }

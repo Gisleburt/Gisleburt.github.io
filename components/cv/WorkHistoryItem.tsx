@@ -11,19 +11,24 @@ WorkHistoryTitle.displayName = 'WorkHistoryTitle';
 
 export type WorkHistoryItemProps = CurriculumVitae.WorkHistoryItem;
 
-const formatDate = (date?: string|Date): string => (
-  date ? Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' }).format(new Date(date)) : 'Now'
-);
+const formatDate = (date: string | Date): string =>
+  Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' }).format(new Date(date));
 
-const WorkHistoryItem = ({
-  company, title, startDate, endDate, description,
-}: WorkHistoryItemProps): JSX.Element => (
+const formatPossibleDate = (date?: string | Date): string => (date ? formatDate(date) : 'Now');
+
+const WorkHistoryItem = ({ company, title, startDate, endDate, description }: WorkHistoryItemProps): JSX.Element => (
   <div>
     <WorkHistoryTitle>
-      <span>{company} - {title}</span>
-      <span>{formatDate(startDate)} - {formatDate(endDate)}</span>
+      <span>
+        {company} - {title}
+      </span>
+      <span>
+        {formatPossibleDate(startDate)} - {formatPossibleDate(endDate)}
+      </span>
     </WorkHistoryTitle>
-    {description.map((block) => <p key={block.length}>{block}</p>)}
+    {description.map((block) => (
+      <p key={block.length}>{block}</p>
+    ))}
   </div>
 );
 

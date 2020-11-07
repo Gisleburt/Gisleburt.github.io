@@ -19,13 +19,15 @@ const ContactDetailsSection = styled(Section)`
     grid-template-columns: max-content auto max-content auto;
     padding: 1rem 0 0;
   }
-  
+
   dt {
     font-weight: 700;
-    padding: 0 .5rem 0 0;
+    padding: 0 0.5rem 0 0;
   }
-  
-  a, a:hover, a:visited {
+
+  a,
+  a:hover,
+  a:visited {
     color: #a7b8c9;
   }
 `;

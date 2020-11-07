@@ -10,12 +10,15 @@
     "lint": "eslint {components,content,pages}/**/*.ts*",
     "serve": "yarn export && serve out",
     "start": "next start",
+    "style": "prettier --write {components,content,pages}/**/*.ts*",
+    "style:check": "prettier --check {components,content,pages}/**/*.ts*",
     "test": "mocha",
     "types": "tsc"
   },
   "pre-commit": [
     "test",
-    "lint"
+    "lint",
+    "style"
   ],
   "devDependencies": {
     "@types/chai": "^4.2.11",
@@ -35,6 +38,7 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^7.11.0",
     "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
