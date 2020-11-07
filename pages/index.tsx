@@ -10,6 +10,7 @@ import Reset from '../components/css/Reset';
 import H1 from '../components/html/H1';
 import Global from '../components/css/Global';
 import { CurriculumVitae } from '../content/types';
+import Contentful from '../content/content-source/contentful';
 
 const Page = styled.div`
   color: #a7b8c9;

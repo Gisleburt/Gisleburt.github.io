@@ -10,15 +10,12 @@
     "lint": "eslint {components,content,pages}/**/*.ts*",
     "serve": "yarn export && serve out",
     "start": "next start",
-    "style": "prettier --write {components,content,pages}/**/*.ts*",
-    "style:check": "prettier --check {components,content,pages}/**/*.ts*",
     "test": "mocha",
     "types": "tsc"
   },
   "pre-commit": [
     "test",
-    "lint",
-    "style"
+    "lint"
   ],
   "devDependencies": {
     "@types/chai": "^4.2.11",
@@ -41,6 +38,7 @@
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^4.1.2",
     "mocha": "^8.2.0",
