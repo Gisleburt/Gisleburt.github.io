@@ -13,10 +13,12 @@
     "test": "mocha",
     "types": "tsc"
   },
-  "pre-commit": [
-    "test",
-    "lint"
-  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test && yarn lint",
+      "post-merge": "yarn type-codegen"
+    }
+  },
   "devDependencies": {
     "@types/chai": "^4.2.11",
     "@types/enzyme": "^3.10.5",
@@ -41,8 +43,8 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^4.1.2",
+    "husky": "^4.3.0",
     "mocha": "^8.2.0",
-    "pre-commit": "^1.2.2",
     "prettier": "^2.1.2",
     "serve": "^11.3.0",
     "ts-node": "^9.0.0",
