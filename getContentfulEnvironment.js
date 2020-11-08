@@ -2,7 +2,8 @@
 const { createClient } = require('contentful-management');
 const { config } = require('dotenv');
 
-config({ path: '.env.local' });
+config({ path: '.env' });
+config({ path: '.env.development.local' });
 
 module.exports = async () => {
   const spaceId = process.env.CONTENTFUL_SPACE_ID || '';
