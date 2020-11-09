@@ -1,4 +1,4 @@
-type Opaque<K, T> = T & { __TYPE__: K };
+type Opaque<K = string, T> = T & { __TYPE__: K };
 
 export type ContentSource = {
   getCv(): Promise<CurriculumVitae.Cv>;

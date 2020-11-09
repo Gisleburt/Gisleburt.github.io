@@ -55,3 +55,13 @@ export const mapCv = (cv: ICvFields): CurriculumVitae.Cv => ({
 export const mapPagePath = (page: IPageFields): Pages.Path => ({
   path: page.path,
 });
+
+export const mapPage = (page: IPageFields): Pages.OpaquePage => {
+  if (page.content.sys.contentType.sys.id === 'cv') {
+    return {
+      ...mapCv(page.content.fields as ICvFields),
+      __TYPE__: 'Cv',
+    };
+  }
+  throw new Error('Type not supported');
+};

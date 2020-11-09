@@ -1,12 +1,25 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Contentful from '../content/content-source/contentful';
+import { Pages } from '../content/types';
+import Cv from '../components/pages/cv';
 
 type Props = {
-  path: string[];
+  page: Pages.OpaquePage;
 };
 
-const Home = ({ path = [] }: Props): JSX.Element => <pre>You are on the path /{path?.join('/')}</pre>;
+// eslint-disable-next-line no-underscore-dangle
+const isCv = (page: Pages.OpaquePage): page is Pages.OpaqueCvPage => page.__TYPE__ === 'Cv';
+
+const Home = ({ page }: Props): JSX.Element => {
+  if (!page) {
+    return <></>;
+  }
+  if (isCv(page)) {
+    return <Cv cv={page} />;
+  }
+  throw new Error('Unsupported page');
+};
 
 export default Home;
 
@@ -16,9 +29,11 @@ type Params = {
 
 export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
   const path = params?.path || [];
+  const contentful = Contentful.fromEnvironment();
+  const page = await contentful.getPage(`/${path.join('/')}`);
   return {
     props: {
-      path,
+      page,
     },
   };
 };

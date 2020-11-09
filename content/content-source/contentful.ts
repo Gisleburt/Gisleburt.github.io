@@ -1,7 +1,7 @@
 import { ContentfulClientApi, createClient, CreateClientParams } from 'contentful';
 import { ContentSource, CurriculumVitae, Pages } from '../types';
 import { ICvFields, IPageFields } from './contentful/types';
-import { mapCv, mapPagePath } from './contentful/map';
+import { mapCv, mapPage, mapPagePath } from './contentful/map';
 
 class Contentful implements ContentSource {
   client: ContentfulClientApi;
@@ -41,6 +41,11 @@ class Contentful implements ContentSource {
   async getPaths(): Promise<Pages.Path[]> {
     const pages = await this.client.getEntries<IPageFields>({ include: 0, content_type: 'page' });
     return pages.items.map((page) => mapPagePath(page.fields));
+  }
+
+  async getPage(path: string): Promise<Pages.OpaquePage> {
+    const pages = await this.client.getEntries<IPageFields>({ include: 10, content_type: 'page', 'fields.path': path });
+    return mapPage(pages.items[0].fields);
   }
 }
 
