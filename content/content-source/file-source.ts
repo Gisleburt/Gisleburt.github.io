@@ -1,4 +1,4 @@
-import { ContentSource, CurriculumVitae } from '../types';
+import { ContentSource, CurriculumVitae, Pages } from '../types';
 
 const title = 'Daniel // Mason';
 
@@ -174,6 +174,10 @@ const FileSource: ContentSource = {
     title,
     workHistory,
   }),
+
+  getPaths: async (): Promise<Pages.Path[]> => {
+    return [{ path: '/cv' }];
+  },
 };
 
 export default FileSource;
