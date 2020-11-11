@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import Skills from './Skills';
-import { CurriculumVitae } from '../../content/types';
+import { CurriculumVitae } from '../../types/domain';
 
 describe('Skills', () => {
   const testDescription = 'test description';

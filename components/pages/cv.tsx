@@ -8,7 +8,7 @@ import PersonalStatement from '../cv/PersonalStatement';
 import Reset from '../css/Reset';
 import H1 from '../html/H1';
 import Global from '../css/Global';
-import { CurriculumVitae } from '../../content/types';
+import { CurriculumVitae } from '../../types/domain';
 
 const Page = styled.div`
   color: #a7b8c9;

@@ -6,7 +6,7 @@
     "dev": "next",
     "build": "next build",
     "export": "yarn build && next export",
-    "type-codegen": "contentful-typescript-codegen --output content/content-source/contentful/types.d.ts && yarn lint -- --fix",
+    "type-codegen": "contentful-typescript-codegen --output types/contentful.d.ts && yarn lint -- --fix",
     "lint": "eslint {components,content,pages}/**/*.ts*",
     "serve": "yarn export && serve out",
     "start": "next start",

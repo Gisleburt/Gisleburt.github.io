@@ -93,17 +93,8 @@ export interface ICvFields {
   /** Title */
   title: string;
 
-  /** Personal Statement */
-  personalStatement: IPersonalStatement;
-
-  /** Skills */
-  skills: ISkills;
-
-  /** Work History */
-  workHistory: IWorkHistory;
-
-  /** Contact Details */
-  contactDetails: IContentDetails;
+  /** Content */
+  content: (IContentDetails | ISection | ISkills | IWorkHistory)[];
 }
 
 /** Curriculum Vitae */
@@ -125,6 +116,30 @@ export interface ICv extends Entry<ICvFields> {
   };
 }
 
+export interface IFreeTextFields {
+  /** Text */
+  text: string;
+}
+
+/** A block of text, write what you want */
+
+export interface IFreeText extends Entry<IFreeTextFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'freeText';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IPageFields {
   /** path */
   path: string;
@@ -132,6 +147,8 @@ export interface IPageFields {
   /** Content */
   content: IBlogPost | ICv;
 }
+
+/** A location on the website that links to some content */
 
 export interface IPage extends Entry<IPageFields> {
   sys: {
@@ -206,6 +223,33 @@ export interface IRoleDescription extends Entry<IRoleDescriptionFields> {
     contentType: {
       sys: {
         id: 'roleDescription';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
+export interface ISectionFields {
+  /** Title */
+  title: string;
+
+  /** Content */
+  content: (IFreeText | IRoleDescription | ISkills)[];
+}
+
+/** A titled section of content */
+
+export interface ISection extends Entry<ISectionFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'section';
         linkType: 'ContentType';
         type: 'Link';
       };
@@ -302,9 +346,11 @@ export type CONTENT_TYPE =
   | 'contactDetails'
   | 'contentDetails'
   | 'cv'
+  | 'freeText'
   | 'page'
   | 'personalStatement'
   | 'roleDescription'
+  | 'section'
   | 'skillList'
   | 'skills'
   | 'workHistory';

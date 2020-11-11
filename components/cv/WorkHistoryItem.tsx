@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import H3 from '../html/H3';
-import { CurriculumVitae } from '../../content/types';
+import { CurriculumVitae } from '../../types/domain';
 
 const WorkHistoryTitle = styled(H3)`
   display: flex;

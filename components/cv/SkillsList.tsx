@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CurriculumVitae } from '../../content/types';
+import { CurriculumVitae } from '../../types/domain';
 
 export type SkillsListProps = {
   skillsCategories: CurriculumVitae.SkillsListCategory[];

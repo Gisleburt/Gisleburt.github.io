@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Contentful from '../content/content-source/contentful';
-import { Pages } from '../content/types';
+import { Pages } from '../types/domain';
 import Cv from '../components/pages/cv';
 
 type Props = {

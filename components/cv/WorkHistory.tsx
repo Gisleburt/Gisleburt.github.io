@@ -2,7 +2,7 @@ import React from 'react';
 import WorkHistoryItem from './WorkHistoryItem';
 import Section from '../html/Section';
 import H2 from '../html/H2';
-import { CurriculumVitae } from '../../content/types';
+import { CurriculumVitae } from '../../types/domain';
 
 export interface WorkHistoryProps {
   history: CurriculumVitae.WorkHistoryItem[];

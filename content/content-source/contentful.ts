@@ -1,6 +1,6 @@
 import { ContentfulClientApi, createClient, CreateClientParams } from 'contentful';
-import { ContentSource, CurriculumVitae, Pages } from '../types';
-import { ICvFields, IPageFields } from './contentful/types';
+import { ContentSource, CurriculumVitae, Pages } from '../../types/domain';
+import { ICvFields, IPageFields } from '../../types/contentful';
 import { mapCv, mapPage, mapPagePath } from './contentful/map';
 
 class Contentful implements ContentSource {
