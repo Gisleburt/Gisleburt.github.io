@@ -5,7 +5,7 @@ import { Pages } from '../content/types';
 import Cv from '../components/pages/cv';
 
 type Props = {
-  page: Pages.OpaquePage;
+  page?: Pages.OpaquePage;
 };
 
 // eslint-disable-next-line no-underscore-dangle
@@ -13,7 +13,7 @@ const isCv = (page: Pages.OpaquePage): page is Pages.OpaqueCvPage => page.__TYPE
 
 const Home = ({ page }: Props): JSX.Element => {
   if (!page) {
-    return <></>;
+    return <>No path</>;
   }
   if (isCv(page)) {
     return <Cv cv={page} />;
@@ -24,11 +24,18 @@ const Home = ({ page }: Props): JSX.Element => {
 export default Home;
 
 type Params = {
-  path: string[];
+  path: string | string[];
+};
+
+const normalizePath = (path: string | string[]): string[] => {
+  if (typeof path === 'string') {
+    return path.split('/').filter((part) => !!part);
+  }
+  return path;
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
-  const path = params?.path || [];
+  const path = normalizePath(params?.path || []);
   const contentful = Contentful.fromEnvironment();
   const page = await contentful.getPage(`/${path.join('/')}`);
   return {
@@ -43,12 +50,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const pages = await contentful.getPaths();
 
   const paths = pages
-    .map((page) => page.path.split('/').filter((part) => !part))
+    .map((page) => normalizePath(page.path))
     .map((path) => ({ path }))
     .map((params) => ({ params }));
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
