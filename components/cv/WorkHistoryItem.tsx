@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import H3 from '../html/H3';
-import { CurriculumVitae } from '../../types/domain';
+import { Content } from '../../types/domain';
 
 const WorkHistoryTitle = styled(H3)`
   display: flex;
@@ -9,24 +9,24 @@ const WorkHistoryTitle = styled(H3)`
 `;
 WorkHistoryTitle.displayName = 'WorkHistoryTitle';
 
-export type WorkHistoryItemProps = CurriculumVitae.WorkHistoryItem;
+type Props = Content.RoleDescription;
 
 const formatDate = (date: string | Date): string =>
   Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' }).format(new Date(date));
 
 const formatPossibleDate = (date?: string | Date): string => (date ? formatDate(date) : 'Now');
 
-const WorkHistoryItem = ({ company, title, startDate, endDate, description }: WorkHistoryItemProps): JSX.Element => (
+const WorkHistoryItem = ({ business, role, startDate, endDate, description }: Props): JSX.Element => (
   <div>
     <WorkHistoryTitle>
       <span>
-        {company} - {title}
+        {business} - {role}
       </span>
       <span>
         {formatPossibleDate(startDate)} - {formatPossibleDate(endDate)}
       </span>
     </WorkHistoryTitle>
-    {description.map((block) => (
+    {description.split(/[\n\r]+/).map((block) => (
       <p key={block.length}>{block}</p>
     ))}
   </div>

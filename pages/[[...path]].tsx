@@ -1,27 +1,25 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Contentful from '../content/content-source/contentful';
-import { Pages } from '../types/domain';
-import Cv from '../components/pages/cv';
+import Contentful from '../content/contentful';
+import { Content } from '../types/domain';
+import Cv from '../components/pages/Cv';
+import { isCv } from '../types/domainPredicates';
 
 type Props = {
-  page?: Pages.OpaquePage;
+  page?: Content.Page;
 };
 
-// eslint-disable-next-line no-underscore-dangle
-const isCv = (page: Pages.OpaquePage): page is Pages.OpaqueCvPage => page.__TYPE__ === 'Cv';
-
-const Home = ({ page }: Props): JSX.Element => {
+const Page = ({ page }: Props): JSX.Element => {
   if (!page) {
     return <>No path</>;
   }
-  if (isCv(page)) {
-    return <Cv cv={page} />;
+  if (isCv(page.content)) {
+    return <Cv cv={page.content} />;
   }
   throw new Error('Unsupported page');
 };
 
-export default Home;
+export default Page;
 
 type Params = {
   path: string | string[];

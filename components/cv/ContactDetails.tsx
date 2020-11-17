@@ -2,16 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import H2 from '../html/H2';
 import Section from '../html/Section';
-
-export interface ContactDetail {
-  label: string;
-  value: string;
-  href?: string;
-}
-
-interface ContactDetailsProps {
-  contactDetails: ContactDetail[];
-}
+import { Content } from '../../types/domain';
 
 const ContactDetailsSection = styled(Section)`
   dl {
@@ -33,11 +24,15 @@ const ContactDetailsSection = styled(Section)`
 `;
 ContactDetailsSection.displayName = 'ContactDetailsSection';
 
-const ContactDetails = ({ contactDetails }: ContactDetailsProps): JSX.Element => (
+type Props = {
+  contactDetails: Content.ContactDetails;
+};
+
+const ContactDetails = ({ contactDetails }: Props): JSX.Element => (
   <ContactDetailsSection>
-    <H2>Contact Details</H2>
+    <H2>{contactDetails.title}</H2>
     <dl>
-      {contactDetails.map(({ label, value, href }) => (
+      {contactDetails.details.map(({ label, value, href }) => (
         <React.Fragment key={label}>
           <dt>{label}</dt>
           <dd>{href ? <a href={href}>{value}</a> : value}</dd>

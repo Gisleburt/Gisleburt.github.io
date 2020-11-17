@@ -19,7 +19,7 @@ export namespace Pages {
 }
 
 export namespace Content {
-  export type ContentType<K = string, T extends Record<string, unknown>> = T & { __TYPE__: K };
+  export type ContentType<K = string, T> = T & { __TYPE__: K };
 
   export type BlogPost = ContentType<
     'BlogPost',
@@ -48,7 +48,7 @@ export namespace Content {
   >;
 
   export type Cv = ContentType<
-    'CV',
+    'Cv',
     {
       title: string;
       content: (ContactDetails | Section | Skills | WorkHistory)[];

@@ -1,17 +1,18 @@
 import React from 'react';
-import SkillsList, { SkillsListProps } from './SkillsList';
+import SkillsList from './SkillsList';
 import Section from '../html/Section';
 import H2 from '../html/H2';
+import { Content } from '../../types/domain';
 
-export interface SkillsProps extends SkillsListProps {
-  skillsDescription: string;
-}
+type Props = {
+  skills: Content.Skills;
+};
 
-const Skills = ({ skillsCategories, skillsDescription }: SkillsProps): JSX.Element => (
+const Skills = ({ skills }: Props): JSX.Element => (
   <Section>
-    <H2>Skills</H2>
-    <p>{skillsDescription}</p>
-    <SkillsList skillsCategories={skillsCategories} />
+    <H2>{skills.title}</H2>
+    <p>{skills.description}</p>
+    <SkillsList skillsList={skills.skillsList} />
   </Section>
 );
 

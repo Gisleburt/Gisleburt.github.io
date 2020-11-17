@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CurriculumVitae } from '../../types/domain';
+import { Content } from '../../types/domain';
 
-export type SkillsListProps = {
-  skillsCategories: CurriculumVitae.SkillsListCategory[];
+export type Props = {
+  skillsList: Content.SkillList[];
 };
 
 const SkillsListList = styled.dl`
@@ -20,11 +20,11 @@ const SkillsListList = styled.dl`
 `;
 SkillsListList.displayName = 'SkillsListList';
 
-const SkillsList = ({ skillsCategories }: SkillsListProps): JSX.Element => (
+const SkillsList = ({ skillsList }: Props): JSX.Element => (
   <SkillsListList>
-    {skillsCategories.map(({ category, skills }) => (
-      <React.Fragment key={category}>
-        <dt>{category}</dt>
+    {skillsList.map(({ title, skills }) => (
+      <React.Fragment key={title}>
+        <dt>{title}</dt>
         <dd>{skills.join(', ')}</dd>
       </React.Fragment>
     ))}
