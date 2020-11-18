@@ -3,6 +3,8 @@ import { Content } from '../../types/domain';
 import { isFreeText, isRoleDescription, isSkills } from '../../types/domainPredicates';
 import WorkHistoryItem from '../cv/WorkHistoryItem';
 import Skills from '../cv/Skills';
+import H2 from '../html/H2';
+import HtmlSection from '../html/Section';
 
 type SectionContentTypes = Content.FreeText | Content.RoleDescription | Content.Skills;
 
@@ -35,12 +37,12 @@ type Props = {
 
 const Section = ({ section }: Props): JSX.Element => {
   return (
-    <section>
-      <h2>{section.title}</h2>
+    <HtmlSection>
+      <H2>{section.title}</H2>
       {section.content.map((content) => (
         <SectionContent content={content} />
       ))}
-    </section>
+    </HtmlSection>
   );
 };
 
