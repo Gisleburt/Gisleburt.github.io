@@ -19,7 +19,7 @@ export namespace Pages {
 }
 
 export namespace Content {
-  export type ContentType<K = string, T> = T & { __TYPE__: K };
+  export type ContentType<K = string, T> = T & { __TYPE__: K; id: string };
 
   export type BlogPost = ContentType<
     'BlogPost',

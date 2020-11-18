@@ -8,15 +8,18 @@ describe('ContactDetails', () => {
   it('should render each contact as a definition list', () => {
     const contactDetails: Content.ContactDetails = {
       __TYPE__: 'ContactDetails',
+      id: '1',
       title: 'Contact Details',
       details: [
         {
           __TYPE__: 'ContactDetail',
+          id: '2',
           label: 'website',
           value: 'https://example.com',
         },
         {
           __TYPE__: 'ContactDetail',
+          id: '3',
           label: 'email',
           value: 'example@example.com',
         },
@@ -31,16 +34,19 @@ describe('ContactDetails', () => {
   it('should render anchors only if there is an href', () => {
     const contactDetails: Content.ContactDetails = {
       __TYPE__: 'ContactDetails',
+      id: '1',
       title: 'Contact Details',
       details: [
         {
           __TYPE__: 'ContactDetail',
+          id: '2',
           label: 'website',
           value: 'https://example.com',
           href: 'https://example.com',
         },
         {
           __TYPE__: 'ContactDetail',
+          id: '3',
           label: 'email',
           value: 'example@example.com',
         },

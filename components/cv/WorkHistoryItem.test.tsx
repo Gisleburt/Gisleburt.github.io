@@ -6,6 +6,7 @@ import { Content } from '../../types/domain';
 
 const workHistoryItemWithoutEnd: Content.RoleDescription = {
   __TYPE__: 'RoleDescription',
+  id: '1',
   business: 'some company',
   role: 'some company',
   startDate: '2019-01',

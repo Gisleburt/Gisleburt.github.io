@@ -7,10 +7,12 @@ import { Content } from '../../types/domain';
 describe('WorkHistory', () => {
   const history: Content.WorkHistory = {
     __TYPE__: 'WorkHistory',
+    id: '1',
     title: 'Test Work History',
     roles: [
       {
         __TYPE__: 'RoleDescription',
+        id: '2',
         business: 'Some Company',
         role: 'Some Role',
         startDate: '2020-01',
@@ -18,6 +20,7 @@ describe('WorkHistory', () => {
       },
       {
         __TYPE__: 'RoleDescription',
+        id: '3',
         business: 'Another Company',
         role: 'Another Role',
         startDate: '2020-01',

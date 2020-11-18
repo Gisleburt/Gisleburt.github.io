@@ -8,11 +8,13 @@ describe('SkillsList', () => {
   const skillsCategories: Content.SkillList[] = [
     {
       __TYPE__: 'SkillList',
+      id: '1',
       title: 'Cat1',
       skills: ['skill1', 'skill2'],
     },
     {
       __TYPE__: 'SkillList',
+      id: '1',
       title: 'Cat2',
       skills: ['skill3', 'skill4'],
     },

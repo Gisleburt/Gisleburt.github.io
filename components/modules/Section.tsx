@@ -16,8 +16,9 @@ const SectionContent = ({ content }: SectionContentProps) => {
   if (isFreeText(content)) {
     return (
       <>
-        {content.text.split(/[\r\n]+/).map((p) => (
-          <p>{p}</p>
+        {content.text.split(/[\r\n]+/).map((p, i) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <p key={i}>{p}</p>
         ))}
       </>
     );
@@ -40,7 +41,7 @@ const Section = ({ section }: Props): JSX.Element => {
     <HtmlSection>
       <H2>{section.title}</H2>
       {section.content.map((content) => (
-        <SectionContent content={content} />
+        <SectionContent key={content.id} content={content} />
       ))}
     </HtmlSection>
   );

@@ -63,7 +63,7 @@ const Cv = ({ cv }: Props): JSX.Element => (
       <SiteHead title={cv.title} />
       <H1>{cv.title}</H1>
       {cv.content.map((content) => (
-        <CvContent content={content} />
+        <CvContent key={content.id} content={content} />
       ))}
 
       {/* <PersonalStatement statement={cv.personalStatement} /> */}

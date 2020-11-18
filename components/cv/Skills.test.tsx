@@ -7,11 +7,13 @@ import { Content } from '../../types/domain';
 describe('Skills', () => {
   const skills: Content.Skills = {
     __TYPE__: 'Skills',
+    id: '1',
     title: 'test title',
     description: 'test description',
     skillsList: [
       {
         __TYPE__: 'SkillList',
+        id: '2',
         title: 'Test',
         skills: ['Some', 'Skills', 'List'],
       },

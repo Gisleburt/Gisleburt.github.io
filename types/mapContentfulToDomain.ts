@@ -25,6 +25,7 @@ import {
 
 const mapContactDetail = (contactDetail: IContactDetails): Content.ContactDetail => ({
   __TYPE__: 'ContactDetail',
+  id: contactDetail.sys.id,
   label: contactDetail.fields.label,
   value: contactDetail.fields.value,
   href: contactDetail.fields.href,
@@ -32,18 +33,21 @@ const mapContactDetail = (contactDetail: IContactDetails): Content.ContactDetail
 
 const mapContactDetails = (cvContent: IContentDetails): Content.ContactDetails => ({
   __TYPE__: 'ContactDetails',
+  id: cvContent.sys.id,
   title: cvContent.fields.title,
   details: cvContent.fields.contactDetails?.map((detail) => mapContactDetail(detail)) || [],
 });
 
 const mapSkillsList = (skillsList: ISkillList): Content.SkillList => ({
   __TYPE__: 'SkillList',
+  id: skillsList.sys.id,
   title: skillsList.fields.title,
   skills: skillsList.fields.skills,
 });
 
 const mapSkills = (skills: ISkills): Content.Skills => ({
   __TYPE__: 'Skills',
+  id: skills.sys.id,
   title: skills.fields.groupTitle,
   description: skills.fields.description,
   skillsList: skills.fields.skillsLists.map((skillsList) => mapSkillsList(skillsList)),
@@ -51,6 +55,7 @@ const mapSkills = (skills: ISkills): Content.Skills => ({
 
 const mapRole = (role: IRoleDescription): Content.RoleDescription => ({
   __TYPE__: 'RoleDescription',
+  id: role.sys.id,
   business: role.fields.buisnessName,
   role: role.fields.jobTitle,
   startDate: role.fields.startDate,
@@ -60,12 +65,14 @@ const mapRole = (role: IRoleDescription): Content.RoleDescription => ({
 
 const mapWorkHistory = (workHistory: IWorkHistory): Content.WorkHistory => ({
   __TYPE__: 'WorkHistory',
+  id: workHistory.sys.id,
   title: workHistory.fields.title,
   roles: workHistory.fields.roles.map((role) => mapRole(role)),
 });
 
 const mapFreeText = (freeText: IFreeText): Content.FreeText => ({
   __TYPE__: 'FreeText',
+  id: freeText.sys.id,
   text: freeText.fields.text,
 });
 
@@ -83,6 +90,7 @@ const mapSectionContent = (
 
 const mapSection = (section: ISection): Content.Section => ({
   __TYPE__: 'Section',
+  id: section.sys.id,
   title: section.fields.title,
   content: section.fields.content.map((sectionContent) => mapSectionContent(sectionContent)),
 });
@@ -104,12 +112,14 @@ const mapCvContent = (
 
 const mapCv = (cv: ICv): Content.Cv => ({
   __TYPE__: 'Cv',
+  id: cv.sys.id,
   content: cv.fields.content.map((cvContent) => mapCvContent(cvContent)),
   title: cv.fields.title,
 });
 
 const mapBlogPost = (blogPost: IBlogPost): Content.BlogPost => ({
   __TYPE__: 'BlogPost',
+  id: blogPost.sys.id,
   title: blogPost.fields.title,
   image: undefined,
   post: blogPost.fields.post,
@@ -129,6 +139,7 @@ export const mapPage = (page: Entry<IPageFields>): Content.Page => {
 
   return {
     __TYPE__: 'Page',
+    id: page.sys.id,
     content: mapPageContent(page.fields.content),
     path: page.fields.path,
   };
@@ -136,5 +147,6 @@ export const mapPage = (page: Entry<IPageFields>): Content.Page => {
 
 export const mapPagePath = (page: Entry<IPageFields>): Content.Path => ({
   __TYPE__: 'Path',
+  id: page.sys.id,
   path: page.fields.path,
 });
