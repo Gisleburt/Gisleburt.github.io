@@ -3,7 +3,8 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Contentful from '../content/contentful';
 import { Content } from '../types/domain';
 import Cv from '../components/pages/Cv';
-import { isCv } from '../types/domainPredicates';
+import { isCv, isGenericPage } from '../types/domainPredicates';
+import GenericPage from '../components/pages/GenericPage';
 
 type Props = {
   page?: Content.Page;
@@ -15,6 +16,9 @@ const Page = ({ page }: Props): JSX.Element => {
   }
   if (isCv(page.content)) {
     return <Cv cv={page.content} />;
+  }
+  if (isGenericPage(page.content)) {
+    return <GenericPage page={page.content} />;
   }
   throw new Error('Unsupported page');
 };

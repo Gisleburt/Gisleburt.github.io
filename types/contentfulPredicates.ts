@@ -4,9 +4,13 @@ import {
   IContactDetails,
   IContentDetails,
   ICv,
+  IExternalLink,
   IFreeText,
+  IGenericPage,
+  IImage,
+  ILink,
+  INavBar,
   IPage,
-  IPersonalStatement,
   IRoleDescription,
   ISection,
   ISkillList,
@@ -25,13 +29,23 @@ export const isContenfulContentDetails = (entry: Entry<unknown>): entry is ICont
 
 export const isContenfulCv = (entry: Entry<unknown>): entry is ICv => entry.sys.contentType.sys.id === 'cv';
 
+export const isContentfulExternalLink = (entry: Entry<unknown>): entry is IExternalLink =>
+  entry.sys.contentType.sys.id === 'externalLink';
+
 export const isContenfulFreeText = (entry: Entry<unknown>): entry is IFreeText =>
   entry.sys.contentType.sys.id === 'freeText';
 
-export const isContenfulPage = (entry: Entry<unknown>): entry is IPage => entry.sys.contentType.sys.id === 'page';
+export const isContentfulGenericPage = (entry: Entry<unknown>): entry is IGenericPage =>
+  entry.sys.contentType.sys.id === 'genericPage';
 
-export const isContenfulPersonalStatement = (entry: Entry<unknown>): entry is IPersonalStatement =>
-  entry.sys.contentType.sys.id === 'personalStatement';
+export const isContentfulImage = (entry: Entry<unknown>): entry is IImage => entry.sys.contentType.sys.id === 'image';
+
+export const isContentfulLink = (entry: Entry<unknown>): entry is ILink => entry.sys.contentType.sys.id === 'link';
+
+export const isContentfulNavBar = (entry: Entry<unknown>): entry is INavBar =>
+  entry.sys.contentType.sys.id === 'navBar';
+
+export const isContenfulPage = (entry: Entry<unknown>): entry is IPage => entry.sys.contentType.sys.id === 'page';
 
 export const isContenfulRoleDescription = (entry: Entry<unknown>): entry is IRoleDescription =>
   entry.sys.contentType.sys.id === 'roleDescription';

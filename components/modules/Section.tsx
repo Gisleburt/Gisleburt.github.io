@@ -1,15 +1,14 @@
 import React from 'react';
 import { Content } from '../../types/domain';
-import { isFreeText, isRoleDescription, isSkills } from '../../types/domainPredicates';
+import { isFreeText, isImage, isRoleDescription, isSkills } from '../../types/domainPredicates';
 import WorkHistoryItem from '../cv/WorkHistoryItem';
 import Skills from '../cv/Skills';
 import H2 from '../html/H2';
 import HtmlSection from '../html/Section';
-
-type SectionContentTypes = Content.FreeText | Content.RoleDescription | Content.Skills;
+import SectionImage from './SectionImage';
 
 type SectionContentProps = {
-  content: SectionContentTypes;
+  content: Content.SectionContent;
 };
 
 const SectionContent = ({ content }: SectionContentProps) => {
@@ -28,6 +27,9 @@ const SectionContent = ({ content }: SectionContentProps) => {
   }
   if (isSkills(content)) {
     return <Skills skills={content} />;
+  }
+  if (isImage(content)) {
+    return <SectionImage image={content} />;
   }
   throw new Error(`Unknown type passed as Section content: ${JSON.stringify(content)}`);
 };

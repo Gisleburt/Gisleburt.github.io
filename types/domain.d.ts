@@ -47,11 +47,13 @@ export namespace Content {
     }
   >;
 
+  export type CvContent = ContactDetails | Section | Skills | WorkHistory;
+
   export type Cv = ContentType<
     'Cv',
     {
       title: string;
-      content: (ContactDetails | Section | Skills | WorkHistory)[];
+      content: CvContent[];
     }
   >;
 
@@ -62,11 +64,41 @@ export namespace Content {
     }
   >;
 
+  export type GenericPageContent = Cv | FreeText | Section | NavBar;
+
+  export type GenericPage = ContentType<
+    'GenericPage',
+    {
+      title: string;
+      content: GenericPageContent[];
+    }
+  >;
+
+  export type Image = ContentType<
+    'Image',
+    {
+      description: string;
+      url: string;
+      width: number;
+      height: number;
+    }
+  >;
+
+  export type Link = ContentType<
+    'Link',
+    {
+      text: string;
+      url: string;
+    }
+  >;
+
+  export type PageContent = Cv | BlogPost | GenericPage;
+
   export type Page = ContentType<
     'Page',
     {
       path: string;
-      content: Cv | BlogPost;
+      content: PageContent;
     }
   >;
 
@@ -77,14 +109,10 @@ export namespace Content {
     }
   >;
 
-  /**
-   * @deprecated Use Section
-   */
-  export type PersonalStatement = ContentType<
-    'PersonalStatement',
+  export type NavBar = ContentType<
+    'NavBar',
     {
-      title: string;
-      statement: string;
+      links: Link[];
     }
   >;
 
@@ -99,11 +127,13 @@ export namespace Content {
     }
   >;
 
+  export type SectionContent = Content.FreeText | Content.RoleDescription | Content.Skills | Content.Image;
+
   export type Section = ContentType<
     'Section',
     {
       title: string;
-      content: (FreeText | RoleDescription | Skills)[];
+      content: SectionContent[];
     }
   >;
 

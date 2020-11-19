@@ -14,12 +14,14 @@ export const isCv = (item: Content.ContentType<string, unknown>): item is Conten
 export const isFreeText = (item: Content.ContentType<string, unknown>): item is Content.FreeText =>
   item.__TYPE__ === 'FreeText';
 
+export const isGenericPage = (item: Content.ContentType<string, unknown>): item is Content.GenericPage =>
+  item.__TYPE__ === 'GenericPage';
+
+export const isImage = (item: Content.ContentType<string, unknown>): item is Content.Image => item.__TYPE__ === 'Image';
+
 export const isPage = (item: Content.ContentType<string, unknown>): item is Content.Page => item.__TYPE__ === 'Page';
 
 export const isPath = (item: Content.ContentType<string, unknown>): item is Content.Path => item.__TYPE__ === 'Path';
-
-export const isPersonalStatement = (item: Content.ContentType<string, unknown>): item is Content.PersonalStatement =>
-  item.__TYPE__ === 'PersonalStatement';
 
 export const isRoleDescription = (item: Content.ContentType<string, unknown>): item is Content.RoleDescription =>
   item.__TYPE__ === 'RoleDescription';

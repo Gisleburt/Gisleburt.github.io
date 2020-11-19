@@ -116,6 +116,33 @@ export interface ICv extends Entry<ICvFields> {
   };
 }
 
+export interface IExternalLinkFields {
+  /** Text */
+  text: string;
+
+  /** Url */
+  url: string;
+}
+
+/** Link to a page not on this site */
+
+export interface IExternalLink extends Entry<IExternalLinkFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'externalLink';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IFreeTextFields {
   /** Text */
   text: string;
@@ -140,12 +167,115 @@ export interface IFreeText extends Entry<IFreeTextFields> {
   };
 }
 
+export interface IGenericPageFields {
+  /** Title */
+  title: string;
+
+  /** Content */
+  content: (ICv | IFreeText | INavBar | ISection)[];
+}
+
+/** A generic page */
+
+export interface IGenericPage extends Entry<IGenericPageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'genericPage';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
+export interface IImageFields {
+  /** Description */
+  description: string;
+
+  /** Image */
+  image: Asset;
+}
+
+export interface IImage extends Entry<IImageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'image';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
+export interface ILinkFields {
+  /** Text */
+  text: string;
+
+  /** Link */
+  link: IPage;
+}
+
+/** A link to a page on the site */
+
+export interface ILink extends Entry<ILinkFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'link';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
+export interface INavBarFields {
+  /** Links */
+  links: (IExternalLink | ILink)[];
+}
+
+/** A collection of navigable elements */
+
+export interface INavBar extends Entry<INavBarFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'navBar';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IPageFields {
   /** path */
   path: string;
 
   /** Content */
-  content: IBlogPost | ICv;
+  content: IBlogPost | ICv | IGenericPage;
 }
 
 /** A location on the website that links to some content */
@@ -167,17 +297,15 @@ export interface IPage extends Entry<IPageFields> {
   };
 }
 
-export interface IPersonalStatementFields {
-  /** Title */
-  title: string;
+export interface IRedirectFields {
+  /** to */
+  to: IPage;
 
-  /** Statement */
-  statement: string;
+  /** Label */
+  label?: string | undefined;
 }
 
-/** A summary of the CV */
-
-export interface IPersonalStatement extends Entry<IPersonalStatementFields> {
+export interface IRedirect extends Entry<IRedirectFields> {
   sys: {
     id: string;
     type: string;
@@ -186,7 +314,7 @@ export interface IPersonalStatement extends Entry<IPersonalStatementFields> {
     locale: string;
     contentType: {
       sys: {
-        id: 'personalStatement';
+        id: 'redirect';
         linkType: 'ContentType';
         type: 'Link';
       };
@@ -235,7 +363,7 @@ export interface ISectionFields {
   title: string;
 
   /** Content */
-  content: (IFreeText | IRoleDescription | ISkills)[];
+  content: (IFreeText | IImage | IRoleDescription | ISkills)[];
 }
 
 /** A titled section of content */
@@ -346,15 +474,20 @@ export type CONTENT_TYPE =
   | 'contactDetails'
   | 'contentDetails'
   | 'cv'
+  | 'externalLink'
   | 'freeText'
+  | 'genericPage'
+  | 'image'
+  | 'link'
+  | 'navBar'
   | 'page'
-  | 'personalStatement'
+  | 'redirect'
   | 'roleDescription'
   | 'section'
   | 'skillList'
   | 'skills'
   | 'workHistory';
 
-export type LOCALE_CODE = 'en-US';
+export type LOCALE_CODE = 'en-GB' | 'en-US';
 
 export type CONTENTFUL_DEFAULT_LOCALE_CODE = 'en-US';
