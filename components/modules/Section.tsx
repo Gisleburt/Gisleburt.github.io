@@ -6,6 +6,7 @@ import Skills from '../cv/Skills';
 import H2 from '../html/H2';
 import HtmlSection from '../html/Section';
 import SectionImage from './SectionImage';
+import FreeText from './FreeText';
 
 type SectionContentProps = {
   content: Content.SectionContent;
@@ -13,14 +14,7 @@ type SectionContentProps = {
 
 const SectionContent = ({ content }: SectionContentProps) => {
   if (isFreeText(content)) {
-    return (
-      <>
-        {content.text.split(/[\r\n]+/).map((p, i) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <p key={i}>{p}</p>
-        ))}
-      </>
-    );
+    return <FreeText freeText={content} />;
   }
   if (isRoleDescription(content)) {
     return <WorkHistoryItem key={`${content.business}-${content.role}`} {...content} />;

@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import SiteHead from '../SiteHead';
 import ContactDetails from '../cv/ContactDetails';
 import WorkHistory from '../cv/WorkHistory';
@@ -10,24 +9,8 @@ import Global from '../css/Global';
 import { Content } from '../../types/domain';
 import { isContactDetails, isSection, isSkills, isWorkHistory } from '../../types/domainPredicates';
 import Section from '../modules/Section';
-
-const Page = styled.div`
-  color: #a7b8c9;
-  background-color: #2b2b2b;
-  font-family: Lato, sans-serif;
-  font-weight: 300;
-  font-size: 1.4rem;
-  letter-spacing: 0.1rem;
-  line-height: 2rem;
-  padding: 20px 0 30px;
-`;
-Page.displayName = 'Page';
-
-const Body = styled.div`
-  max-width: 800px;
-  margin: auto;
-`;
-Body.displayName = 'Body';
+import Body from '../modules/Body';
+import Page from '../modules/Page';
 
 type CvContentTypes = Content.ContactDetails | Content.Section | Content.Skills | Content.WorkHistory;
 
