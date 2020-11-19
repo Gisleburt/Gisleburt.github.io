@@ -1,17 +1,11 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import { Content } from '../../types/domain';
 
 type Props = {
   freeText: Content.FreeText;
 };
 
-const FreeText = ({ freeText }: Props): JSX.Element => (
-  <>
-    {freeText.text.split(/[\r\n]+/).map((p, i) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <p key={i}>{p}</p>
-    ))}
-  </>
-);
+const FreeText = ({ freeText }: Props): JSX.Element => <ReactMarkdown>{freeText.text}</ReactMarkdown>;
 
 export default FreeText;

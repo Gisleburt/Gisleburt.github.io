@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import H3 from '../html/H3';
 import { Content } from '../../types/domain';
 
-const WorkHistoryTitle = styled(H3)`
+const WorkHistoryTitle = styled.h3`
   display: flex;
   justify-content: space-between;
 `;

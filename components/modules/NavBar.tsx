@@ -1,12 +1,13 @@
 import React from 'react';
 import { Content } from '../../types/domain';
+import Nav from './Nav';
 
 type Props = {
   navBar: Content.NavBar;
 };
 
 const NavBar = ({ navBar }: Props): JSX.Element => (
-  <nav>
+  <Nav>
     <ul>
       {navBar.links.map((link) => (
         <li key={link.id}>
@@ -14,7 +15,7 @@ const NavBar = ({ navBar }: Props): JSX.Element => (
         </li>
       ))}
     </ul>
-  </nav>
+  </Nav>
 );
 
 export default NavBar;

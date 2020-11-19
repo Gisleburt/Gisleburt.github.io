@@ -37,7 +37,7 @@ describe('WorkHistory', () => {
 
   it('should pass work history down', () => {
     const wrapper = shallow(<WorkHistory workHistory={history} />);
-    expect(wrapper.find('H2').text()).to.equal(history.title);
+    expect(wrapper.find('h2').text()).to.equal(history.title);
 
     const firstItem = wrapper.find('WorkHistoryItem').at(0);
     expect(firstItem.prop('business')).to.equal(history.roles[0].business);

@@ -4,7 +4,6 @@ import ContactDetails from '../cv/ContactDetails';
 import WorkHistory from '../cv/WorkHistory';
 import Skills from '../cv/Skills';
 import Reset from '../css/Reset';
-import H1 from '../html/H1';
 import Global from '../css/Global';
 import { Content } from '../../types/domain';
 import { isContactDetails, isSection, isSkills, isWorkHistory } from '../../types/domainPredicates';
@@ -44,7 +43,7 @@ const Cv = ({ cv }: Props): JSX.Element => (
     <Global />
     <Body>
       <SiteHead title={cv.title} />
-      <H1>{cv.title}</H1>
+      <h1>{cv.title}</h1>
       {cv.content.map((content) => (
         <CvContent key={content.id} content={content} />
       ))}
