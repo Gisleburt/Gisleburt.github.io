@@ -1,4 +1,5 @@
 use yew::prelude::*;
+use yew::ServerRenderer;
 
 #[function_component(App)]
 fn app() -> Html {
@@ -7,6 +8,13 @@ fn app() -> Html {
     }
 }
 
-fn main() {
-    yew::start_app::<App>();
+#[tokio::main]
+async fn main() {
+    let renderer = ServerRenderer::<App>::new()
+        .hydratable(false); // This removes hydration markers
+
+    let rendered = renderer.render().await;
+
+    // Prints: <div>Hello, World!</div>
+    println!("{}", rendered);
 }
