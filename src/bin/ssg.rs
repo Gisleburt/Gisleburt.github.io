@@ -26,7 +26,7 @@ async fn prepare_docs_dir(docs_dir: &str, dist_dir: &str) -> Result<(), String> 
             format!("Unable to read directory `{}`, did you run `trunk` to create it?", dist_dir)
         })?;
     while let Some(entry) = dist.next_entry().await.map_err(|_| "Failed to read file")? {
-        println!("{}", entry.path().to_str().unwrap_or("?"));
+        println!("Copying: {}", entry.path().to_str().unwrap_or("?"));
         let new_file = docs_path.join(entry.file_name());
         if !new_file.exists() {
             tokio::fs::File::create(&new_file)
@@ -35,8 +35,7 @@ async fn prepare_docs_dir(docs_dir: &str, dist_dir: &str) -> Result<(), String> 
         }
         tokio::fs::copy(entry.path(), new_file)
             .await
-            .unwrap();
-            // .map_err(|_| format!("Unable to copy `{}`", entry.path().to_str().unwrap_or("?")))?;
+            .map_err(|_| format!("Unable to copy `{}`", entry.path().to_str().unwrap_or("?")))?;
     }
 
     Ok(())
