@@ -6,6 +6,7 @@ install:
 	cargo install sfz
 
 build:
+	rm docs/* || true
 	trunk build
 	cargo run --bin ssg
 
