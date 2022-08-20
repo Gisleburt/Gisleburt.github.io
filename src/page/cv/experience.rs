@@ -1,14 +1,14 @@
 use yew::prelude::*;
-use super::experience_detail::{ExperienceDetail, ExperienceDetailProp};
+use super::experience_detail::{ExperienceDetail, ExperienceDetailProps};
 
 #[derive(Debug, Properties, PartialEq)]
 pub struct ExperienceProps {
-    title: String,
-    blurb: String,
-    details: Vec<ExperienceDetailProp>,
+    pub title: String,
+    pub blurb: String,
+    pub details: Vec<ExperienceDetailProps>,
 }
 
-fn format_experience(details: &ExperienceDetailProp) -> Html {
+fn format_experience(details: &ExperienceDetailProps) -> Html {
     let key = format!("{}-{}", details.company, details.title);
     html! {
         <ExperienceDetail key={ key } ..details.clone() />

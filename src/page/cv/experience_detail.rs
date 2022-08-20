@@ -1,29 +1,28 @@
 use yew::prelude::*;
 
-fn default_end() -> String {
-    "Now".to_string()
-}
-
 #[derive(Clone, Debug, Properties, PartialEq)]
-pub struct ExperienceDetailProp {
+pub struct ExperienceDetailProps {
     pub company: String,
     pub title: String,
     pub start: String,
-    #[prop_or_else(default_end)]
-    pub end: String,
+    pub end: Option<String>,
     pub detail: String,
 }
 
 fn format_detail(detail: &str) -> Html {
     detail.lines()
-        .into_iter()
-        .filter(|line| !line.trim().is_empty())
-        .map(|line| html!{<p>{ line }</p>})
+        .filter_map(|line| {
+            if line.trim().is_empty() {
+                None
+            } else {
+                Some(html! {<p>{ line }</p>})
+            }
+        })
         .collect()
 }
 
 #[function_component(ExperienceDetail)]
-pub fn experience_details(props: &ExperienceDetailProp) -> Html {
+pub fn experience_details(props: &ExperienceDetailProps) -> Html {
     html! {
         <section class="experience-details">
             <header>
@@ -34,7 +33,13 @@ pub fn experience_details(props: &ExperienceDetailProp) -> Html {
                 </span>
                 <span>
                     <span class="start">{ &props.start }</span>
-                    <span class="end">{ &props.end }</span>
+                    <span class="end">
+                        if let Some(end) = &props.end {
+                            { end }
+                        } else {
+                            { "Now" }
+                        }
+                    </span>
                 </span>
             </header>
             { format_detail(&props.detail) }
