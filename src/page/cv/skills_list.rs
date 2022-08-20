@@ -8,10 +8,7 @@ pub struct SkillList {
 
 impl From<(String, Vec<String>)> for SkillList {
     fn from((name, skills): (String, Vec<String>)) -> Self {
-        SkillList {
-            name,
-            skills,
-        }
+        SkillList { name, skills }
     }
 }
 

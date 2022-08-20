@@ -3,21 +3,102 @@ mod page;
 use page::cv::experience::Experience;
 use page::cv::experience::ExperienceProps;
 use page::cv::experience_detail::ExperienceDetailProps;
-use page::cv::skills_list::SkillsList;
-use page::cv::skills_list::SkillList;
 use page::cv::simple_section::SimpleSection;
+use page::cv::skills_list::SkillList;
+use page::cv::skills_list::SkillsList;
 
 use yew::prelude::*;
 
 #[function_component(App)]
 pub fn app() -> Html {
     let skills: Vec<SkillList> = vec![
-        ("Leadership".to_string(), vec!["Architecture".to_string(), "tech evangelist".to_string(), "agile coach".to_string(), "mentor".to_string(), "triage".to_string()]).into(),
-        ("Languages".to_string(), vec!["Rust".to_string(), "JavaScript".to_string(), "Node".to_string(), "TypeScript".to_string(), "Flow".to_string(), "ES6 +".to_string(), "PHP".to_string(), "MySql / Maria".to_string(), "Postgres".to_string()]).into(),
-        ("Quality Control".to_string(), vec!["GitLab CI".to_string(), "CircleCI".to_string(), "Travis".to_string(), "Jest".to_string(), "Cucumber(JS + PHP)".to_string(), "ESLint".to_string(), "Mocha".to_string(), "Chai".to_string(), "Sinon".to_string(), "PhpUnit".to_string()]).into(),
-        ("Frameworks".to_string(), vec!["Actix Web".to_string(), "Diesel".to_string(), "Yew".to_string(), "Next.js".to_string(), "Express".to_string(), "React".to_string(), "Express".to_string(), "Http4Js".to_string(), "Rocket".to_string()]).into(),
-        ("Source Management".to_string(), vec!["Git".to_string(), "GitHub".to_string(), "GitLab".to_string(), "Cargo".to_string(), "Crates.io".to_string(), "NPM".to_string(), "Yarn".to_string(), "Composer".to_string(), "Packagist".to_string(), "Docker Hub".to_string()]).into(),
-        ("WebOps".to_string(), vec!["Kubernetes".to_string(), "GKE".to_string(), "GCP".to_string(), "Docker".to_string(), "Vagrant".to_string(), "AWS".to_string(), "DO".to_string(), "StackPoint".to_string()]).into(),
+        (
+            "Leadership".to_string(),
+            vec![
+                "Architecture".to_string(),
+                "tech evangelist".to_string(),
+                "agile coach".to_string(),
+                "mentor".to_string(),
+                "triage".to_string(),
+            ],
+        )
+            .into(),
+        (
+            "Languages".to_string(),
+            vec![
+                "Rust".to_string(),
+                "JavaScript".to_string(),
+                "Node".to_string(),
+                "TypeScript".to_string(),
+                "Flow".to_string(),
+                "ES6 +".to_string(),
+                "PHP".to_string(),
+                "MySql / Maria".to_string(),
+                "Postgres".to_string(),
+            ],
+        )
+            .into(),
+        (
+            "Quality Control".to_string(),
+            vec![
+                "GitLab CI".to_string(),
+                "CircleCI".to_string(),
+                "Travis".to_string(),
+                "Jest".to_string(),
+                "Cucumber(JS + PHP)".to_string(),
+                "ESLint".to_string(),
+                "Mocha".to_string(),
+                "Chai".to_string(),
+                "Sinon".to_string(),
+                "PhpUnit".to_string(),
+            ],
+        )
+            .into(),
+        (
+            "Frameworks".to_string(),
+            vec![
+                "Actix Web".to_string(),
+                "Diesel".to_string(),
+                "Yew".to_string(),
+                "Next.js".to_string(),
+                "Express".to_string(),
+                "React".to_string(),
+                "Express".to_string(),
+                "Http4Js".to_string(),
+                "Rocket".to_string(),
+            ],
+        )
+            .into(),
+        (
+            "Source Management".to_string(),
+            vec![
+                "Git".to_string(),
+                "GitHub".to_string(),
+                "GitLab".to_string(),
+                "Cargo".to_string(),
+                "Crates.io".to_string(),
+                "NPM".to_string(),
+                "Yarn".to_string(),
+                "Composer".to_string(),
+                "Packagist".to_string(),
+                "Docker Hub".to_string(),
+            ],
+        )
+            .into(),
+        (
+            "WebOps".to_string(),
+            vec![
+                "Kubernetes".to_string(),
+                "GKE".to_string(),
+                "GCP".to_string(),
+                "Docker".to_string(),
+                "Vagrant".to_string(),
+                "AWS".to_string(),
+                "DO".to_string(),
+                "StackPoint".to_string(),
+            ],
+        )
+            .into(),
     ];
 
     let personal_statement = r#"
@@ -91,13 +172,7 @@ As with Apolitical, Daniel’s biggest achievement at MOO was coaching a junior 
         title: "Experience".to_string(),
         blurb: "Further details can be given on request".to_string(),
         details: vec![
-            peloton_em,
-            peloton_el,
-            triptease,
-            apolitical,
-            moo,
-            foundry,
-            loft,
+            peloton_em, peloton_el, triptease, apolitical, moo, foundry, loft,
         ],
     };
 

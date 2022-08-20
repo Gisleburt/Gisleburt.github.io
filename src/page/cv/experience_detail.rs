@@ -10,7 +10,8 @@ pub struct ExperienceDetailProps {
 }
 
 fn format_detail(detail: &str) -> Html {
-    detail.lines()
+    detail
+        .lines()
         .filter_map(|line| {
             if line.trim().is_empty() {
                 None

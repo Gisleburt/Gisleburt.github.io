@@ -1,5 +1,5 @@
-use yew::prelude::*;
 use super::experience_detail::{ExperienceDetail, ExperienceDetailProps};
+use yew::prelude::*;
 
 #[derive(Debug, Properties, PartialEq)]
 pub struct ExperienceProps {
