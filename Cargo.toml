@@ -9,4 +9,5 @@ edition = "2021"
 yew = { git = "https://github.com/yewstack/yew/", features = ["csr", "hydration", "ssr"] }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+thiserror = "1.0.32"
 tokio = { version = "1", features = ["full"] }
