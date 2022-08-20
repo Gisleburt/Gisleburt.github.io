@@ -17,6 +17,9 @@ build-release:
 serve: build
 	sfz -r docs
 
+preview:
+	trunk serve index-no-hydrate.html
+
 clean:
 	cargo clean
 	rm -r dist
