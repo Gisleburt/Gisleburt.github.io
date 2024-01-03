@@ -3,12 +3,15 @@ use dioxus::prelude::*;
 #[derive(Props)]
 pub(super) struct NavItemProps<'a> {
     href: &'a str,
+    download: Option<&'a str>,
     children: Element<'a>,
 }
 
 pub(super) fn NavItem<'a>(cx: Scope<'a, NavItemProps<'a>>) -> Element {
     cx.render(rsx! {
-        li { a { href: "{cx.props.href}", &cx.props.children }}
+        li {
+            a { href: "{cx.props.href}", download: cx.props.download, &cx.props.children }
+        }
     })
 }
 
@@ -20,9 +23,7 @@ pub(super) struct NavProps<'a> {
 pub(super) fn Nav<'a>(cx: Scope<'a, NavProps<'a>>) -> Element {
     cx.render(rsx! {
         nav {
-            ol {
-                &cx.props.children
-            }
+            ol { &cx.props.children }
         }
     })
 }

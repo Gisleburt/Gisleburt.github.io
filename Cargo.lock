@@ -154,6 +154,7 @@ version = "0.1.0"
 dependencies = [
  "dioxus",
  "dioxus-web",
+ "indoc",
 ]
 
 [[package]]
@@ -497,6 +498,12 @@ name = "ident_case"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b9e0384b61958566e926dc50660321d12159025e767c18e043daf26b70104c39"
+
+[[package]]
+name = "indoc"
+version = "2.0.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1e186cfbae8084e513daff4240b4797e342f988cecda4fb6c939150f96315fd8"
 
 [[package]]
 name = "interprocess-docfix"

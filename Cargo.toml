@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 dioxus = "0.4.3"
 dioxus-web = "0.4.3"
+indoc = "2.0.4"
