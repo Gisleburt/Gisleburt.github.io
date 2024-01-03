@@ -2,42 +2,49 @@
 
 use dioxus::prelude::*;
 
+mod home;
 mod nav;
 
-use nav::*;
+use home::*;
 
-fn Contact(cx: Scope) -> Element {
+fn WhoIsDaniel(cx: Scope) -> Element {
     cx.render(rsx! {
-      Nav {
-            NavItem {href: "https://github.com/gisleburt", "GitHub"}
-            NavItem {href: "/Daniel Mason - CV With Matrix - 2024.pdf", "CV"}
-            NavItem {href: "https://www.linkedin.com/in/danieljamesmason/", "LinkedIn"}
-        }
+        h2 {id: "who-is-daniel", "Who is Daniel"}
     })
 }
 
-fn Navigation(cx: Scope) -> Element {
+fn Skills(cx: Scope) -> Element {
     cx.render(rsx! {
-      Nav {
-            NavItem {href: "#", "Home"}
-            NavItem {href: "#who-is-daniel", "Who is Daniel"}
-            NavItem {href: "#skills", "Skills"}
-            NavItem {href: "#presentations", "Presentations"}
-            NavItem {href: "#achievements", "Achievements"}
-            NavItem {href: "#personal-interests", "Personal Interests"}
-        }
+        h2 {id: "skills", "Skills"}
     })
 }
-fn Home(cx: Scope) -> Element {
+
+fn Presentations(cx: Scope) -> Element {
     cx.render(rsx! {
-        h1 {"Daniel // Mason"}
-        Contact {}
-        Navigation {}
+        h2 {id: "presentations", "Presentations"}
+    })
+}
+
+fn Achievements(cx: Scope) -> Element {
+    cx.render(rsx! {
+        h2 {id: "achievements", "Achievements"}
+    })
+}
+
+fn PersonalInterests(cx: Scope) -> Element {
+    cx.render(rsx! {
+        h2 {id: "personal-interests", "Personal Interests"}
     })
 }
 
 pub fn App(cx: Scope) -> Element {
     cx.render(rsx! {
         Home {}
+        WhoIsDaniel {}
+        Skills {}
+        Presentations {}
+        Achievements {}
+        PersonalInterests {}
+
     })
 }
