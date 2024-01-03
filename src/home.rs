@@ -4,7 +4,7 @@ use super::nav::*;
 
 pub(super) fn Contact(cx: Scope) -> Element {
     cx.render(rsx! {
-        Nav { 
+        Nav {
             NavItem { href: "https://github.com/gisleburt", "GitHub" }
             NavItem {
                 download: "Daniel Mason - CV With Matrix - 2024.pdf",
@@ -18,7 +18,7 @@ pub(super) fn Contact(cx: Scope) -> Element {
 
 pub(super) fn Navigation(cx: Scope) -> Element {
     cx.render(rsx! {
-        Nav { 
+        Nav {
             NavItem { href: "#home", "Home" }
             NavItem { href: "#who-is-daniel", "Who is Daniel" }
             NavItem { href: "#skills", "Skills" }
