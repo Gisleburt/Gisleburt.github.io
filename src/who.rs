@@ -3,7 +3,7 @@ use indoc::indoc;
 
 pub(super) fn WhoIsDaniel(cx: Scope) -> Element {
     cx.render(rsx! {
-        section { id: "who-is-daniel",
+        article { id: "who-is-daniel",
             h2 { "Who is Daniel" }
             p { "Hello, I'm Daniel and I'm a software engineer!" }
             p {

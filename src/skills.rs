@@ -2,7 +2,7 @@ use dioxus::prelude::*;
 
 pub(super) fn Skills(cx: Scope) -> Element {
     cx.render(rsx! {
-        section { id: "skills",
+        article { id: "skills",
             h2 { "Skills" }
             dl {
                 dt { "Leadership" }
