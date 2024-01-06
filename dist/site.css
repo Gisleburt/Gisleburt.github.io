@@ -42,16 +42,17 @@ body {
 
 section {
     background-color: var(--secondary-bg);
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    min-height: calc(100vh - 12rem);
+}
+
+section#home {
     display: flex;
     flex-direction: column;
     justify-content: center;
     vertical-align: middle;
-    min-height: 100vh;
-}
-
-section#home {
     background-color: var(--primary-bg);
-    min-height: calc(100vh - 4rem);
 }
 
 h1 {
@@ -66,7 +67,13 @@ h1 span {
 }
 
 h2, h3, h4 {
+    margin: 1rem 0 2rem;
+    font-size: 2rem;
     color: var(--secondary-fg)
+}
+
+h3 {
+
 }
 
 nav {
@@ -101,6 +108,16 @@ nav.main.sticky {
 
 ul.skills {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+ul.skills li {
+    background-color: var(--tertiary-bg);
+    padding: 3px 5px;
+    margin: 3px;
 }
 
 a, a:visited {
@@ -110,4 +127,8 @@ a, a:visited {
 
 a:hover {
     text-decoration: underline;
+}
+
+p {
+    margin: 1rem 0;
 }
