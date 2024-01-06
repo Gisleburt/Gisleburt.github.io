@@ -18,11 +18,13 @@ pub(super) fn NavItem<'a>(cx: Scope<'a, NavItemProps<'a>>) -> Element {
 #[derive(Props)]
 pub(super) struct NavProps<'a> {
     children: Element<'a>,
+    class: Option<&'a str>,
 }
 
 pub(super) fn Nav<'a>(cx: Scope<'a, NavProps<'a>>) -> Element {
     cx.render(rsx! {
         nav {
+            class: cx.props.class,
             ol { &cx.props.children }
         }
     })

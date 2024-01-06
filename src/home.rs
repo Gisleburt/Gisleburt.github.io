@@ -19,6 +19,7 @@ pub(super) fn Contact(cx: Scope) -> Element {
 pub(super) fn Navigation(cx: Scope) -> Element {
     cx.render(rsx! {
         Nav { 
+            class: "main",
             NavItem { href: "#home", "Home" }
             NavItem { href: "#who-is-daniel", "Who is Daniel" }
             NavItem { href: "#presentations", "Presentations" }
@@ -30,9 +31,9 @@ pub(super) fn Navigation(cx: Scope) -> Element {
 pub(super) fn Home(cx: Scope) -> Element {
     cx.render(rsx! {
         section { id: "home",
-            h1 { "Daniel // Mason" }
+            h1 { "Daniel " span { "// Mason" } }
             Contact {}
-            Navigation {}
         }
+        Navigation {}
     })
 }

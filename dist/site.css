@@ -1,0 +1,107 @@
+@property --primary-bg {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #0D1321;
+}
+
+@property --primary-fg {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #F0EBD8;
+}
+
+
+@property --secondary-bg {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #1D2D44;
+}
+
+@property --secondary-fg {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #748CAB;
+}
+
+@property --tertiary-bg {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #3E5C76;
+}
+
+body {
+    color: var(--primary-fg);
+    background-color: var(--primary-bg);
+
+    font-family: sans-serif;
+    font-size: 62.5%;
+}
+
+section {
+    background-color: var(--secondary-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    vertical-align: middle;
+    min-height: 100vh;
+}
+
+section#home {
+    background-color: var(--primary-bg);
+    min-height: calc(100vh - 3rem);
+}
+
+h1 {
+    font-family: 'Fira Code', 'Source Code Pro', 'Courier New', Courier, monospace;
+    color: var(--secondary-fg);
+    text-align: center;
+    font-size: 2rem;
+}
+
+h1 span {
+    color: green;
+}
+
+h2, h3, h4 {
+    color: var(--secondary-fg)
+}
+
+nav {
+    height: 1rem;
+    padding: 1rem 0;
+    line-height: 1rem;
+}
+
+nav ol {
+    display: flex;
+    justify-content: center;
+}
+
+nav ol li {
+    margin: 0 0.3rem;
+}
+
+nav.main {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: var(--primary-bg);
+}
+
+nav.main.sticky {
+    top: 0;
+}
+
+ul.skills {
+    display: flex;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: var(--primary-fg)
+}
+
+a:hover {
+    text-decoration: underline;
+}

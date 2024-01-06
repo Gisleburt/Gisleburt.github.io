@@ -67,7 +67,7 @@ fn Hackathons(cx: Scope) -> Element {
 
 pub(super) fn PersonalInterests(cx: Scope) -> Element {
     cx.render(rsx! {
-        article { id: "personal-interests",
+        section { id: "personal-interests",
             h2 { "Personal Interests" }
             Hackathons {}
             DungeonsAndDragons {}

@@ -3,7 +3,7 @@ use indoc::indoc;
 
 pub(super) fn Presentations(cx: Scope) -> Element {
     cx.render(rsx! {
-        article { id: "presentations",
+        section { id: "presentations",
             h2 { "Presentations" }
             p {
                 indoc! { "
