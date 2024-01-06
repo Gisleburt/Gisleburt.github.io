@@ -4,7 +4,7 @@ use super::nav::*;
 
 pub(super) fn Contact(cx: Scope) -> Element {
     cx.render(rsx! {
-        Nav { 
+        Nav {
             class: "contact",
             NavItem { href: "https://github.com/gisleburt", "GitHub" }
             NavItem {
@@ -19,7 +19,7 @@ pub(super) fn Contact(cx: Scope) -> Element {
 
 pub(super) fn MainNav(cx: Scope) -> Element {
     cx.render(rsx! {
-        Nav { 
+        Nav {
             class: "main",
             NavItem { href: "#home", "Home" }
             NavItem { href: "#who-is-daniel", "Who is Daniel" }

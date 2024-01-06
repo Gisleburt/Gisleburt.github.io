@@ -3,15 +3,15 @@
 use dioxus::prelude::*;
 
 mod home;
+mod interests;
 mod nav;
 mod presentations;
 mod who;
-mod interests;
 
 use home::Home;
+use interests::PersonalInterests;
 use presentations::Presentations;
 use who::WhoIsDaniel;
-use interests::PersonalInterests;
 
 pub fn App(cx: Scope) -> Element {
     cx.render(rsx! {

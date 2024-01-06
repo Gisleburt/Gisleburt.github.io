@@ -34,7 +34,6 @@ fn SoftSkills(cx: Scope) -> Element {
     })
 }
 
-
 pub(super) fn WhoIsDaniel(cx: Scope) -> Element {
     cx.render(rsx! {
         section { id: "who-is-daniel",

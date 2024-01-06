@@ -1,7 +1,6 @@
 use dioxus::prelude::*;
 use indoc::indoc;
 
-
 fn DungeonsAndDragons(cx: Scope) -> Element {
     cx.render(rsx! {
         article {
