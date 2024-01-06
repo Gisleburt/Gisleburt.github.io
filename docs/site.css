@@ -108,8 +108,11 @@ ul a, ul a:visited {
 }
 
 a, a:visited {
-    text-decoration: none;
     color: var(--primary-fg)
+}
+
+nav a, nav a:visited {
+    text-decoration: none;
 }
 
 p {
