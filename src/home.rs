@@ -21,9 +21,7 @@ pub(super) fn Navigation(cx: Scope) -> Element {
         Nav { 
             NavItem { href: "#home", "Home" }
             NavItem { href: "#who-is-daniel", "Who is Daniel" }
-            NavItem { href: "#skills", "Skills" }
             NavItem { href: "#presentations", "Presentations" }
-            NavItem { href: "#achievements", "Achievements" }
             NavItem { href: "#personal-interests", "Personal Interests" }
         }
     })

@@ -8,8 +8,7 @@ pub(super) fn Presentations(cx: Scope) -> Element {
             p {
                 indoc! { "
                     Throughout my career I've delivered a number of presentations and more recently,
-                    rather than allowing them to be lost to time, I decided to build them in my own
-                    time so that I could share them here!
+                    some of my more recent ones are here to see
                 " }
             }
             ul {
@@ -18,9 +17,8 @@ pub(super) fn Presentations(cx: Scope) -> Element {
                     " "
                     indoc! { "
                         is a quick introduction to the Rust programming language, whats supposed to
-                        be difficult, whats so amazing about it and how to get started. I presented
-                        this at Beamery and started a little Rust slack group to help people on
-                        their journey.
+                        be difficult, what's so amazing about it and how to get started. I presented
+                        this at Beamery and started a Rust slack group to help people on their journey.
                     " }
                 }
                 li {
