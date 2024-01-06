@@ -7,7 +7,7 @@ name = "danielmason_com"
 default_platform = "web"
 
 # `build` & `serve` output path
-out_dir = "dist"
+out_dir = "docs"
 
 # The static resource path
 asset_dir = "public"
