@@ -23,8 +23,7 @@ pub(super) struct NavProps<'a> {
 
 pub(super) fn Nav<'a>(cx: Scope<'a, NavProps<'a>>) -> Element {
     cx.render(rsx! {
-        nav {
-            class: cx.props.class,
+        nav { class: cx.props.class,
             ol { &cx.props.children }
         }
     })

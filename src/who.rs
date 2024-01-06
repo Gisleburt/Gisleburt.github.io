@@ -3,8 +3,7 @@ use indoc::indoc;
 
 fn HardSkills(cx: Scope) -> Element {
     cx.render(rsx! {
-        ul {
-            class: "skills",
+        ul { class: "skills",
             li { "Rust" }
             li { "TypeScript" }
             li { "Kubernetes " }
@@ -19,8 +18,7 @@ fn HardSkills(cx: Scope) -> Element {
 
 fn SoftSkills(cx: Scope) -> Element {
     cx.render(rsx! {
-        ul {
-            class: "skills",
+        ul { class: "skills",
             li { "Stakeholder Collaboration" }
             li { "Coaching" }
             li { "Mentoring" }
