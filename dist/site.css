@@ -95,8 +95,16 @@ ul.skills {
 
 ul.skills li {
     background-color: var(--tertiary-bg);
-    padding: 0.5rem 1rem;
+    padding: 1rem 1.5rem;
     margin: 1rem;
+}
+
+ul.presentations li {
+    margin: 5rem 2rem;
+}
+
+ul a, ul a:visited {
+    text-decoration: underline;
 }
 
 a, a:visited {

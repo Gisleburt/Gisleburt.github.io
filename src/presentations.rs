@@ -11,7 +11,7 @@ pub(super) fn Presentations(cx: Scope) -> Element {
                     some of my more recent ones are here to see
                 " }
             }
-            ul {
+            ul { class: "presentations",
                 li {
                     a { href: "https://www.danielmason.com/intro-to-rust/", "Intro to Rust" }
                     " "
