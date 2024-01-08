@@ -10,54 +10,7 @@
 
 </head>
 <body>
-  <div id="main"><section id="home"><h1>Daniel <span>// Mason</span></h1><nav class="contact"><ol><li><a href="https://github.com/gisleburt">GitHub</a></li><li><a href="/Daniel Mason - CV With Matrix - 2024.pdf" download="Daniel Mason - CV With Matrix - 2024.pdf">CV</a></li><li><a href="https://www.linkedin.com/in/danieljamesmason/">LinkedIn</a></li></ol></nav></section><nav class="main"><ol><li><a href="#home">Home</a></li><li><a href="#who-is-daniel">Who is Daniel</a></li><li><a href="#presentations">Presentations</a></li><li><a href="#personal-interests">Personal Interests</a></li></ol></nav><section id="who-is-daniel"><h2>Who is Daniel</h2><p>Hello, I&#x27;m Daniel and I&#x27;m a software engineer!</p><p><!--#-->I&#x27;d describe myself as a generalist, having worked across multiple industries
-and multiple languages. My specialist areas today are:
-<!--#--></p><ul class="skills"><li>Rust</li><li>TypeScript</li><li>Kubernetes </li><li>Test Driven Development</li><li>Behavioral Driven Development</li><li>Domain Driven Development</li><li>Continuos Integration</li><li>Continuos Deployment</li></ul><p>BUT! That&#x27;s not why you should hire me.</p><p>I love technology but we don&#x27;t build tech for tech&#x27;s sake, we build it <i>for</i> and <i>with</i> people.</p><p>These are the skills I value the most</p><ul class="skills"><li>Stakeholder Collaboration</li><li>Coaching</li><li>Mentoring</li><li>Presentations</li><li>Teaching</li><li>Tech Evangelism</li><li>Optimizing Ways of Working</li><li>Leadership and Management</li><li>Software Architecture</li></ul></section><section id="presentations"><h2>Presentations</h2><p><!--#-->Throughout my career I&#x27;ve delivered a number of presentations and more recently,
-some of my more recent ones are here to see
-<!--#--></p><ul class="presentations"><li><a href="https://www.danielmason.com/intro-to-rust/">Intro to Rust</a> <!--#-->is a quick introduction to the Rust programming language, whats supposed to
-be difficult, what&#x27;s so amazing about it and how to get started. I presented
-this at Beamery and started a Rust slack group to help people on their journey.
-<!--#--></li><li><a href="https://www.danielmason.com/rust-in-the-frontend/">Rust in the Frontend</a> <!--#-->built on my Intro to Rust presentation to talk about the options for using
-Rust in web frontends. It covered a handful of frameworks, common
-misconceptions, why you might want to use it, why you probably shouldn&#x27;t...
-and why you might anyway. Fun fact, the site you&#x27;re looking at right now
-was built in Rust.
-<!--#--></li><li><a href="https://www.danielmason.com/why-i-dont-mock/#/intro">Why I don&#x27;t mock</a> <!--#-->is a discussion of why mocks in tests are bad, offers an alternate approach
-and shows how that alternative can be used outside of simple testing.
-<!--#--></li></ul></section><section id="personal-interests"><h2>Personal Interests</h2><article><h3>Hackathons, Game Jams and Coding Challenges</h3><p>I try to take part in hackathons, game jams and other coding challenges when I can.</p><p>In 2023, I entered GMTK with <a href="https://gisleburt.itch.io/foil">Foil</a>, 32bit Jam, collaborating with Ash Joseph, with <a href="https://gisleburt.itch.io/cosmic-booty">Cosmic Booty</a>, and I managed a personal best in <a href="https://github.com/Gisleburt/advent-of-code-2023">Advent of Code</a>. None of it won anything special but I am proud of all of it.</p><p>I&#x27;m also particularly proud of my 2022 GMTK entry <a href="https://gisleburt.itch.io/roll-of-the-dicer">Roll of the DiceR</a>, so feel free to check that out 😅</p></article><article><h3>Dungeons and Dragons</h3><p>I love Table Top Role Playing Games, especially running the game as a Game Master (GM).</p><p><!--#-->TTRPGs are a unique medium for collaborative story telling. While the GM might be using a prebuilt
-world and story, or even have come up with their own, reacting to the players decisions and adapting
-the story and the world to their actions is crucial.
-<!--#--></p><p><!--#-->In my opinion, a good GM is a lot like a good manager, helping people make the best use of their
-role, guiding everyone in the same direction, and making sure everyone involved feels the impact
-of their contribution.
-<!--#--></p></article><article><h3>Homelab</h3><p><!--#-->Just for fun, I run my own kubernetes cluster of Raspberry Pis and NUCs that I use to run cloud
-services at home. This includes a variety of tools such as, a local DNS server, certificate
-manager, monitoring tools, NAS, GitLab Runners, Smart Home services and even game servers.
-<!--#--></p></article></section><meta hidden="true" id="dioxus-storage-props" data-serialized="AQ==" /><meta hidden="true" id="dioxus-storage-data" data-serialized="AA==" /><script>(function () {
-    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const url = protocol + '//' + window.location.host + '/_dioxus/disconnect';
-    const poll_interval = 1000;
-    const reload_upon_connect = () => {
-        console.log('Disconnected from server. Attempting to reconnect...');
-        window.setTimeout(
-            () => {
-                // Try to reconnect to the websocket
-                const ws = new WebSocket(url);
-                ws.onopen = () => {
-                    // If we reconnect, reload the page
-                    window.location.reload();
-                }
-                // Otherwise, try again in a second
-                reload_upon_connect();
-            },
-            poll_interval);
-    };
-
-    // on initial page load connect to the disconnect ws
-    const ws = new WebSocket(url);
-    // if we disconnect, start polling
-    ws.onclose = reload_upon_connect;
-})()</script></div>
+  <div id="main"></div>
   <script type="module">
     import init from "/./assets/dioxus/danielmason_com.js";
     init("/./assets/dioxus/danielmason_com_bg.wasm").then(wasm => {
@@ -68,4 +21,28 @@ manager, monitoring tools, NAS, GitLab Runners, Smart Home services and even gam
   </script>
   
 </body>
-</html>
+</html><script>// Dioxus-CLI
+// https://github.com/DioxusLabs/cli
+
+(function () {
+  var protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+  var url = protocol + '//' + window.location.host + '/_dioxus/ws';
+  var poll_interval = 8080;
+  var reload_upon_connect = () => {
+      window.setTimeout(
+          () => {
+              var ws = new WebSocket(url);
+              ws.onopen = () => window.location.reload();
+              ws.onclose = reload_upon_connect;
+          },
+          poll_interval);
+  };
+
+  var ws = new WebSocket(url);
+  ws.onmessage = (ev) => {
+      if (ev.data == "reload") {
+          window.location.reload();
+      }
+  };
+  ws.onclose = reload_upon_connect;
+})()</script>

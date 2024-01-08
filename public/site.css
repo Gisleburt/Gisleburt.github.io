@@ -118,3 +118,9 @@ nav a, nav a:visited {
 p {
     margin: 4rem 0;
 }
+
+@media only screen and (max-width: 900px) {
+    h1 {
+        font-size: 6rem;
+    }
+}
