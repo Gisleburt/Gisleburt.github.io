@@ -43,7 +43,7 @@ h1 span {
     color: green;
 }
 
-h2, h3, h4 {
+h2, h3 {
     margin: 10rem 0 3rem;
     font-size: 6rem;
     color: var(--secondary-fg)
@@ -119,8 +119,44 @@ p {
     margin: 4rem 0;
 }
 
-@media only screen and (max-width: 900px) {
+@media screen and (min-width: 600px) and (max-width: 900px) {
     h1 {
         font-size: 6rem;
+    }
+
+    h2, h3 {
+        margin: 8rem 0 2rem;
+        font-size: 4rem;
+        color: var(--secondary-fg)
+    }
+
+    h3 {
+        margin: 4rem 0 2rem;
+        font-size: 3rem;
+    }
+
+    body {
+        font-size: 2em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2, h3 {
+        margin: 8rem 0 2rem;
+        font-size: 2.5rem;
+        color: var(--secondary-fg)
+    }
+
+    h3 {
+        margin: 4rem 0 2rem;
+        font-size: 2rem;
+    }
+
+    body {
+        font-size: 1.5rem;
     }
 }
