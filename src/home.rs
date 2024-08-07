@@ -7,8 +7,8 @@ pub(super) fn Contact(cx: Scope) -> Element {
         Nav { class: "contact",
             NavItem { href: "https://github.com/gisleburt", "GitHub" }
             NavItem {
-                download: "Daniel Mason - CV With Matrix - 2024.pdf",
-                href: "/Daniel Mason - CV With Matrix - 2024.pdf",
+                download: "Daniel Mason - CV - Abstract.pdf",
+                href: "/cv/Daniel%20Mason%20CV%20-%20abstract.pdf",
                 "CV"
             }
             NavItem { href: "https://www.linkedin.com/in/danieljamesmason/", "LinkedIn" }
