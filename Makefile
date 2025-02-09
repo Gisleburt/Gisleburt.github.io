@@ -12,4 +12,4 @@ serve: build
 	static-web-server --port 8787 --root ./target/dx/gisleburt-github-io/release/web/public
 
 hot:
-	dx serve
+	dx serve --addr 127.0.0.1

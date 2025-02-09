@@ -1,0 +1,104 @@
+/* Additional Reset */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Rest of css */
+body {
+    font-family: "Courier", "Courier New", monospace;
+    font-weight: 800;
+    background-color: #0000a8;
+    font-size: 32px;
+}
+
+#main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    background-color: #a8a8a8;
+}
+
+nav ol {
+    display: flex;
+}
+
+nav li:last-child {
+    margin-left: auto;
+}
+
+nav li:last-child::after {
+    content: "\00a0 \00a0 "
+}
+
+nav li:first-child::before {
+    content: "\00a0 \00a0 \00a0 "
+}
+
+nav li::before, nav li::after {
+    content: "\00a0 "
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    border: 4px solid #a8a8a8;
+    margin: 16px;
+    min-height: 100%;
+    flex-grow: 1;
+}
+
+h1 {
+    margin: -20px auto 0;
+    display: inline-block;
+    color: #0000a8;
+    background-color: #a8a8a8;
+}
+
+h1::before, h1::after {
+    content: "\00a0 "
+}
+
+.splash {
+    margin: auto;
+    padding: 16px;
+    background-color: #a8a8a8;
+    color: #000;
+}
+
+.splash div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 32px 32px;
+    border: 4px #000 solid;
+    border-top: none;
+    text-align: center;
+}
+
+.splash div:first-child {
+    border: 4px #000 solid;
+}
+
+.splash p {
+    margin: 32px 0 0;
+}
+
+.splash a::before {
+    content: "<\00a0 "
+}
+
+.splash a:focus::before,
+.splash a:hover::before,
+.splash a:focus::after,
+.splash a:hover::after {
+    color: #FFF;
+}
+
+.splash a::after {
+    content: "\00a0 >"
+}
