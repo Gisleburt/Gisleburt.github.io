@@ -18,28 +18,68 @@ body {
     flex-direction: column;
 }
 
-nav {
+.main-nav {
     background-color: #a8a8a8;
 }
 
-nav ol {
+.main-nav > ol {
     display: flex;
 }
 
-nav li:last-child {
+.main-nav > ol > li {
+    position: relative;
+}
+
+.main-nav > ol > li:last-child {
     margin-left: auto;
 }
 
-nav li:last-child::after {
+.main-nav > ol > li:last-child::after {
     content: "\00a0 \00a0 "
 }
 
-nav li:first-child::before {
+.main-nav > ol > li:first-child::before {
     content: "\00a0 \00a0 \00a0 "
 }
 
-nav li::before, nav li::after {
+.main-nav > ol > li::before, .main-nav > ol > li::after {
     content: "\00a0 "
+}
+
+.main-nav > ol > li:hover > .sub-nav {
+    display: flex;
+}
+
+.sub-nav {
+    position: absolute;
+    left: 10px;
+    display: none;
+    align-items: stretch;
+    flex-direction: column;
+    background-color: #a8a8a8;
+    padding: 8px 4px;
+}
+
+.sub-nav > ol {
+    display: flex;
+    flex-direction: column;
+    border: 4px solid #000;
+    border-top: none;
+    padding: 8px 4px;
+}
+
+.sub-nav > ol:first-child {
+    border: 4px #000 solid;
+}
+
+.sub-nav > ol > li > a {
+    padding: 2px 48px 2px 4px;
+    display: flex;
+}
+
+.sub-nav > ol > li > a:hover {
+    background-color: #000;
+    color: white;
 }
 
 article {
