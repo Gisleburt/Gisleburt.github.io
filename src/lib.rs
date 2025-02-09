@@ -1,8 +1,11 @@
-use dioxus::prelude::*;
+mod nav;
+mod page;
+mod splash;
+mod title;
 
-const FAVICON: Asset = asset!("/assets/favicon.ico");
-const SITE_CSS: Asset = asset!("/assets/site.css");
-const RESET_CSS: Asset = asset!("/assets/reset.css");
+use crate::page::Page;
+use crate::splash::Splash;
+use dioxus::prelude::*;
 
 #[component]
 pub fn App() -> Element {
@@ -12,71 +15,9 @@ pub fn App() -> Element {
 #[component]
 pub fn Index() -> Element {
     rsx! {
-        document::Link { rel: "icon", href: FAVICON }
-        document::Link { rel: "stylesheet", href: RESET_CSS }
-        document::Link { rel: "stylesheet", href: SITE_CSS }
-        NavBar {}
-        article {
-            Title {
-                title: "Daniel // Mason"
-            }
+        Page {
+            title: "Daniel // Mason",
             Splash {}
-        }
-    }
-}
-
-#[component]
-fn NavBar() -> Element {
-    rsx! {
-        nav {
-            ol {
-                li { "File" }
-                li { "Edit" }
-                li { "View" }
-                li { "Search" }
-                li { "Run" }
-                li { "Debug" }
-                li { "Options" }
-                li { "Help" }
-            }
-        }
-    }
-}
-
-#[component]
-fn Title(title: String) -> Element {
-    rsx! {
-        h1 { "{title}" }
-    }
-}
-
-#[component]
-fn Splash() -> Element {
-    rsx! {
-        div {
-            class: "splash",
-            div {
-                p { "Welcome to Daniel // Mason"}
-                p {
-                    "Copyright (C) Daniel // Mason, 2025."
-                    br {}
-                    "All rights reserved."
-                }
-                p {
-                    a {
-                        href: "#",
-                        "Press Enter to see the Survival Guide"
-                    }
-                }
-            }
-            div {
-                p {
-                    a {
-                        href: "#",
-                        "Press ESC to clear this dialog box"
-                    }
-                }
-            }
         }
     }
 }
