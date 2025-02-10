@@ -13,3 +13,6 @@ serve: build
 
 hot:
 	dx serve --addr 127.0.0.1
+
+clean:
+	cargo clean

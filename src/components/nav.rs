@@ -16,16 +16,31 @@ pub fn NavBar() -> Element {
                 li {
                     a {
                         href: "#",
-                        "Presentations"
+                        "Talks"
                     }
                     PresentationNav {}
                 }
-                li { "Personal Interests" }
-                li { "Search" }
-                li { "Run" }
-                li { "Debug" }
-                li { "Options" }
-                li { "Help" }
+                li {
+                    a {
+                        href: "#",
+                        "Projects"
+                    }
+                    ProjectsNav {}
+                }
+                li {
+                    a {
+                        href: "#",
+                        "Interests"
+                    }
+                    InterestsNav {}
+                }
+                li {
+                    a {
+                        href: "#",
+                        "Help"
+                    }
+                    HelpNav {}
+                }
             }
         }
     }
@@ -37,13 +52,17 @@ fn FileNav() -> Element {
         nav {
             class: "sub-nav",
             ol {
-                 li { a { href: "#", "New" } }
+                 li { a { href: "/", "New" } }
                  li { a { href: "#", "Open..." } }
                  li { a { href: "#", "Save" } }
                  li { a { href: "#", "Save As" } }
             }
             ol {
-                 li { a { href: "#", "Print..." } }
+                 li { a {
+                    href: "#",
+                    onclick: |_| { document::eval("window.print();"); },
+                    "Print..."
+                } }
             }
             ol {
                  li { a { href: "#", "Exit" } }
@@ -61,9 +80,51 @@ fn PresentationNav() -> Element {
                 li { a { href: "/presentations", "All" } }
             }
             ol {
-                li { a { href: "https://www.danielmason.com/intro-to-rust/", "Intro to Rust" } }
-                li { a { href: "https://www.danielmason.com/rust-in-the-frontend/", "Rust in the Frontend" } }
-                li { a { href: "https://www.danielmason.com/why-i-dont-mock/#/intro", "Why I don't mock" } }
+                li { a { href: "https://www.danielmason.com/intro-to-rust/", "Intro to Rust..." } }
+                li { a { href: "https://www.danielmason.com/rust-in-the-frontend/", "Rust in the Frontend..." } }
+                li { a { href: "https://www.danielmason.com/why-i-dont-mock/#/intro", "Why I don't mock..." } }
+            }
+        }
+    }
+}
+
+#[component]
+fn InterestsNav() -> Element {
+    rsx! {
+        nav {
+            class: "sub-nav",
+            ol {
+                li { a { href: "/personal-interests/hackathon", "Hackathons" } }
+                li { a { href: "/personal-interests/dnd", "D&D" } }
+                li { a { href: "/personal-interests/homelab", "Homelab" } }
+            }
+        }
+    }
+}
+
+#[component]
+fn ProjectsNav() -> Element {
+    rsx! {
+        nav {
+            class: "sub-nav",
+            ol {
+                li { a { href: "https://fios-quest.com", "Fio's Quest..." } }
+            }
+        }
+    }
+}
+
+#[component]
+fn HelpNav() -> Element {
+    rsx! {
+        nav {
+            class: "sub-nav",
+            ol {
+                li { a { href: "/about/index", "Index" } }
+                li { a { href: "/about/contents", "Contents" } }
+            }
+            ol {
+                li { a { href: "/about", "About" } }
             }
         }
     }
