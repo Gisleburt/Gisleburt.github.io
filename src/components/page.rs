@@ -1,5 +1,5 @@
-use crate::nav::NavBar;
-use crate::title::Title;
+use crate::components::NavBar;
+use crate::components::Title;
 use dioxus::prelude::*;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
@@ -8,14 +8,16 @@ const RESET_CSS: Asset = asset!("/assets/reset.css");
 
 #[component]
 pub fn Page(title: String, children: Element) -> Element {
+    let id = format!("page-{}", title.to_ascii_lowercase());
     rsx! {
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: RESET_CSS }
         document::Link { rel: "stylesheet", href: SITE_CSS }
         NavBar {}
         article {
+            id: id,
             Title {
-                title: "Daniel // Mason"
+                title: title
             }
             {children}
         }

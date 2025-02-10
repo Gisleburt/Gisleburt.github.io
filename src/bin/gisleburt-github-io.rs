@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
-use gisleburt_github_io::{App, Route};
+use gisleburt_github_io::App;
+use gisleburt_github_io::Route;
 
 // The server function at the endpoint "static_routes" will be called by the CLI to generate the list of static
 // routes. You must explicitly set the endpoint to `"static_routes"` in the server function attribute instead of

@@ -13,8 +13,14 @@ pub fn NavBar() -> Element {
                     }
                     FileNav {}
                 }
-                li { "Edit" }
-                li { "View" }
+                li {
+                    a {
+                        href: "#",
+                        "Presentations"
+                    }
+                    PresentationNav {}
+                }
+                li { "Personal Interests" }
                 li { "Search" }
                 li { "Run" }
                 li { "Debug" }
@@ -41,6 +47,23 @@ fn FileNav() -> Element {
             }
             ol {
                  li { a { href: "#", "Exit" } }
+            }
+        }
+    }
+}
+
+#[component]
+fn PresentationNav() -> Element {
+    rsx! {
+        nav {
+            class: "sub-nav",
+            ol {
+                li { a { href: "/presentations", "All" } }
+            }
+            ol {
+                li { a { href: "https://www.danielmason.com/intro-to-rust/", "Intro to Rust" } }
+                li { a { href: "https://www.danielmason.com/rust-in-the-frontend/", "Rust in the Frontend" } }
+                li { a { href: "https://www.danielmason.com/why-i-dont-mock/#/intro", "Why I don't mock" } }
             }
         }
     }
