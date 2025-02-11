@@ -1,8 +1,10 @@
 mod index;
+mod personal_interests;
 mod presentations;
 
 use dioxus::prelude::*;
 pub use index::Index;
+use personal_interests::Hackathons;
 use presentations::Presentations;
 
 #[derive(Routable, Clone, PartialEq)]
@@ -12,6 +14,7 @@ pub enum Route {
     Index {},
     #[route("/presentations")]
     Presentations {},
+    #[nest("/personal-interests")]
+    #[route("/hackathons")]
+    Hackathons {},
 }
-
-pub static PAGES: &[&str] = &["presentations", "interests"];

@@ -77,7 +77,7 @@ fn PresentationNav() -> Element {
         nav {
             class: "sub-nav",
             ol {
-                li { a { href: "/presentations", "All" } }
+                li { a { href: "/presentations", "Overview" } }
             }
             ol {
                 li { a { href: "https://www.danielmason.com/intro-to-rust/", "Intro to Rust..." } }
@@ -94,7 +94,7 @@ fn InterestsNav() -> Element {
         nav {
             class: "sub-nav",
             ol {
-                li { a { href: "/personal-interests/hackathon", "Hackathons" } }
+                li { a { href: "/personal-interests/hackathons", "Hackathons" } }
                 li { a { href: "/personal-interests/dnd", "D&D" } }
                 li { a { href: "/personal-interests/homelab", "Homelab" } }
             }
