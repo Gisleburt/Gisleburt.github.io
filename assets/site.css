@@ -4,12 +4,21 @@ a {
     text-decoration: none;
 }
 
+:root {
+    --font-size: 3.2rem;
+    --border-size: calc(var(--font-size) / 8);
+    --default-padding: calc(var(--font-size) / 4) calc(var(--font-size) / 8); /* 8px 4px */
+}
+
+html {
+    font-size: 62.5%
+}
+
 /* Rest of css */
 body {
     font-family: "Courier", "Courier New", monospace;
     font-weight: 800;
     background-color: #00a;
-    font-size: 32px;
     color: #aaa;
 }
 
@@ -17,6 +26,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-size: var(--font-size);
 }
 
 .main-nav {
@@ -40,12 +50,12 @@ body {
     margin-left: auto;
 }
 
-.main-nav > ol > li:last-child::after {
-    content: "\00a0 \00a0 "
+.main-nav > ol::before {
+    content: "\00a0 "
 }
 
-.main-nav > ol > li:first-child::before {
-    content: "\00a0 \00a0 \00a0 "
+.main-nav > ol::after {
+    content: "\00a0 "
 }
 
 .main-nav > ol > li::before, .main-nav > ol > li::after {
@@ -58,37 +68,32 @@ body {
 
 .sub-nav {
     position: absolute;
-    left: 10px;
+    left: calc(var(--font-size) / 4); /* 8px */
     display: none;
     align-items: stretch;
     flex-direction: column;
     background-color: #aaa;
-    padding: 8px 4px;
-}
-
-.main-nav > ol > li:first-child > .sub-nav {
-    left: 48px;
+    padding: var(--default-padding);
 }
 
 .main-nav > ol > li:last-child > .sub-nav {
-    right: 16px;
+    right: calc(var(--font-size) / 4); /* 8px */
     left: unset;
 }
 
 .sub-nav > ol {
     display: block;
     flex-direction: column;
-    border: 4px solid #000;
+    border: var(--border-size) solid #000;
     border-top: none;
-    padding: 8px 4px;
+    padding: var(--default-padding);
 }
 
 .sub-nav > ol:first-child {
-    border: 4px #000 solid;
+    border: var(--border-size) #000 solid;
 }
 
 .sub-nav > ol > li > a {
-    padding: 2px 48px 2px 4px;
     display: flex;
     white-space: nowrap;
 }
@@ -101,7 +106,7 @@ body {
 article {
     display: flex;
     flex-direction: column;
-    border: 4px solid #a8a8a8;
+    border: var(--border-size) solid #a8a8a8;
     margin: 12px 8px;
     padding: 12px 8px;
     min-height: 100%;
@@ -119,6 +124,13 @@ h1::before, h1::after {
     content: "\00a0 "
 }
 
+h2 {
+    display: inline-block;
+    background-color: #aaa;
+    color: #000;
+    margin: var(--font-size) 0 0;
+}
+
 .splash {
     margin: auto;
     padding: 16px;
@@ -131,18 +143,18 @@ h1::before, h1::after {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 32px 32px;
-    border: 4px #000 solid;
+    padding: 0 var(--font-size) var(--font-size);
+    border: var(--border-size) #000 solid;
     border-top: none;
     text-align: center;
 }
 
 .splash div:first-child {
-    border: 4px #000 solid;
+    border: var(--border-size) #000 solid;
 }
 
 p, li {
-    margin: 32px 0 0;
+    margin: var(--font-size) 0 0;
 }
 
 .splash a::before {
@@ -157,9 +169,9 @@ p, li {
 }
 
 .splash a::after {
-    content: "\00a0 >"
+    content: "\00a0 >";
 }
 
-#page-presentations a {
+article a {
     color: #fff;
 }
