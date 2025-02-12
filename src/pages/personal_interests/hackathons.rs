@@ -30,9 +30,8 @@ pub fn Hackathons() -> Element {
                 p { r#""Yargh, take to the seas and collect booty thats fallen from the stars. Use it to blast ya' enemies to bits.""# }
                 p { "Theme: any project that looks like it belongs in the PS1 era" }
                 p { "This, ended up being a bit of a weird one! But of all the games here, its the one I most want to pick up again in the future." }
-                p { "Developed alongside " a { "Ash Joseph" } " and with a cracking sound track by " a { "Antony Nasce" } " this project saw you captain a pirate ship and was loosely based on games like FTL: Faster than Light, and the Star Trek: Starfleet Command games" }
-                p { "We had a story about upgrading your ship with alien debris found in the ocean, and we even wanted to have a final fight in space." }
-                p { "Unfortunately the looser two week run of the game jam may have worked against us, with us planning big but ultimately getting burned out. None the less, I'm immensely proud of it and it's something I still think about returning to even today." }
+                p { "Developed alongside " a { href: "https://www.linkedin.com/in/ash-joseph-1011304b/", "Ash Joseph" } " and with a cracking sound track by " a { href: "https://www.linkedin.com/in/nasce/", "Antony Nascè" } " this project saw you captain a pirate ship and was loosely based on games like FTL: Faster than Light, and the Star Trek: Starfleet Command games" }
+                p { "We had a story about upgrading your ship with alien debris found in the ocean, and we even wanted to have a final fight in space. Unfortunately the looser two week run of the game jam may have worked against us, with us planning big but ultimately getting burned out. None the less, I'm immensely proud of it and it's something I still think about returning to even today." }
                 p { a { href: "https://gisleburt.itch.io/cosmic-booty", "Playable on itch.io" }  }
             }
             section {
@@ -48,7 +47,7 @@ pub fn Hackathons() -> Element {
                 p { r#""VR Gaming on your Peloton""# }
                 p { "Theme: Basically Anything" }
                 p { "This game... was bloody brilliant! " span { aria_hidden: true, ":D" } }
-                p { "During the 2021 Peloton internal Hackathon I worked with " a {"Yuriy Glebov"} " and " a { "Tassilo Tochatschek" } " over three days to build a 3D Paperboy like game where you would sit on your Peloton Bike (or Bike Plus) with a VR Headset and cycle around a small neighbourhood using your controllers to throw papers at houses."}
+                p { "During the 2021 Peloton internal Hackathon I worked with " a { href: "https://www.linkedin.com/in/yuriy-glebov/", "Yuriy Glebov"} " and " a { href: "https://www.linkedin.com/in/tassilo-tochatschek-0bb8b2193/", "Tassilo Tochatschek" } " over three days to build a 3D Paperboy like game where you would sit on your Peloton Bike (or Bike Plus) with a VR Headset and cycle around a small neighbourhood using your controllers to throw papers at houses."}
                 p { "Thanks to Yuriy's incredible work on the Bike, we were able to get the speed of the bike in near real time sent to the game, you could even steer by leaning or tilting your head!" }
                 p { "Due to the internal nature of the hackathon, I can't link to the game, its code, or videos of us playing it, but it might have been the best thing I ever built for Peloton! And hey, if you folks at Peloton want me back to work on more stuff like this, let me know " span { aria_hidden: true, ";)" } }
             }
