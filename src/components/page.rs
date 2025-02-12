@@ -19,7 +19,10 @@ pub fn Page(title: String, children: Element) -> Element {
             Title {
                 title: title
             }
-            {children}
+            div {
+                class: "page-container",
+                {children}
+            }
         }
     }
 }

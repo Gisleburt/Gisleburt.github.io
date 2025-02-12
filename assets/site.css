@@ -106,11 +106,19 @@ body {
 article {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     border: var(--border-size) solid #a8a8a8;
     margin: 12px 8px;
     padding: 12px 8px;
-    min-height: 100%;
+    height: calc(100vh - calc(3 * var(--font-size))); /* todo: change font-size to line height, base everything on that */
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
+    height: 100%;
+    overflow: hidden scroll;
 }
 
 h1 {
