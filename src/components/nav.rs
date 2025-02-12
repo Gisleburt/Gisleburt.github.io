@@ -95,7 +95,7 @@ fn InterestsNav() -> Element {
             class: "sub-nav",
             ol {
                 li { a { href: "/personal-interests/hackathons", "Hackathons" } }
-                li { a { href: "/personal-interests/dnd", "D&D" } }
+                li { a { href: "/personal-interests/ttrpgs", "TTRPGs" } }
                 li { a { href: "/personal-interests/homelab", "Homelab" } }
             }
         }

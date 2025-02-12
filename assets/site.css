@@ -157,6 +157,10 @@ p, li {
     margin: var(--font-size) 0 0;
 }
 
+.splash a {
+    color: #000;
+}
+
 .splash a::before {
     content: "<\00a0 "
 }
