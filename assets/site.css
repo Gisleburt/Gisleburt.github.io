@@ -5,9 +5,11 @@ a {
 }
 
 :root {
-    --font-size: 3.2rem;
-    --border-size: calc(var(--font-size) / 8);
-    --default-padding: calc(var(--font-size) / 4) calc(var(--font-size) / 8); /* 8px 4px */
+    --line-height: 3.2rem;
+    --character-width: calc(var(--line-height) / 2);
+    --border-size: calc(var(--line-height) / 8);
+    --default-padding: calc(var(--line-height) / 4) calc(var(--line-height) / 8); /* 8px 4px */
+    --column-width: 2.4rem;
 }
 
 html {
@@ -23,10 +25,11 @@ body {
 }
 
 #main {
+
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    font-size: var(--font-size);
+    font-size: var(--line-height);
 }
 
 .main-nav {
@@ -68,7 +71,8 @@ body {
 
 .sub-nav {
     position: absolute;
-    left: calc(var(--font-size) / 4); /* 8px */
+    z-index: 1;
+    left: calc(var(--line-height) / 4); /* 8px */
     display: none;
     align-items: stretch;
     flex-direction: column;
@@ -77,7 +81,7 @@ body {
 }
 
 .main-nav > ol > li:last-child > .sub-nav {
-    right: calc(var(--font-size) / 4); /* 8px */
+    right: calc(var(--line-height) / 4); /* 8px */
     left: unset;
 }
 
@@ -104,13 +108,18 @@ body {
 }
 
 article {
+    position: relative;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     border: var(--border-size) solid #a8a8a8;
     margin: 12px 8px;
     padding: 12px 8px;
-    height: calc(100vh - calc(3 * var(--font-size))); /* todo: change font-size to line height, base everything on that */
+    height: calc(100vh - calc(3 * var(--line-height)));
+}
+
+article a {
+    color: #fff;
 }
 
 .page-container {
@@ -119,6 +128,8 @@ article {
     flex-grow: 1;
     height: 100%;
     overflow: hidden scroll;
+    min-height: 100%;
+    margin: 0 var(--character-width) 0 0;
 }
 
 h1 {
@@ -136,7 +147,7 @@ h2 {
     display: inline-block;
     background-color: #aaa;
     color: #000;
-    margin: var(--font-size) 0 0;
+    margin: var(--line-height) 0 0;
 }
 
 .splash {
@@ -151,7 +162,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 var(--font-size) var(--font-size);
+    padding: 0 var(--line-height) var(--line-height);
     border: var(--border-size) #000 solid;
     border-top: none;
     text-align: center;
@@ -162,7 +173,7 @@ h2 {
 }
 
 p, li {
-    margin: var(--font-size) 0 0;
+    margin: var(--line-height) 0 0;
 }
 
 .splash a {
@@ -184,6 +195,35 @@ p, li {
     content: "\00a0 >";
 }
 
-article a {
-    color: #fff;
+.scrollbar {
+    position: absolute;
+    top: calc(var(--line-height) * 2);
+    right: 0;
+    background-color: #aaa;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='24px' width='16px'><text x='0' y='15' fill='black' font-size='32'>░</text></svg>");
+    background-repeat: repeat;
+    height: calc(100% - calc(3 * var(--line-height)));
+    width: var(--column-width);
+    align-self: end;
+    color: #000;
+}
+
+.scrollbar::after, .scrollbar::before {
+    left: 0;
+    position: absolute;
+    background-color: #aaa;
+    font-weight: bold;
+    width: var(--column-width);
+    text-align: center;
+    line-height: var(--line-height);
+}
+
+.scrollbar::before {
+    content: "↑";
+    top: 0;
+}
+
+.scrollbar::after {
+    content: "↓";
+    bottom: 0;
 }

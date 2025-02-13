@@ -1,5 +1,4 @@
-use crate::components::NavBar;
-use crate::components::Title;
+use crate::components::{NavBar, Scrollbar, Title};
 use dioxus::prelude::*;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
@@ -24,5 +23,6 @@ pub fn Page(title: String, children: Element) -> Element {
                 {children}
             }
         }
+        Scrollbar {}
     }
 }
