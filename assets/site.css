@@ -9,7 +9,7 @@ a {
     --character-width: calc(var(--line-height) / 2);
     --border-size: calc(var(--line-height) / 8);
     --default-padding: calc(var(--line-height) / 4) calc(var(--line-height) / 8); /* 8px 4px */
-    --column-width: 2.4rem;
+    --column-width: 2.0rem;
 }
 
 html {
@@ -197,12 +197,12 @@ p, li {
 
 .scrollbar {
     position: absolute;
-    top: calc(var(--line-height) * 2);
+    top: calc(var(--line-height) * 3);
     right: 0;
     background-color: #aaa;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='24px' width='16px'><text x='0' y='15' fill='black' font-size='32'>░</text></svg>");
     background-repeat: repeat;
-    height: calc(100% - calc(3 * var(--line-height)));
+    height: calc(100% - calc(5 * var(--line-height)));
     width: var(--column-width);
     align-self: end;
     color: #000;
@@ -220,10 +220,17 @@ p, li {
 
 .scrollbar::before {
     content: "↑";
-    top: 0;
+    top: calc(-1 * var(--line-height));
 }
 
 .scrollbar::after {
     content: "↓";
-    bottom: 0;
+    bottom: calc(-1 * var(--line-height));;
+}
+
+.scrollbar div {
+    position: absolute;
+    height: var(--line-height);
+    width: var(--column-width);
+    background-color: #000;
 }
