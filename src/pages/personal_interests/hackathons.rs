@@ -30,7 +30,7 @@ pub fn Hackathons() -> Element {
                 p { r#""Yargh, take to the seas and collect booty thats fallen from the stars. Use it to blast ya' enemies to bits.""# }
                 p { "Theme: any project that looks like it belongs in the PS1 era" }
                 p { "This, ended up being a bit of a weird one! But of all the games here, its the one I most want to pick up again in the future." }
-                p { "Developed alongside " a { href: "https://www.linkedin.com/in/ash-joseph-1011304b/", "Ash Joseph" } " and with a cracking sound track by " a { href: "https://www.linkedin.com/in/nasce/", "Antony Nascè" } " this project saw you captain a pirate ship and was loosely based on games like FTL: Faster than Light, and the Star Trek: Starfleet Command games" }
+                p { "Developed alongside " a { href: "https://ashjoseph.com/", "Ash Joseph" } " and with a cracking sound track by " a { href: "https://www.linkedin.com/in/nasce/", "Antony Nascè" } " this project saw you captain a pirate ship and was loosely based on games like FTL: Faster than Light, and the Star Trek: Starfleet Command games" }
                 p { "We had a story about upgrading your ship with alien debris found in the ocean, and we even wanted to have a final fight in space. Unfortunately the looser two week run of the game jam may have worked against us, with us planning big but ultimately getting burned out. None the less, I'm immensely proud of it and it's something I still think about returning to even today." }
                 p { a { href: "https://gisleburt.itch.io/cosmic-booty", "Playable on itch.io" }  }
             }
