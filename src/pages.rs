@@ -4,7 +4,7 @@ mod presentations;
 
 use dioxus::prelude::*;
 pub use index::Index;
-use personal_interests::{Hackathons, Ttrpgs};
+use personal_interests::{Hackathons, Homelab, Ttrpgs};
 use presentations::Presentations;
 
 #[derive(Routable, Clone, PartialEq)]
@@ -19,4 +19,6 @@ pub enum Route {
     Hackathons {},
     #[route("/ttrpgs")]
     Ttrpgs {},
+    #[route("/homelab")]
+    Homelab {},
 }
