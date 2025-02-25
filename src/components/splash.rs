@@ -4,7 +4,7 @@ use dioxus::prelude::*;
 pub fn Splash() -> Element {
     rsx! {
         div {
-            class: "splash",
+            class: "splash modal show",
             div {
                 p { "Welcome to Daniel // Mason"}
                 p {
@@ -14,6 +14,7 @@ pub fn Splash() -> Element {
                 }
                 p {
                     a {
+                        class: "button",
                         href: "#",
                         "Press Enter to see the Survival Guide"
                     }
@@ -22,6 +23,7 @@ pub fn Splash() -> Element {
             div {
                 p {
                     a {
+                        class: "button",
                         href: "#",
                         "Press ESC to clear this dialog box"
                     }

@@ -5,11 +5,12 @@ a {
 }
 
 :root {
-    --line-height: 3.2rem;
-    --character-width: calc(var(--line-height) / 2);
-    --border-size: calc(var(--line-height) / 8);
+    --line-height: 3.2rem; /* 32px */
+    --character-width: calc(var(--line-height) / 2); /* 16px */
+    --border-size: calc(var(--line-height) / 8); /* 4px */
     --default-padding: calc(var(--line-height) / 4) calc(var(--line-height) / 8); /* 8px 4px */
     --column-width: 2.0rem;
+    --font-weight: 800;
 }
 
 html {
@@ -19,7 +20,7 @@ html {
 /* Rest of css */
 body {
     font-family: "Courier", "Courier New", monospace;
-    font-weight: 800;
+    font-weight: var(--font-weight);
     background-color: #00a;
     color: #aaa;
 }
@@ -132,7 +133,7 @@ article a {
 }
 
 h1 {
-    margin: -32px auto 0;
+    margin: calc(var(--line-height) * -1) auto 0;
     display: inline-block;
     color: #00a;
     background-color: #aaa;
@@ -149,14 +150,15 @@ h2 {
     margin: var(--line-height) 0 0;
 }
 
-.splash {
+.modal.splash {
+    flex-direction: column;
     margin: auto;
     padding: 16px;
     background-color: #aaa;
     color: #000;
 }
 
-.splash div {
+.modal.splash div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -167,7 +169,7 @@ h2 {
     text-align: center;
 }
 
-.splash div:first-child {
+.modal.splash div:first-child {
     border: var(--border-size) #000 solid;
 }
 
@@ -175,22 +177,22 @@ p, li {
     margin: var(--line-height) 0 0;
 }
 
-.splash a {
+a.button {
     color: #000;
 }
 
-.splash a::before {
+a.button::before {
     content: "<\00a0 "
 }
 
-.splash a:focus::before,
-.splash a:hover::before,
-.splash a:focus::after,
-.splash a:hover::after {
+.modal a.button:focus::before,
+.modal a.button:hover::before,
+.modal a.button:focus::after,
+.modal a.button:hover::after {
     color: #fff;
 }
 
-.splash a::after {
+.modal a.button::after {
     content: "\00a0 >";
 }
 
@@ -232,6 +234,93 @@ p, li {
     height: var(--line-height);
     width: var(--column-width);
     background-color: #000;
+}
+
+.modal.open {
+    --width: 80rem;
+    --height: 40rem;
+    position: absolute;
+    display: none;
+    background-color: #aaa;
+    color: #000;
+    width: var(--width);
+    height: var(--height);
+    left: calc(50% - calc(var(--width) / 2));
+    top: calc(50% + var(--line-height) - (var(--height) / 2));
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal.open label {
+    display: flex;
+    line-height: var(--line-height);
+    align-items: center;
+}
+
+.modal.open input {
+    font-family: "Courier", "Courier New", monospace;
+    font-weight: var(--font-weight);
+    font-size: var(--line-height);
+    background-color: #aaa;
+    border: var(--border-size) solid #000;
+    flex-grow: 1;
+    line-height: var(--line-height);
+}
+
+.modal.open div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.modal.open > div {
+    flex-grow: 1;
+    max-width: 100%;
+    max-height: 100%;
+    /*height: calc(100% - var(--line-height));*/
+    /*width: calc(100% - var(--column-width) * (1 / 3));*/
+    border: var(--border-size) #000 solid;
+    margin: calc(var(--line-height) / 2) calc(var(--line-height) / 8) calc(var(--line-height) / 4);
+    padding: var(--default-padding);
+}
+
+.modal.open h2 {
+    margin: 0 auto;
+    display: inline-block;
+    color: #000;
+    background-color: #aaa;
+}
+
+.modal.open h2::before,
+.modal.open h2::after {
+    content: "\00a0 ";
+}
+
+.modal.open .lists {
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.modal.open .lists ul {
+    flex-grow: 1;
+    border: var(--border-size) #000 solid;
+    margin: var(--default-padding);
+    padding: var(--default-padding);
+}
+
+.modal.open .lists div:first-child {
+    flex-grow: 1;
+}
+
+.modal.open .buttons {
+    display: flex;
+}
+
+.modal.open .buttons {
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 #page-homelab li {

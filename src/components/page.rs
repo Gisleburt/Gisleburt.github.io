@@ -1,4 +1,6 @@
-use crate::components::{NavBar, Scrollbar, Title};
+use crate::components::{NavBar, Open, Scrollbar, Title};
+use dioxus::html::completions::CompleteWithBraces::title;
+use dioxus::html::dialog::open;
 use dioxus::prelude::*;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
@@ -12,7 +14,7 @@ pub fn Page(title: String, children: Element) -> Element {
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: RESET_CSS }
         document::Link { rel: "stylesheet", href: SITE_CSS }
-        NavBar {}
+        NavBar { show_open_modal_signal }
         article {
             id: id,
             Title {
@@ -23,6 +25,7 @@ pub fn Page(title: String, children: Element) -> Element {
                 {children}
             }
         }
-        Scrollbar {}
+        Scrollbar { }
+        Open { show_open_modal_signal }
     }
 }

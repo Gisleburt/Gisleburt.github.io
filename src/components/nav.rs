@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 #[component]
-pub fn NavBar() -> Element {
+pub fn NavBar(show_open_modal_signal: Signal<bool>) -> Element {
     rsx! {
         nav {
             class: "main-nav",
@@ -11,7 +11,7 @@ pub fn NavBar() -> Element {
                         href: "#",
                         "File"
                     }
-                    FileNav {}
+                    FileNav { show_open_modal_signal }
                 }
                 li {
                     a {
@@ -47,15 +47,15 @@ pub fn NavBar() -> Element {
 }
 
 #[component]
-fn FileNav() -> Element {
+fn FileNav(show_open_modal_signal: Signal<bool>) -> Element {
     rsx! {
         nav {
             class: "sub-nav",
             ol {
-                 li { a { href: "/", "New" } }
-                 li { a { href: "#", "Open..." } }
-                 li { a { href: "#", "Save" } }
-                 li { a { href: "#", "Save As" } }
+                li { a { href: "/", "New" } }
+                li { a { href: "#", onclick: move |_| { show_open_modal_signal.set(true); }, "Open..." } }
+                li { a { href: "#", "Save" } }
+                li { a { href: "#", "Save As" } }
             }
             ol {
                  li { a {
