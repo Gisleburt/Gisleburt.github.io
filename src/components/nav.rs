@@ -55,8 +55,6 @@ fn FileNav() -> Element {
             ol {
                 li { a { href: "/", "New" } }
                 li { a { href: "#", onclick: move |_| { *MODAL_SIGNAL.write() = ShownModal::Open; }, "Open..." } }
-                li { a { href: "#", "Save" } }
-                li { a { href: "#", "Save As" } }
             }
             ol {
                  li { a {
