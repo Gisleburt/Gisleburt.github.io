@@ -26,17 +26,26 @@ fn make_string_safe(input: &str) -> String {
     safe_string
 }
 
-#[component]
-pub fn Page(title: String, children: Element) -> Element {
-    let show_open_modal_signal = use_signal(|| false);
+#[derive(Copy, Clone, PartialEq, Eq)]
+pub enum ShownModal {
+    None,
+    Splash,
+    Open,
+}
 
+pub static MODAL_SIGNAL: GlobalSignal<ShownModal> = Global::new(|| ShownModal::None);
+
+#[component]
+
+pub fn Page(title: String, children: Element) -> Element {
     let safe_title = make_string_safe(&title);
     let id = format!("page-{safe_title}",);
+
     rsx! {
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: RESET_CSS }
         document::Link { rel: "stylesheet", href: SITE_CSS }
-        NavBar { show_open_modal_signal }
+        NavBar { }
         article {
             id: id,
             Title {
@@ -48,7 +57,7 @@ pub fn Page(title: String, children: Element) -> Element {
             }
         }
         Scrollbar { }
-        Open { show_open_modal_signal }
+        Open { }
     }
 }
 

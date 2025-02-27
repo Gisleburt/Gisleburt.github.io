@@ -1,7 +1,8 @@
+use crate::components::page::{ShownModal, MODAL_SIGNAL};
 use dioxus::prelude::*;
 
 #[component]
-pub fn NavBar(show_open_modal_signal: Signal<bool>) -> Element {
+pub fn NavBar() -> Element {
     rsx! {
         nav {
             class: "main-nav",
@@ -11,7 +12,7 @@ pub fn NavBar(show_open_modal_signal: Signal<bool>) -> Element {
                         href: "#",
                         "File"
                     }
-                    FileNav { show_open_modal_signal }
+                    FileNav {}
                 }
                 li {
                     a {
@@ -47,13 +48,13 @@ pub fn NavBar(show_open_modal_signal: Signal<bool>) -> Element {
 }
 
 #[component]
-fn FileNav(show_open_modal_signal: Signal<bool>) -> Element {
+fn FileNav() -> Element {
     rsx! {
         nav {
             class: "sub-nav",
             ol {
                 li { a { href: "/", "New" } }
-                li { a { href: "#", onclick: move |_| { show_open_modal_signal.set(true); }, "Open..." } }
+                li { a { href: "#", onclick: move |_| { *MODAL_SIGNAL.write() = ShownModal::Open; }, "Open..." } }
                 li { a { href: "#", "Save" } }
                 li { a { href: "#", "Save As" } }
             }

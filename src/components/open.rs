@@ -1,8 +1,11 @@
+use crate::components::page::{ShownModal, MODAL_SIGNAL};
 use dioxus::prelude::*;
 
 #[component]
-pub fn Open(show_open_modal_signal: Signal<bool>) -> Element {
-    let show_class = show_open_modal_signal().then(|| "show").unwrap_or("");
+pub fn Open() -> Element {
+    let show_class = (MODAL_SIGNAL == ShownModal::Open)
+        .then(|| "show")
+        .unwrap_or_default();
 
     rsx! {
         section {
@@ -35,13 +38,13 @@ pub fn Open(show_open_modal_signal: Signal<bool>) -> Element {
                     a {
                         class: "button",
                         href: "#",
-                        onclick: move |_| show_open_modal_signal.set(false),
+                        onclick: move |_| *MODAL_SIGNAL.write() = ShownModal::None,
                         "OK"
                     }
                     a {
                         class: "button",
                         href: "#",
-                        onclick: move |_| show_open_modal_signal.set(false),
+                        onclick: move |_| *MODAL_SIGNAL.write() = ShownModal::None,
                         "Cancel"
                     }
                 }

@@ -150,6 +150,10 @@ h2 {
     margin: var(--line-height) 0 0;
 }
 
+.modal.splash.show {
+    display: flex;
+}
+
 .modal.splash {
     flex-direction: column;
     margin: auto;
@@ -240,13 +244,16 @@ a.button::before {
     --width: 80rem;
     --height: 40rem;
     position: absolute;
-    display: none;
     background-color: #aaa;
     color: #000;
     width: var(--width);
     height: var(--height);
     left: calc(50% - calc(var(--width) / 2));
     top: calc(50% + var(--line-height) - (var(--height) / 2));
+}
+
+.modal {
+    display: none;
 }
 
 .modal.show {
