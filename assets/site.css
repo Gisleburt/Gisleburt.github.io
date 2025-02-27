@@ -317,6 +317,10 @@ a.button::before {
     padding: var(--default-padding);
 }
 
+.modal.open .lists ul li:first-child {
+    margin-top: 0;
+}
+
 .modal.open .lists div:first-child {
     flex-grow: 1;
 }
