@@ -1,7 +1,9 @@
+mod about;
 mod index;
 mod personal_interests;
 mod presentations;
 
+use about::About;
 use dioxus::prelude::*;
 pub use index::Index;
 use personal_interests::{Hackathons, Homelab, Ttrpgs};
@@ -14,6 +16,8 @@ pub enum Route {
     Index {},
     #[route("/presentations")]
     Presentations {},
+    #[route("/about")]
+    About {},
     #[nest("/personal-interests")]
     #[route("/hackathons")]
     Hackathons {},
