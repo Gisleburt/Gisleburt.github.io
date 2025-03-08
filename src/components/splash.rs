@@ -1,4 +1,5 @@
 use crate::components::page::{ShownModal, MODAL_SIGNAL};
+use crate::components::Daniel;
 use dioxus::prelude::*;
 
 #[component]
@@ -11,9 +12,9 @@ pub fn Splash() -> Element {
         div {
             class: "splash modal {show_class}",
             div {
-                p { "Welcome to Daniel // Mason"}
+                p { "Welcome to " Daniel {} }
                 p {
-                    "Copyright (C) Daniel // Mason, 2025."
+                    "Copyright (C) " Daniel {} ", 2025."
                     br {}
                     "All rights reserved."
                 }

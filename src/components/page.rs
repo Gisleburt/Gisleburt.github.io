@@ -1,5 +1,4 @@
-use crate::components::nav::HamburgerContainer;
-use crate::components::{NavBar, Open, Scrollbar, Title};
+use crate::components::{HamburgerContainer, Open, Scrollbar, Title};
 use dioxus::prelude::*;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");

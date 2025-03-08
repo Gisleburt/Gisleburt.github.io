@@ -386,3 +386,7 @@ p, li {
     margin: 0 var(--column-width);
     content: '▪';
 }
+
+.daniel {
+    text-wrap: nowrap;
+}
