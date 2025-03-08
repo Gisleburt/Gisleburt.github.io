@@ -2,6 +2,17 @@ use crate::components::page::{ShownModal, MODAL_SIGNAL};
 use dioxus::prelude::*;
 
 #[component]
+pub fn HamburgerContainer() -> Element {
+    rsx! {
+        div {
+            class: "nav-container",
+            a { href: "#", "Menu" }
+            NavBar {}
+        }
+    }
+}
+
+#[component]
 pub fn NavBar() -> Element {
     rsx! {
         nav {

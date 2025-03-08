@@ -32,6 +32,12 @@ body {
     font-size: var(--line-height);
 }
 
+.nav-container > a {
+    display: none;
+    background-color: #aaa;
+    color: #000;
+}
+
 .main-nav {
     background-color: #aaa;
     color: #000;
@@ -53,16 +59,13 @@ body {
     margin-left: auto;
 }
 
-.main-nav > ol::before {
-    content: "\00a0 "
-}
-
-.main-nav > ol::after {
-    content: "\00a0 "
-}
-
-.main-nav > ol > li::before, .main-nav > ol > li::after {
-    content: "\00a0 "
+.nav-container > a::before,
+.nav-container > a::after,
+.main-nav > ol::before,
+.main-nav > ol::after,
+.main-nav > ol > li::before,
+.main-nav > ol > li::after {
+    content: "\00a0 ";
 }
 
 .main-nav > ol > li:hover > .sub-nav {
@@ -105,6 +108,44 @@ body {
 .sub-nav > ol > li > a:hover {
     background-color: #000;
     color: white;
+}
+
+@media (max-width: 800px) {
+    .nav-container > a {
+        display: flex;
+    }
+
+    .main-nav {
+        display: none
+    }
+
+    .nav-container:hover .main-nav {
+        display: block;
+    }
+
+    .nav-container .main-nav ol {
+        flex-direction: column;
+    }
+
+    .main-nav > ol::before,
+    .main-nav > ol::after {
+        content: none;
+    }
+
+    .main-nav > ol > li:last-child {
+        margin-left: unset;
+    }
+
+    .main-nav > ol > li:last-child > .sub-nav {
+        right: unset;
+    }
+
+    .main-nav > ol > li > .sub-nav,
+    .main-nav > ol > li:last-child > .sub-nav {
+        left: calc(var(--line-height) * 7);
+        top: calc(var(--line-height) * -.5);
+
+    }
 }
 
 article {
@@ -181,12 +222,18 @@ p, li {
     margin: var(--line-height) 0 0;
 }
 
-a.button {
+.modal a.button {
+    display: flex;
+    align-items: center;
     color: #000;
 }
 
-a.button::before {
+.modal a.button::before {
     content: "<\00a0 "
+}
+
+.modal a.button::after {
+    content: "\00a0 >";
 }
 
 .modal a.button:focus::before,
@@ -194,10 +241,6 @@ a.button::before {
 .modal a.button:focus::after,
 .modal a.button:hover::after {
     color: #fff;
-}
-
-.modal a.button::after {
-    content: "\00a0 >";
 }
 
 .scrollbar {
