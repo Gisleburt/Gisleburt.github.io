@@ -74,9 +74,9 @@ fn FileNav() -> Element {
                     "Print..."
                 } }
             }
-            ol {
-                 li { a { href: "#", "Exit" } }
-            }
+            // ol {
+            //      li { a { href: "#", "Exit" } }
+            // }
         }
     }
 }
@@ -129,10 +129,10 @@ fn HelpNav() -> Element {
     rsx! {
         nav {
             class: "sub-nav",
-            ol {
-                li { a { href: "/about/index", "Index" } }
-                li { a { href: "/about/contents", "Contents" } }
-            }
+            // ol {
+            //     li { a { href: "/about/index", "Index" } }
+            //     li { a { href: "/about/contents", "Contents" } }
+            // }
             ol {
                 li { a { href: "/about", "About" } }
             }
