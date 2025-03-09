@@ -387,6 +387,14 @@ p, li {
     content: '▪';
 }
 
+body:has(#page-about) {
+    background-color: #000;
+}
+
+body:has(#page-about) h1 {
+    color: #000;
+}
+
 .daniel {
     text-wrap: nowrap;
 }
