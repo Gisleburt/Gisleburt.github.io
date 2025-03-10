@@ -10,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Dioxus Deploy"
-        uses: DioxusLabs/deploy-action@0.1.2
+        uses: Gisleburt/deploy-action@0.1.3-cname-nojekyl
         with:
           outDirectory: "target/dx/gisleburt-github-io/release/web/public"
