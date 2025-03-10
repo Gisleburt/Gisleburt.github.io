@@ -32,10 +32,19 @@ body {
     font-size: var(--line-height);
 }
 
-.nav-container > a {
+.nav-container label {
+    cursor: pointer;
+}
+
+.nav-container > label {
     display: none;
     background-color: #aaa;
     color: #000;
+}
+
+.nav-container input {
+    position: absolute;
+    top: -1000px;
 }
 
 .main-nav {
@@ -59,8 +68,8 @@ body {
     margin-left: auto;
 }
 
-.nav-container > a::before,
-.nav-container > a::after,
+.nav-container > label::before,
+.nav-container > label::after,
 .main-nav > ol::before,
 .main-nav > ol::after,
 .main-nav > ol > li::before,
@@ -111,7 +120,7 @@ body {
 }
 
 @media (max-width: 800px) {
-    .nav-container > a {
+    .nav-container > label {
         display: flex;
     }
 
@@ -119,6 +128,7 @@ body {
         display: none
     }
 
+    .nav-container input:checked ~ nav,
     .nav-container:hover .main-nav {
         display: block;
     }

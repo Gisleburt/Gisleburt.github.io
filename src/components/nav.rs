@@ -1,13 +1,30 @@
 use crate::components::page::{ShownModal, MODAL_SIGNAL};
+use crate::utils::make_string_safe;
 use dioxus::prelude::*;
+
+#[component]
+pub fn TouchNavWrapper(title: String, children: Element) -> Element {
+    let safe_title = make_string_safe(&title);
+    let id = format!("touch-wrapper-{safe_title}");
+    rsx! {
+        Fragment {
+            key: "{safe_title}",
+            label { for: id.clone(), "{title}" }
+            input { type: "checkbox", id: id }
+            {children}
+        }
+    }
+}
 
 #[component]
 pub fn HamburgerContainer() -> Element {
     rsx! {
         div {
             class: "nav-container",
-            a { href: "#", "Menu" }
-            NavBar {}
+            TouchNavWrapper {
+                title: "Menu",
+                NavBar {}
+            }
         }
     }
 }
@@ -19,39 +36,34 @@ pub fn NavBar() -> Element {
             class: "main-nav",
             ol {
                 li {
-                    a {
-                        href: "#",
-                        "File"
+                    TouchNavWrapper {
+                        title: "File",
+                        FileNav {}
                     }
-                    FileNav {}
                 }
                 li {
-                    a {
-                        href: "#",
-                        "Talks"
+                    TouchNavWrapper {
+                        title: "Talks",
+                        PresentationNav {}
                     }
-                    PresentationNav {}
                 }
                 li {
-                    a {
-                        href: "#",
-                        "Projects"
+                    TouchNavWrapper {
+                        title: "Projects",
+                        ProjectsNav {}
                     }
-                    ProjectsNav {}
                 }
                 li {
-                    a {
-                        href: "#",
-                        "Interests"
+                    TouchNavWrapper {
+                        title: "Interests",
+                        InterestsNav {}
                     }
-                    InterestsNav {}
                 }
                 li {
-                    a {
-                        href: "#",
-                        "Help"
+                    TouchNavWrapper {
+                        title: "Help",
+                        HelpNav {}
                     }
-                    HelpNav {}
                 }
             }
         }
