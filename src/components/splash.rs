@@ -21,8 +21,7 @@ pub fn Splash() -> Element {
                 p {
                     a {
                         class: "button",
-                        href: "#",
-                        onclick: move |_| *MODAL_SIGNAL.write() = ShownModal::None,
+                        href: "/about",
                         "Press Enter to see the Survival Guide"
                     }
                 }
