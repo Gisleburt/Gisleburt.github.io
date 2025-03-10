@@ -14,3 +14,4 @@ jobs:
         with:
           outDirectory: "target/dx/gisleburt-github-io/release/web/public"
           cname: danielmason.com
+          buildMode: 'release --platform web --ssh'
