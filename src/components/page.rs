@@ -24,6 +24,7 @@ pub fn Page(title: String, children: Element) -> Element {
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: RESET_CSS }
         document::Link { rel: "stylesheet", href: SITE_CSS }
+        document::Title { "Daniel // Mason" }
         HamburgerContainer { }
         article {
             id: id,
