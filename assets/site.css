@@ -305,6 +305,23 @@ p, li {
     top: calc(50% + var(--line-height) - (var(--height) / 2));
 }
 
+.modal.open .file-select input {
+    display: none;
+}
+
+.modal.open .file-select {
+    margin: 0;
+}
+
+.modal.open .file-select label {
+    cursor: pointer;
+}
+
+.modal.open a.disabled {
+    pointer-events: none;
+    color: #888;
+}
+
 .modal {
     display: none;
 }
