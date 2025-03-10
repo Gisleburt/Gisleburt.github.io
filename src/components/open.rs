@@ -1,6 +1,5 @@
 use crate::components::page::{ShownModal, MODAL_SIGNAL};
 use crate::utils::make_string_safe;
-use dioxus::logger::tracing;
 use dioxus::prelude::*;
 use std::string::ToString;
 
