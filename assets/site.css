@@ -17,6 +17,12 @@ html {
     font-size: 62.5%
 }
 
+@media (max-width: 600px) {
+    html {
+        font-size: 31.25%;
+    }
+}
+
 /* Rest of css */
 body {
     font-family: "Courier", "Courier New", monospace;
@@ -165,8 +171,8 @@ article {
     flex-direction: column;
     flex-grow: 1;
     border: var(--border-size) solid #a8a8a8;
-    margin: 12px 8px;
-    padding: 12px 8px;
+    margin: calc(var(--line-height) / 2) calc(var(--line-height) / 4);
+    padding: calc(var(--line-height) / 2) calc(var(--line-height) / 4);
     height: calc(100vh - calc(3 * var(--line-height)));
 }
 
@@ -209,7 +215,7 @@ h2 {
 .modal.splash {
     flex-direction: column;
     margin: auto;
-    padding: 16px;
+    padding: calc(var(--line-height) / 2);
     background-color: #aaa;
     color: #000;
 }
